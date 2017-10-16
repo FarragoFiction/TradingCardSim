@@ -7,10 +7,22 @@ int width = 322;
 int height = 450;
 List<RenderedDoll> renderedDolls = new List<RenderedDoll>();
 Element div = querySelector("#output");
+Random rand = new Random();
 
 void main() {
 
-  drawCard();
+  drawDeck();
+}
+
+Future<bool> drawDeck() async {
+  await drawCard();
+  await drawCard();
+  await drawCard();
+  await drawCard();
+  await drawCard();
+  await drawCard();
+  await drawCard();
+  await drawCard();
 }
 
 //TODO why is only one thing being drawn here.
@@ -21,14 +33,13 @@ Future<bool>  drawCard() async{
   renderedDolls.add(new RenderedDoll(cardElement, doll));
   await Renderer.drawWhatever(cardElement, "images/blank.png");
   await Renderer.drawDoll(monsterElement, doll);
+  Renderer.swapColors(cardElement, new Colour(rand.nextInt(255), rand.nextInt(255),rand.nextInt(255)));
 
 
   CanvasElement finishedProduct = new CanvasElement(width: width, height: height);
-  finishedProduct.context2D.drawImage(monsterElement, 0, 0);
+  finishedProduct.context2D.drawImage(monsterElement, 25, 50);
   finishedProduct.context2D.drawImage(cardElement, 0, 0);
   div.append(finishedProduct);
-  div.append(monsterElement);
-  div.append(cardElement);
 }
 
 
