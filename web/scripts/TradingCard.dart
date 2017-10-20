@@ -73,7 +73,7 @@ class TradingCard {
         String verb = rand.pickFrom(verbs);
         String noun  = rand.pickFrom(nouns);
         String effect = rand.pickFrom(effects);
-        List<String> possibilities = <String>["$verb the $name, discarding it in order to make the ${noun} ${effect}.","$verb two ${noun}s from your deck. Attach them to the $name.","Pick one enemy ${noun}, $verb it.  Your $name is now ${effect}","Double the ${name}'s power for the next two turns."];
+        List<String> possibilities = <String>["Set the enemy $noun on fire. And your $noun, too. Fuck this game.","$verb the $name, discarding it in order to make the ${noun} ${effect}.","$verb two ${noun}s from your deck. Attach them to the $name.","Pick one enemy ${noun}, $verb it.  Your $name is now ${effect}","Double the ${name}'s power for the next two turns."];
         return toBeginningOfSentenceCase(rand.pickFrom(possibilities));
     }
 
@@ -211,8 +211,13 @@ class TradingCard {
         double monsterScale = 1.0;
         CanvasElement monsterElement = new CanvasElement(width: (256*monsterScale).round(), height: (206*monsterScale).round());
         // Renderer.drawBG(monsterElement, ReferenceColours.BLACK, ReferenceColours.WHITE);
+        CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
+        await Renderer.drawDoll(dollCanvas, doll);
 
-        await Renderer.drawDoll(monsterElement, doll);
+        dollCanvas = Renderer.cropToVisible(dollCanvas);
+        Renderer.scaleCanvasForDoll(monsterElement, doll);
+        Renderer.copyTmpCanvasToRealCanvasAtPos(monsterElement, dollCanvas, 0, 0);
+
         return monsterElement;
     }
 
