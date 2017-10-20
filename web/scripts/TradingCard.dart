@@ -210,12 +210,14 @@ class TradingCard {
 
     Future<CanvasElement>  drawMonster(Doll doll) async {
         double monsterScale = 1.0;
-        CanvasElement monsterElement = new CanvasElement(width: (256*monsterScale).round(), height: (206*monsterScale).round());
-        // Renderer.drawBG(monsterElement, ReferenceColours.BLACK, ReferenceColours.WHITE);
+        CanvasElement monsterElement = new CanvasElement(width: (230*monsterScale).round(), height: (206*monsterScale).round());
         CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
         await Renderer.drawDoll(dollCanvas, doll);
 
         dollCanvas = Renderer.cropToVisible(dollCanvas);
+        print("Width is: ${dollCanvas.width}");
+        //Renderer.drawBG(dollCanvas, ReferenceColours.BLACK, ReferenceColours.WHITE);
+
         Renderer.scaleCanvasForDoll(monsterElement, doll);
         Renderer.copyTmpCanvasToRealCanvasAtPos(monsterElement, dollCanvas, 0, 0);
 
