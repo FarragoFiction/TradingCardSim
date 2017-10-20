@@ -163,17 +163,17 @@ class TradingCard {
 
         //redraw on existing canvas if need be.
         if(canvas == null) canvas = new CanvasElement(width: width, height: height);
-        //Renderer.drawBGRadialWithWidth(canvas,10,300,600,tint,new Colour(255,255,255));
 
         CanvasElement monsterElement = await drawMonster(doll);
 
         CanvasElement cardElement = await drawCardTemplate(tint);
+
         //Renderer.drawBG(monsterElement, ReferenceColours.RED, ReferenceColours.RED);
         CanvasElement symbolElement = await drawSymbol();
 
         canvas.context2D.clearRect(0,0,width,height);
 
-
+        Renderer.drawBGRadialWithWidth(canvas,10,300,600,tint,new Colour(255,255,255));
         canvas.context2D.drawImage(cardElement, 0, 0);
         canvas.context2D.drawImage(monsterElement,34, 34);
 
