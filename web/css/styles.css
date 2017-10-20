@@ -12,3 +12,27 @@ html, body {
   padding: 20px;
   text-align: center;
 }
+
+.cardWithForm{
+    display: inline-block;
+}
+
+.cardCanvas{
+    display: inline-block;
+}
+
+button{
+    display: block;
+}
+.textAreaElement{
+    text-align: right;
+    align: right;
+}
+
+.cardForm{
+    vertical-align: top;
+    padding: 10px;
+    display: inline-block;
+    align: left;
+    text-align: left;
+}

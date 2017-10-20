@@ -9,7 +9,12 @@ Element div = querySelector("#output");
 Random rand = new Random();
 
 void main() {
-
+  ButtonElement button = new ButtonElement();
+  button.setInnerHtml("Draw Card");
+  button.onClick.listen((Event e) {
+    drawCard();
+  });
+  div.append(button);
   drawDeck();
 }
 
@@ -42,8 +47,10 @@ Doll makeDoll()  {
 
 Future<bool>  drawCard() async{
     Element innerDiv  = new DivElement();
+    innerDiv.className = "cardWithForm";
     TradingCard card = new TradingCard(makeDoll());
     CanvasElement finishedProduct = await card.draw();
+    finishedProduct.className = "cardCanvas";
     innerDiv.append(finishedProduct);
     innerDiv.append(card.makeForm());
     div.append(innerDiv);

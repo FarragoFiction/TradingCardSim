@@ -97,23 +97,9 @@ class TradingCard {
         return "$type of ${rand.pickFrom(randomSecondWords)}";
     }
 
-
-    //draws a text area for each text element, one for the doll, and a color picker for tint.
-    Element makeForm() {
+    Element makeTintSelector() {
         Element ret = new DivElement();
-
-        Element dollLoader = new DivElement();
-        dollLoader.setInnerHtml("Doll URL: ");
-        TextAreaElement dollArea = new TextAreaElement();
-        dollArea.value = doll.toDataBytesX();
-        ButtonElement dollButton = new ButtonElement();
-        dollButton.setInnerHtml("Load Doll");
-        dollLoader.append(dollArea);
-        dollLoader.append(dollButton);
-        ret.append(dollLoader);
-
-        Element colorLoader = new DivElement();
-        dollLoader.setInnerHtml("Card Tint: ");
+        ret.setInnerHtml("Card Tint: ");
         InputElement colorPicker = new InputElement();
         colorPicker.type = "color";
         colorPicker.value = tint.toStyleString();
@@ -122,14 +108,29 @@ class TradingCard {
             draw();
         });
 
-        colorLoader.append(colorPicker);
-        ret.append(colorLoader);
+        ret.append(colorPicker);
+        return ret;
+    }
+
+    Element makeDollLoader() {
+        Element ret = new DivElement();
+        ret.setInnerHtml("Doll URL: ");
+        TextAreaElement dollArea = new TextAreaElement();
+        dollArea.value = doll.toDataBytesX();
+        ButtonElement dollButton = new ButtonElement();
+        dollButton.setInnerHtml("Load Doll");
+        ret.append(dollArea);
+        ret.append(dollButton);
 
         dollButton.onClick.listen((Event e) {
             doll = Doll.loadSpecificDoll(dollArea.value);
             draw();
         });
+        return ret;
+    }
 
+    Element makeTextLoader() {
+        Element ret = new DivElement();
         for(TextLayer tl in textLayers) {
             ret.append(tl.element);
         }
@@ -142,7 +143,17 @@ class TradingCard {
         });
 
         ret.append(button);
+        return ret;
+    }
 
+    //draws a text area for each text element, one for the doll, and a color picker for tint.
+    Element makeForm() {
+        Element ret = new DivElement();
+        ret.className = "cardForm";
+
+        ret.append(makeDollLoader());
+        ret.append(makeTintSelector());
+        ret.append(makeTextLoader());
 
         return ret;
     }
@@ -207,7 +218,7 @@ class TradingCard {
 
     Future<CanvasElement> drawCardTemplate(Colour color) async{
         CanvasElement cardElement = new CanvasElement(width: width, height: height);
-        await Renderer.drawWhatever(cardElement, "images/blank.png");
+        await Renderer.drawWhateverFuture(cardElement, "images/blank.png");
         Renderer.swapColors(cardElement, color);
         return cardElement;
 
