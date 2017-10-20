@@ -2,13 +2,15 @@
 import "DollLib/DollRenderer.dart";
 import 'dart:async';
 import "TradingCard.dart";
+import "navbar.dart";
 
 import 'dart:html';
 
-Element div = querySelector("#output");
+Element div = querySelector("#contents");
 Random rand = new Random();
 
 void main() {
+    loadNavbar();
   ButtonElement button = new ButtonElement();
   button.setInnerHtml("Draw Card");
   button.onClick.listen((Event e) {

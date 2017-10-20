@@ -1,0 +1,35 @@
+<div class = "banner">
+<table><tr><td>
+      <a href = "http://farragofiction.com/SBURBSim/landing.html"><img src = "images/ad.png"/></a></td>
+            <Td><a href = "http://www.patreon.com/FarragoFiction"><img src = "images/ad2.png"/></a></td>
+            </tr>
+            </table>
+
+</div>
+<ul class = "menuPureCSS">
+  <span class = 'centeredMenu'>
+  <li class="dropdown menuButtonPureCSS">
+    <a href="javascript:void(0)" class="dropbtn">DOLLS</a>
+    <div class="dropdown-content">
+      <a href="http://farragofiction.com/DollSim/index.html">Kid Maker</a>
+      <a href="http://farragofiction.com/DollSim/troll_index.html">Troll Maker</a>
+      <a href="http://farragofiction.com/DollSim/consort_index.html">Consort Maker</a>
+      <a href="http://farragofiction.com/DollSim/denizen_index.html">Denizen Maker by TG</a>
+    </div>
+  </li>
+
+
+  <li class="dropdown menuButtonPureCSS">
+    <a href="javascript:void(0)" class="dropbtn">INFO</a>
+    <div class="dropdown-content">
+    <a href="http://farragofiction.com/DollSim/contribute.html">Contribute Sprite Art</a>
+      <a href="http://farragofiction.com/DollSim/credits.html">Special Thanks</a>
+      <a href = "https://github.com/jadedResearcher/DollMaker"> GitHub Repo</a>
+    </div>
+  </li>
+
+  <li class = "menuButtonPureCSS"><a href="https://discord.gg/KPunMPc">DISCORD</a></li>
+  <li class = "menuButtonPureCSS"><a href="http://www.patreon.com/FarragoFiction">SUPPORT</a></li>
+
+  </span>
+</ul>
