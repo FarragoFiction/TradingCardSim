@@ -31,7 +31,7 @@ void drawTextBoxForRD(RenderedDoll rd) {
 Future<CanvasElement>  drawMonster(Doll doll) async {
   double monsterScale = 1.0;
   CanvasElement monsterElement = new CanvasElement(width: (256*monsterScale).round(), height: (206*monsterScale).round());
-  Renderer.drawBG(monsterElement, ReferenceColours.BLACK, ReferenceColours.WHITE);
+ // Renderer.drawBG(monsterElement, ReferenceColours.BLACK, ReferenceColours.WHITE);
   await Renderer.drawDoll(monsterElement, doll);
   return monsterElement;
 }
@@ -80,7 +80,7 @@ Future<bool>  drawCard() async{
     x = box/2 - doll/2
     y = box_height/2 - doll_height/2
    */
-  int x = (doll.width/2 - monsterElement.width/2).round();
+  int x = (doll.width/3 - monsterElement.width/3).round();
   int y = (3*monsterElement.height/4 - 2*monsterElement.height/4).round();
   finishedProduct.context2D.drawImage(monsterElement, x, y);
   finishedProduct.context2D.drawImage(cardElement, 0, 0);
