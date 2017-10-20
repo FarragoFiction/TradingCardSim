@@ -13,6 +13,8 @@ import 'dart:html';
 
  */
 class TradingCard {
+
+    CanvasElement canvas;
     Colour tint;
     Doll doll;
     int width = 322;
@@ -48,11 +50,11 @@ class TradingCard {
         if(name == null) name = randomName();
         if(description == null) description = randomDescription();
         if(shittyPoem == null) shittyPoem = randomPoem();
-        nameLayer = new TextLayer(name,35.0,28.0, fontSize: 18);
-        typeLayer = new TextLayer(type,35.0,260.0, fontSize: 18);
-        statLayer = new TextLayer(stats,250.0,418.0, fontSize: 18);
-        descriptionLayer = new TextLayer(description,46.0,280.0, fontSize: 18, maxWidth: 180);
-        shittyPoemLayer = new TextLayer(shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 16, maxWidth: 180);
+        nameLayer = new TextLayer("Name",name,35.0,28.0, fontSize: 18);
+        typeLayer = new TextLayer("Type",type,35.0,260.0, fontSize: 18);
+        statLayer = new TextLayer("Stats",stats,250.0,418.0, fontSize: 18);
+        descriptionLayer = new TextLayer("Description",description,46.0,280.0, fontSize: 18, maxWidth: 180);
+        shittyPoemLayer = new TextLayer("Flavor Text",shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 16, maxWidth: 180);
         //TODO have text layers know how to render their own form values (in DollMaker, add DollTools to lib)
     }
 
@@ -95,6 +97,43 @@ class TradingCard {
         return "$type of ${rand.pickFrom(randomSecondWords)}";
     }
 
+
+    //draws a text area for each text element, one for the doll, and a color picker for tint.
+    Element makeForm() {
+        Element ret = new DivElement();
+
+        Element dollLoader = new DivElement();
+        dollLoader.setInnerHtml("Doll URL: ");
+        TextAreaElement dollArea = new TextAreaElement();
+        dollArea.value = doll.toDataBytesX();
+        ButtonElement dollButton = new ButtonElement();
+        dollButton.setInnerHtml("Load Doll");
+        dollLoader.append(dollArea);
+        dollLoader.append(dollButton);
+        ret.append(dollLoader);
+
+        dollButton.onClick.listen((Event e) {
+            doll = Doll.loadSpecificDoll(dollArea.value);
+            draw();
+        });
+
+        for(TextLayer tl in textLayers) {
+            ret.append(tl.element);
+        }
+        ButtonElement button = new ButtonElement();
+        button.setInnerHtml("Load Text");
+
+        button.onClick.listen((Event e) {
+            print("redrawing after loading text.");
+            draw();
+        });
+
+        ret.append(button);
+
+
+        return ret;
+    }
+
     Future<CanvasElement> draw() async
 
     {
@@ -102,16 +141,19 @@ class TradingCard {
         CanvasElement monsterElement = await drawMonster(doll);
         CanvasElement symbolElement = await drawSymbol();
 
-        CanvasElement finishedProduct = new CanvasElement(width: width, height: height);
-        Renderer.drawBG(finishedProduct, tint, new Colour(255,255,255));
+        //redraw on existing canvas if need be.
+        if(canvas == null) canvas = new CanvasElement(width: width, height: height);
+        canvas.context2D.clearRect(0,0,width,height);
+        Renderer.drawBG(canvas, tint, new Colour(255,255,255));
 
+        //TODO calculate doll width/height based and shit based on first and last non transparent pixels.
         int x = (doll.width/3 - monsterElement.width/3).round();
         int y = (3*monsterElement.height/4 - 2*monsterElement.height/4).round();
-        finishedProduct.context2D.drawImage(monsterElement, x, y);
-        finishedProduct.context2D.drawImage(cardElement, 0, 0);
-        finishedProduct.context2D.drawImage(symbolElement, 185, -83);
+        canvas.context2D.drawImage(monsterElement, x, y);
+        canvas.context2D.drawImage(cardElement, 0, 0);
+        canvas.context2D.drawImage(symbolElement, 185, -83);
 
-        CanvasRenderingContext2D ctx = finishedProduct.context2D;
+        CanvasRenderingContext2D ctx = canvas.context2D;
 
         for(TextLayer textLayer in textLayers) {
             ctx.fillStyle = textLayer.fillStyle;
@@ -120,7 +162,7 @@ class TradingCard {
             Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
         }
 
-        return finishedProduct;
+        return canvas;
     }
 
     Future<CanvasElement> drawSymbol() async {

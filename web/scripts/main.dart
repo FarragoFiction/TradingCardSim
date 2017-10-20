@@ -14,9 +14,9 @@ void main() {
 }
 
 Future<bool> drawDeck() async {
-  for(int i = 0; i<8; i++) {
+  //TODO why is the first card always untinted?
+  for(int i = 0; i<2; i++) {
     await drawCard();
-
   }
 
 }
@@ -41,8 +41,11 @@ Doll makeDoll()  {
 
 
 Future<bool>  drawCard() async{
+    Element innerDiv  = new DivElement();
     TradingCard card = new TradingCard(makeDoll());
     CanvasElement finishedProduct = await card.draw();
-    div.append(finishedProduct);
+    innerDiv.append(finishedProduct);
+    innerDiv.append(card.makeForm());
+    div.append(innerDiv);
 }
 
