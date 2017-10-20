@@ -18,10 +18,6 @@ Future<bool> drawDeck() async {
   await drawCard();
   await drawCard();
   await drawCard();
-  await drawCard();
-  await drawCard();
-  await drawCard();
-  await drawCard();
 }
 
 
