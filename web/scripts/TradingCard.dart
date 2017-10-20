@@ -168,13 +168,14 @@ class TradingCard {
         //redraw on existing canvas if need be.
         if(canvas == null) canvas = new CanvasElement(width: width, height: height);
         canvas.context2D.clearRect(0,0,width,height);
-        Renderer.drawBG(canvas, tint, new Colour(255,255,255));
+        Renderer.drawBGRadialWithWidth(canvas,10,300,600,tint,new Colour(255,255,255));
 
         //TODO calculate doll width/height based and shit based on first and last non transparent pixels.
         int x = (doll.width/3 - monsterElement.width/3).round();
         int y = (3*monsterElement.height/4 - 2*monsterElement.height/4).round();
-        canvas.context2D.drawImage(monsterElement, x, y);
         canvas.context2D.drawImage(cardElement, 0, 0);
+        canvas.context2D.drawImage(monsterElement, x, y);
+
         canvas.context2D.drawImage(symbolElement, 185, -83);
 
         CanvasRenderingContext2D ctx = canvas.context2D;
