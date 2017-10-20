@@ -216,7 +216,7 @@ class TradingCard {
 
         dollCanvas = Renderer.cropToVisible(dollCanvas);
         print("Width is: ${dollCanvas.width}");
-        //Renderer.drawBG(dollCanvas, ReferenceColours.BLACK, ReferenceColours.WHITE);
+        //Renderer.drawBG(dollCanvas, ReferenceColours.WHITE, new Colour(0,0,0,0));
 
         Renderer.scaleCanvasForDoll(monsterElement, doll);
         Renderer.copyTmpCanvasToRealCanvasAtPos(monsterElement, dollCanvas, 0, 0);
