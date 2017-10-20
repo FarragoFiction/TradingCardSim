@@ -40,7 +40,7 @@ class TradingCard {
 
     List<String> verbs = <String>["tap","use","discard","draw","imbibe","devour","vore","scatter","shred","place","select","choose","levitate","burn"];
     List<String> nouns =<String> ["card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana"];
-    List<String> effects = <String>["ripe","shitty","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic"];
+    List<String> effects = <String>["ripe","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic"];
 
 
     TradingCard(Doll this.doll, {this.power: -1, this.health: -1, this.mana: -1, this.name:null, this.type:null, this.description:null, this.shittyPoem: null}) {
@@ -159,10 +159,10 @@ class TradingCard {
     }
 
     Future<CanvasElement> draw() async
-
     {
         CanvasElement cardElement = await drawCardTemplate(tint);
         CanvasElement monsterElement = await drawMonster(doll);
+        //Renderer.drawBG(monsterElement, ReferenceColours.RED, ReferenceColours.RED);
         CanvasElement symbolElement = await drawSymbol();
 
         //redraw on existing canvas if need be.
@@ -170,11 +170,9 @@ class TradingCard {
         canvas.context2D.clearRect(0,0,width,height);
         Renderer.drawBGRadialWithWidth(canvas,10,300,600,tint,new Colour(255,255,255));
 
-        //TODO calculate doll width/height based and shit based on first and last non transparent pixels.
-        int x = (doll.width/3 - monsterElement.width/3).round();
-        int y = (3*monsterElement.height/4 - 2*monsterElement.height/4).round();
+
         canvas.context2D.drawImage(cardElement, 0, 0);
-        canvas.context2D.drawImage(monsterElement, x, y);
+        canvas.context2D.drawImage(monsterElement,34, 34);
 
         canvas.context2D.drawImage(symbolElement, 185, -83);
 
@@ -209,18 +207,20 @@ class TradingCard {
     }
 
     Future<CanvasElement>  drawMonster(Doll doll) async {
-        double monsterScale = 1.0;
-        CanvasElement monsterElement = new CanvasElement(width: (230*monsterScale).round(), height: (206*monsterScale).round());
+        CanvasElement monsterElement = new CanvasElement(width: (256).round(), height: (208).round());
         CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
         await Renderer.drawDoll(dollCanvas, doll);
 
         dollCanvas = Renderer.cropToVisible(dollCanvas);
-        print("Width is: ${dollCanvas.width}");
         //Renderer.drawBG(dollCanvas, ReferenceColours.WHITE, new Colour(0,0,0,0));
 
-        Renderer.scaleCanvasForDoll(monsterElement, doll);
-        Renderer.copyTmpCanvasToRealCanvasAtPos(monsterElement, dollCanvas, 0, 0);
 
+       // Renderer.scaleCanvasForDoll(monsterElement, doll);
+       // Renderer.copyTmpCanvasToRealCanvasAtPos(monsterElement, dollCanvas, x, y);
+       // monsterElement.context2D.scale(1.0,1.0);
+
+        //monsterElement.context2D.drawImage(dollCanvas, x, y);
+        Renderer.drawToFitCentered(monsterElement, dollCanvas);
         return monsterElement;
     }
 
