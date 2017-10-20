@@ -36,16 +36,15 @@ class TradingCard {
     List<String> randomFirstWords = <String>["Lord","Elf","Muse","Priest","Dame","Guard","Sage","Smith","Scribe","Grace","Waste","Monk","Beast","Knight","Seer","Bard","Heir","Maid","Rogue","Page","Thief","Sylph","Witch","Prince","Mage","Bane","Scout","Guide","Nymph","Fool","Wright","Clown","King","Queen","Jack","Pawn","Nurse"];
     List<String> randomSecondWords = <String>["Blood","Mind","Rage","Void","Time","Heart","Breath","Light","Space","Hope","Life","Doom","Dream","Rain","Might","Sand","Mist","Null","Flow","Rhyme","Stars","Sky","Fate","Heat","Frost","Snow","Law","Flame","Flood","Quake","Ice","Mud","Calm","Peace","Zap","Soft","Hard","Home"];
 
-    List<String> verbs = ["tap","use","discard","draw","imbibe","devour","vore","scatter","shred","place","select","choose","levitate","burn"];
-    List<String> nouns = ["card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana"];
-    List<String> effects = ["ripe","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","sued","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic"];
+    List<String> verbs = <String>["tap","use","discard","draw","imbibe","devour","vore","scatter","shred","place","select","choose","levitate","burn"];
+    List<String> nouns =<String> ["card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana"];
+    List<String> effects = <String>["ripe","shitty","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic"];
 
 
     TradingCard(Doll this.doll, {this.power: -1, this.health: -1, this.mana: -1, this.name:null, this.type:null, this.description:null, this.shittyPoem: null}) {
         rand = new Random();
         randomizeStats();
         tint = new Colour(rand.nextInt(255), rand.nextInt(255),rand.nextInt(255));
-        //TODO set up text layers with random values.
         if(name == null) name = randomName();
         if(description == null) description = randomDescription();
         if(shittyPoem == null) shittyPoem = randomPoem();
@@ -53,7 +52,7 @@ class TradingCard {
         typeLayer = new TextLayer(type,35.0,260.0, fontSize: 18);
         statLayer = new TextLayer(stats,250.0,418.0, fontSize: 18);
         descriptionLayer = new TextLayer(description,46.0,280.0, fontSize: 18, maxWidth: 180);
-        shittyPoemLayer = new TextLayer(shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 18, maxWidth: 180);
+        shittyPoemLayer = new TextLayer(shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 16, maxWidth: 180);
         //TODO have text layers know how to render their own form values (in DollMaker, add DollTools to lib)
     }
 
@@ -79,7 +78,8 @@ class TradingCard {
     String randomPoem() {
         String noun  = rand.pickFrom(nouns);
         String effect = rand.pickFrom(effects);
-        List<String> possibilities = <String>["You can almost forget your childhood, when the ${noun}s were not yet $effect.","Is it any wonder the ${noun}s are ever ${effect}?","Everyone knows you should not trust the ${noun}s of the Forest."];
+        List<String> possibilities = <String>["'Oh, that this too too solid $noun would melt, thaw and resolve itself into a dew!' -Charles Dutton","The prophecy of $noun foretold the world becoming $effect.","I think I shall never see, something as $effect as a tree.","Is there any human who can resist a truly $effect $noun?","You can almost forget your childhood, when the ${noun}s were not yet $effect.","Is it any wonder the ${noun}s are ever ${effect}?","Everyone knows you should not trust the ${noun}s of the Forest."];
+        possibilities.addAll(<String>["'On with the $noun of bang a dang diggy diggy up jump the $effect.' -Troll Kid Rock","This is exactly why ${noun}s should not be allowed to dual-wield flintlock pistols. ", "When you are extra angry at crime, you should call jail 'the $noun'.", "Today is the day you finally blow up the $noun.", "Punch $noun in the snout to establish $effect dominance. ", "You cannot do it. You cannot make the $noun ${effect}.", "Have you tried falling in a more $effect manner?", "Two roads diverge in a $effect wood."]);
         return toBeginningOfSentenceCase(rand.pickFrom(possibilities));
     }
 
@@ -100,6 +100,7 @@ class TradingCard {
     {
         CanvasElement cardElement = await drawCardTemplate(tint);
         CanvasElement monsterElement = await drawMonster(doll);
+        CanvasElement symbolElement = await drawSymbol();
 
         CanvasElement finishedProduct = new CanvasElement(width: width, height: height);
         Renderer.drawBG(finishedProduct, tint, new Colour(255,255,255));
@@ -108,6 +109,7 @@ class TradingCard {
         int y = (3*monsterElement.height/4 - 2*monsterElement.height/4).round();
         finishedProduct.context2D.drawImage(monsterElement, x, y);
         finishedProduct.context2D.drawImage(cardElement, 0, 0);
+        finishedProduct.context2D.drawImage(symbolElement, 185, -83);
 
         CanvasRenderingContext2D ctx = finishedProduct.context2D;
 
@@ -121,10 +123,29 @@ class TradingCard {
         return finishedProduct;
     }
 
+    Future<CanvasElement> drawSymbol() async {
+        CanvasElement cardElement = new CanvasElement(width: width, height: height);
+
+        for(SpriteLayer layer in doll.layers) {
+            if(layer.imgNameBase.contains("Symbol")) {
+                await Renderer.drawWhateverFuture(cardElement, "images/element.png");
+                await Renderer.drawWhateverFuture(cardElement, layer.imgLocation);
+                Renderer.swapPalette(cardElement, doll.paletteSource, doll.palette);
+            }
+        }
+        CanvasElement ret = new CanvasElement(width: width, height: height);
+
+        ret.context2D.scale(0.5, 0.5);
+        ret.context2D.drawImage(cardElement,0,0);
+
+        return ret;
+    }
+
     Future<CanvasElement>  drawMonster(Doll doll) async {
         double monsterScale = 1.0;
         CanvasElement monsterElement = new CanvasElement(width: (256*monsterScale).round(), height: (206*monsterScale).round());
         // Renderer.drawBG(monsterElement, ReferenceColours.BLACK, ReferenceColours.WHITE);
+
         await Renderer.drawDoll(monsterElement, doll);
         return monsterElement;
     }

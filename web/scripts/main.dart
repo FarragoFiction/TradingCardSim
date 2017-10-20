@@ -14,10 +14,11 @@ void main() {
 }
 
 Future<bool> drawDeck() async {
-  await drawCard();
-  await drawCard();
-  await drawCard();
-  await drawCard();
+  for(int i = 0; i<8; i++) {
+    await drawCard();
+
+  }
+
 }
 
 
