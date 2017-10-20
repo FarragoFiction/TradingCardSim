@@ -112,6 +112,19 @@ class TradingCard {
         dollLoader.append(dollButton);
         ret.append(dollLoader);
 
+        Element colorLoader = new DivElement();
+        dollLoader.setInnerHtml("Card Tint: ");
+        InputElement colorPicker = new InputElement();
+        colorPicker.type = "color";
+        colorPicker.value = tint.toStyleString();
+        colorPicker.onChange.listen((Event e) {
+            tint = new Colour.fromStyleString(colorPicker.value);
+            draw();
+        });
+
+        colorLoader.append(colorPicker);
+        ret.append(colorLoader);
+
         dollButton.onClick.listen((Event e) {
             doll = Doll.loadSpecificDoll(dollArea.value);
             draw();
