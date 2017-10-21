@@ -15,6 +15,7 @@ import 'dart:html';
 class TradingCard {
 
     CanvasElement canvas;
+    AnchorElement saveLink;
     Colour tint;
     Doll doll;
     int width = 322;
@@ -161,12 +162,12 @@ class TradingCard {
     Element makeSaveButton() {
         Element ret = new DivElement();
         ret.className = "paddingTop";
-        AnchorElement saveButton = new AnchorElement();
-        saveButton.href = canvas.toDataUrl();
-        saveButton.target = "_blank";
-        saveButton.setInnerHtml("Download PNG?");
+        if(saveLink == null) saveLink = new AnchorElement();
+        saveLink.href = canvas.toDataUrl();
+        saveLink.target = "_blank";
+        saveLink.setInnerHtml("Download PNG?");
 
-        ret.append(saveButton);
+        ret.append(saveLink);
         return ret;
     }
 
@@ -212,6 +213,8 @@ class TradingCard {
             //ctx.fillText(textLayer.text, textLayer.topLeftX, textLayer.topLeftY);
             Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
         }
+        if(saveLink == null) saveLink = new AnchorElement();
+        saveLink.href = canvas.toDataUrl();
 
         return canvas;
     }
