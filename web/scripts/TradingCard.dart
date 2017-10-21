@@ -38,9 +38,9 @@ class TradingCard {
     List<String> randomFirstWords = <String>["Lord","Elf","Muse","Priest","Dame","Guard","Sage","Smith","Scribe","Grace","Waste","Monk","Beast","Knight","Seer","Bard","Heir","Maid","Rogue","Page","Thief","Sylph","Witch","Prince","Mage","Bane","Scout","Guide","Nymph","Fool","Wright","Clown","King","Queen","Jack","Pawn","Nurse"];
     List<String> randomSecondWords = <String>["Blood","Mind","Rage","Void","Time","Heart","Breath","Light","Space","Hope","Life","Doom","Dream","Rain","Might","Sand","Mist","Null","Flow","Rhyme","Stars","Sky","Fate","Heat","Frost","Snow","Law","Flame","Flood","Quake","Ice","Mud","Calm","Peace","Zap","Soft","Hard","Home"];
 
-    List<String> verbs = <String>["tap","use","discard","draw","imbibe","devour","vore","scatter","shred","place","select","choose","levitate","burn"];
-    List<String> nouns =<String> ["card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana"];
-    List<String> effects = <String>["ripe","angsting","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic"];
+    List<String> verbs = <String>["tap","use","discard","draw","imbibe","create","devour","vore","scatter","shred","place","select","choose","levitate","burn","throw away","place","dominate","humiliate","oggle","auto-parry","be","wear","flip","fondly regard","retrieve","throw","slay","defeat","become","grab","order","steal","smell","sample","taste","caress","fondle","placate","handle","pirouette","entrench","crumple","shatter","drop","farm","sign","pile","smash","resist","sip","understand","contemplate"];
+    List<String> nouns =<String> ["card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana","deck","creature","sword","legendary artifact","legendary weapon","god","meme","red mile", "ring of orbs no-fold","arm","mechanical bull","mystery","token","shrubery","Blue Lady","gem","egg","coin","talisman"];
+    List<String> effects = <String>["ironic","ripe","angsting","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic","addicted","uncomfortable","boggling", "goddamn mushroom"];
 
 
     TradingCard(Doll this.doll, {this.power: -1, this.health: -1, this.mana: -1, this.name:null, this.type:null, this.description:null, this.shittyPoem: null}) {
@@ -73,15 +73,27 @@ class TradingCard {
         String verb = rand.pickFrom(verbs);
         String noun  = rand.pickFrom(nouns);
         String effect = rand.pickFrom(effects);
-        List<String> possibilities = <String>["Set the enemy $noun on fire. And your $noun, too. Fuck this game.","$verb the $name, discarding it in order to make the ${noun} ${effect}.","$verb two ${noun}s from your deck. Attach them to the $name.","Pick one enemy ${noun}, $verb it.  Your $name is now ${effect}","Double the ${name}'s power for the next two turns."];
+        List<String> possibilities = <String>["For every $noun in play, $verb a card.","$verb any number of your ${noun}s. For each $noun you $verb, $verb one from your opponent's deck as well. ","Set the enemy $noun on fire. And your $noun, too. Fuck this game.","$verb the $name, discarding it in order to make the ${noun} ${effect}.","$verb two ${noun}s from your deck. Attach them to the $name.","Pick one enemy ${noun}, $verb it.  Your $name is now ${effect}","Double the ${name}'s power for the next two turns."];
         return toBeginningOfSentenceCase(rand.pickFrom(possibilities));
     }
 
     String randomPoem() {
         String noun  = rand.pickFrom(nouns);
+        String verb  = rand.pickFrom(verbs);
         String effect = rand.pickFrom(effects);
         List<String> possibilities = <String>["'Oh, that this too too solid $noun would melt, thaw and resolve itself into a dew!' -Charles Dutton","The prophecy of $noun foretold the world becoming $effect.","I think I shall never see, something as $effect as a tree.","Is there any human who can resist a truly $effect $noun?","You can almost forget your childhood, when the ${noun}s were not yet $effect.","Is it any wonder the ${noun}s are ever ${effect}?","Everyone knows you should not trust the ${noun}s of the Forest."];
-        possibilities.addAll(<String>["'On with the $noun of bang a dang diggy diggy up jump the $effect.' -Troll Kid Rock","This is exactly why ${noun}s should not be allowed to dual-wield flintlock pistols. ", "When you are extra angry at crime, you should call jail 'the $noun'.", "Today is the day you finally blow up the $noun.", "Punch $noun in the snout to establish $effect dominance. ", "You cannot do it. You cannot make the $noun ${effect}.", "Have you tried falling in a more $effect manner?", "Two roads diverge in a $effect wood."]);
+        possibilities.addAll(<String>["Cut to the chase and $verb immediately.","'On with the $noun of bang a dang diggy diggy up jump the $effect.' -Troll Kid Rock","This is exactly why ${noun}s should not be allowed to dual-wield flintlock pistols. ", "When you are extra angry at crime, you should call jail 'the $noun'.", "Today is the day you finally blow up the $noun.", "Punch $noun in the snout to establish $effect dominance. ", "You cannot do it. You cannot make the $noun ${effect}.", "Have you tried falling in a more $effect manner?", "Two roads diverge in a $effect wood."]);
+        //"[You/I] got a A full of B, a C full of D, and an E full of F."
+        possibilities.add("Everybody outta the way, I got a ${rand.pickFrom(nouns)} full of ${rand.pickFrom(nouns)}, a ${rand.pickFrom(nouns)} full of ${rand.pickFrom(nouns)} and a ${rand.pickFrom(nouns)} full of ${rand.pickFrom(nouns)}. ");
+        possibilities.add("I am the $noun. It is me.");
+        possibilities.add("When it comes to $verb, I am simple the best there is.");
+        possibilities.add("It's sharp and it's $effect and it's a $noun.");
+        possibilities.add("It is an immutable fact I am stating, that that $noun is $verb.");
+        possibilities.add("It's hard being $effect. It's hard and nobody understands.");
+        possibilities.add("$noun is fake as shit. And shit just got real.");
+        possibilities.add("This is an absolutely preposterous amount of $noun.");
+        possibilities.add("Wear the $noun. Be the  ${rand.pickFrom(nouns)}. ");
+        possibilities.add("You cannot hope to beat ${rand.pickFrom(nouns)} in a ${noun} off. They are simply the best there is. ");
         return toBeginningOfSentenceCase(rand.pickFrom(possibilities));
     }
 
