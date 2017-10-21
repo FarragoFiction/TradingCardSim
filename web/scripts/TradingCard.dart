@@ -73,7 +73,7 @@ class TradingCard {
         String verb = rand.pickFrom(verbs);
         String noun  = rand.pickFrom(nouns);
         String effect = rand.pickFrom(effects);
-        List<String> possibilities = <String>["For every $noun in play, $verb a card.","$verb any number of your ${noun}s. For each $noun you $verb, $verb one from your opponent's deck as well. ","Set the enemy $noun on fire. And your $noun, too. Fuck this game.","$verb the $name, discarding it in order to make the ${noun} ${effect}.","$verb two ${noun}s from your deck. Attach them to the $name.","Pick one enemy ${noun}, $verb it.  Your $name is now ${effect}","Double the ${name}'s power for the next two turns."];
+        List<String> possibilities = <String>["For every $noun in play, $verb a card.","$verb any number of your ${noun}s. For each $noun you $verb, $verb one from your opponent's deck as well. ","Set the enemy $noun on fire. And your $noun, too. Fuck this game.","$verb the $name, discarding it in order to make the ${noun} ${effect}.","$verb two ${noun}s from your deck. Attach them to the $name.","Pick one enemy ${noun}, $verb it.  Your $name is now ${effect}","Double the ${name}'s power for the next two turns.","$verb all ${noun}s in play. For every ${noun} ${verb}ed, $name gets +1 power."];
         return toBeginningOfSentenceCase(rand.pickFrom(possibilities));
     }
 
