@@ -158,6 +158,18 @@ class TradingCard {
         return ret;
     }
 
+    Element makeSaveButton() {
+        Element ret = new DivElement();
+        ret.className = "paddingTop";
+        AnchorElement saveButton = new AnchorElement();
+        saveButton.href = canvas.toDataUrl();
+        saveButton.target = "_blank";
+        saveButton.setInnerHtml("Download PNG?");
+
+        ret.append(saveButton);
+        return ret;
+    }
+
     //draws a text area for each text element, one for the doll, and a color picker for tint.
     Element makeForm() {
         Element ret = new DivElement();
@@ -166,6 +178,7 @@ class TradingCard {
         ret.append(makeDollLoader());
         ret.append(makeTintSelector());
         ret.append(makeTextLoader());
+        ret.append(makeSaveButton());
 
         return ret;
     }
@@ -227,14 +240,7 @@ class TradingCard {
         await Renderer.drawDoll(dollCanvas, doll);
 
         dollCanvas = Renderer.cropToVisible(dollCanvas);
-        //Renderer.drawBG(dollCanvas, ReferenceColours.WHITE, new Colour(0,0,0,0));
 
-
-       // Renderer.scaleCanvasForDoll(monsterElement, doll);
-       // Renderer.copyTmpCanvasToRealCanvasAtPos(monsterElement, dollCanvas, x, y);
-       // monsterElement.context2D.scale(1.0,1.0);
-
-        //monsterElement.context2D.drawImage(dollCanvas, x, y);
         Renderer.drawToFitCentered(monsterElement, dollCanvas);
         return monsterElement;
     }
