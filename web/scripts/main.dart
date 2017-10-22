@@ -21,7 +21,6 @@ void main() {
 }
 
 Future<bool> drawDeck() async {
-  //TODO why is the first card always untinted?
   for(int i = 0; i<8; i++) {
     await drawCard();
   }
