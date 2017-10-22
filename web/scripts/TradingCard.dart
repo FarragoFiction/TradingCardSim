@@ -88,6 +88,7 @@ class TradingCard {
         possibilities.add("I am the $noun. It is me.");
         possibilities.add("When it comes to $verb, I am simple the best there is.");
         possibilities.add("It's sharp and it's $effect and it's a $noun.");
+        possibilities.add("You should always have at least 5 ${noun}s on you at all times, like a sensible person.");
         possibilities.add("It is an immutable fact I am stating, that that $noun is $verb.");
         possibilities.add("It's hard being $effect. It's hard and nobody understands.");
         possibilities.add("$noun is fake as shit. And shit just got real.");
