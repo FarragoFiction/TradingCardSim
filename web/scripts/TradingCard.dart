@@ -36,12 +36,12 @@ class TradingCard {
     TextLayer shittyPoemLayer;
     TextLayer statLayer;
 
-    List<String> randomFirstWords = <String>["Lord","Elf","Muse","Priest","Dame","Guard","Sage","Smith","Scribe","Grace","Waste","Monk","Beast","Knight","Seer","Bard","Heir","Maid","Rogue","Page","Thief","Sylph","Witch","Prince","Mage","Bane","Scout","Guide","Nymph","Fool","Wright","Clown","King","Queen","Jack","Pawn","Nurse"];
-    List<String> randomSecondWords = <String>["Blood","Mind","Rage","Void","Time","Heart","Breath","Light","Space","Hope","Life","Doom","Dream","Rain","Might","Sand","Mist","Null","Flow","Rhyme","Stars","Sky","Fate","Heat","Frost","Snow","Law","Flame","Flood","Quake","Ice","Mud","Calm","Peace","Zap","Soft","Hard","Home"];
+    List<String> randomFirstWords = <String>["Lord","Elf","Muse","Priest","Dame","Guard","Sage","Smith","Scribe","Grace","Waste","Monk","Beast","Knight","Seer","Bard","Heir","Maid","Rogue","Page","Thief","Sylph","Witch","Prince","Mage","Bane","Scout","Guide","Nymph","Fool","Wright","Clown","King","Queen","Jack","Pawn","Nurse", "Serf","Masque"];
+    List<String> randomSecondWords = <String>["Blood","Mind","Rage","Void","Time","Heart","Breath","Light","Space","Hope","Life","Doom","Dream","Rain","Might","Sand","Mist","Null","Flow","Rhyme","Stars","Sky","Fate","Heat","Frost","Snow","Law","Flame","Flood","Quake","Ice","Mud","Calm","Peace","Zap","Soft","Hard","Home","Code","Death","Fire","Hyper"];
 
-    List<String> verbs = <String>["tap","use","discard","draw","imbibe","create","devour","vore","scatter","shred","place","select","choose","levitate","burn","throw away","place","dominate","humiliate","oggle","auto-parry","be","wear","flip","fondly regard","retrieve","throw","slay","defeat","become","grab","order","steal","smell","sample","taste","caress","fondle","placate","handle","pirouette","entrench","crumple","shatter","drop","farm","sign","pile","smash","resist","sip","understand","contemplate"];
-    List<String> nouns =<String> ["card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana","deck","creature","sword","legendary artifact","legendary weapon","god","meme","red mile", "ring of orbs no-fold","arm","mechanical bull","mystery","token","shrubery","Blue Lady","gem","egg","coin","talisman"];
-    List<String> effects = <String>["ironic","ripe","angsting","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic","addicted","uncomfortable","boggling", "goddamn mushroom"];
+    List<String> verbs = <String>["tap","use","discard","draw","imbibe","create","devour","vore","scatter","shred","place","select","choose","levitate","burn","throw away","place","dominate","humiliate","oggle","auto-parry","be","wear","flip","fondly regard","retrieve","throw","slay","defeat","become","grab","order","steal","smell","sample","taste","caress","fondle","placate","handle","pirouette","entrench","crumple","shatter","drop","farm","sign","pile","smash","resist","sip","understand","contemplate", "murder", "elevate", "enslave"];
+    List<String> nouns =<String> ["card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana","deck","creature","sword","legendary artifact","legendary weapon","god","meme","red mile", "ring of orbs no-fold","arm","mechanical bull","mystery","token","shrubery","Blue Lady","gem","egg","coin","talisman", "turn", "head","goddamn mushroom"];
+    List<String> effects = <String>["ironic","ripe","angsting","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic","addicted","uncomfortable","boggling", "goaded", "enhanced", "murdered"];
 
 
     TradingCard(Doll this.doll, {this.power: -1, this.health: -1, this.mana: -1, this.name:null, this.type:null, this.description:null, this.shittyPoem: null}) {
@@ -56,7 +56,6 @@ class TradingCard {
         statLayer = new TextLayer("Stats",stats,250.0,418.0, fontSize: 18);
         descriptionLayer = new TextLayer("Description",description,46.0,280.0, fontSize: 18, maxWidth: 180);
         shittyPoemLayer = new TextLayer("Flavor Text",shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 16, maxWidth: 180);
-        //TODO have text layers know how to render their own form values (in DollMaker, add DollTools to lib)
     }
 
     String get stats => "${power}/${health}/${mana}";
@@ -95,6 +94,13 @@ class TradingCard {
         possibilities.add("This is an absolutely preposterous amount of $noun.");
         possibilities.add("Wear the $noun. Be the  ${rand.pickFrom(nouns)}. ");
         possibilities.add("You cannot hope to beat ${rand.pickFrom(nouns)} in a ${noun} off. They are simply the best there is. ");
+        possibilities.add("They always wanted to be a ${rand.pickFrom(nouns)}.");
+        possibilities.add("They are secretly a ${rand.pickFrom(effects)} ${rand.pickFrom(nouns)}.");
+        possibilities.add("When in doubt, ${rand.pickFrom(verbs)} the closest ${rand.pickFrom(nouns)}.");
+        possibilities.add("If you can't ${rand.pickFrom(verbs)}, you might as well ${rand.pickFrom(verbs)}.");
+
+
+
         return toBeginningOfSentenceCase(rand.pickFrom(possibilities));
     }
 
