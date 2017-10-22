@@ -27,8 +27,11 @@ button{
     display: block;
 }
 .textAreaElement{
-    text-align: right;
-    align: right;
+        text-align: right;
+        align: right;
+        display: inline-block;
+        width: 100px;
+        padding:10px;
 }
 
 .paddingTop{
