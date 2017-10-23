@@ -6,9 +6,15 @@ import 'dart:async';
 import 'dart:html';
 class CoinCard extends TradingCard {
   CoinCard(Doll doll) : super(doll) {
-    type = "Coin";
-    typeLayer.text = type;
+      type = "Coin";
+      typeLayer.text = type;
   }
+
+    @override
+    void drawBGThingy() {
+        Renderer.drawBG(canvas,new Colour(100,100,100),new Colour(100,100,100));
+    }
+
 
   @override
   Future<CanvasElement>  drawMonster(Doll doll) async {

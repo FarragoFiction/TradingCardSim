@@ -191,6 +191,10 @@ class TradingCard {
         return ret;
     }
 
+    void drawBGThingy() {
+        Renderer.drawBGRadialWithWidth(canvas,10,300,600,tint,new Colour(255,255,255));
+    }
+
     Future<CanvasElement> draw() async
     {
 
@@ -205,8 +209,9 @@ class TradingCard {
         CanvasElement symbolElement = await drawSymbol();
 
         canvas.context2D.clearRect(0,0,width,height);
+        drawBGThingy();
 
-        Renderer.drawBGRadialWithWidth(canvas,10,300,600,tint,new Colour(255,255,255));
+
         canvas.context2D.drawImage(cardElement, 0, 0);
         canvas.context2D.drawImage(monsterElement,34, 34);
 
