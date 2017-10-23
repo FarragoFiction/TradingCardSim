@@ -113,7 +113,11 @@ class TradingCard {
 
 
     String randomName() {
-        type = rand.pickFrom(randomFirstWords);
+        if(doll is TrollEggDoll || doll is EggDoll) {
+            type = "Egg";
+        }else {
+            type = rand.pickFrom(randomFirstWords);
+        }
         return "$type of ${rand.pickFrom(randomSecondWords)}";
     }
 
