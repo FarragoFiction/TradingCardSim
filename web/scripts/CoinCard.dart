@@ -10,6 +10,8 @@ class CoinCard extends TradingCard {
       nameLayer.text = "${randomName()}'s Coin";
       typeLayer.text = "Coin";
       tint = new Colour(100,100,100);
+      statLayer.text = "${rand.nextInt(10)}";
+
   }
 
     @override

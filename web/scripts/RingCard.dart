@@ -8,10 +8,12 @@ import 'dart:html';
 class RingCard extends CoinCard {
     RingCard(Doll doll) : super(doll) {
         List<String> folds = <String>["NO","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","ELEVEN","TWELVE","???"];
-        type = "RING of ORBS ${rand.pickFrom(folds)}FOLD";
+        String fold = rand.pickFrom(folds);
+        type = "RING of ORBS ${fold}FOLD";
         typeLayer.text = type;
         nameLayer.text = "${randomName()}'s Ring";
         tint = new Colour.fromStyleString("#d0bf03");
+        statLayer.text = "${folds.indexOf(fold)}";
     }
 
 
