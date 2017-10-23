@@ -51,8 +51,8 @@ class TradingCard {
         if(name == null) name = randomName();
         if(description == null) description = randomDescription();
         if(shittyPoem == null) shittyPoem = randomPoem();
-        nameLayer = new TextLayer("Name",name,35.0,28.0, fontSize: 18);
-        typeLayer = new TextLayer("Type",type,35.0,260.0, fontSize: 18);
+        nameLayer = new TextLayer("Name",name,35.0,28.0, fontSize: 18, maxWidth: 300);
+        typeLayer = new TextLayer("Type",type,35.0,260.0, fontSize: 18, maxWidth: 300);
         statLayer = new TextLayer("Stats",stats,250.0,418.0, fontSize: 18);
         descriptionLayer = new TextLayer("Description",description,46.0,280.0, fontSize: 18, maxWidth: 180);
         shittyPoemLayer = new TextLayer("Flavor Text",shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 16, maxWidth: 180);

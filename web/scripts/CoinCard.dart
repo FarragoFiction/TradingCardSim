@@ -7,12 +7,14 @@ import 'dart:html';
 class CoinCard extends TradingCard {
   CoinCard(Doll doll) : super(doll) {
       type = "Coin";
-      typeLayer.text = type;
+      nameLayer.text = "${randomName()}'s Coin";
+      typeLayer.text = "Coin";
+      tint = new Colour(100,100,100);
   }
 
     @override
     void drawBGThingy() {
-        Renderer.drawBG(canvas,new Colour(100,100,100),new Colour(100,100,100));
+        Renderer.drawBG(canvas,tint,tint);
     }
 
 

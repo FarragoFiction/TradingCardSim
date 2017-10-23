@@ -3,6 +3,7 @@ import "DollLib/DollRenderer.dart";
 import 'dart:async';
 import "TradingCard.dart";
 import "CoinCard.dart";
+import "RingCard.dart";
 import "navbar.dart";
 
 import 'dart:html';
@@ -50,7 +51,15 @@ Doll makeDoll()  {
 Future<bool>  drawCard() async{
     Element innerDiv  = new DivElement();
     innerDiv.className = "cardWithForm";
-    TradingCard card = new CoinCard(makeDoll());
+    double randNum = rand.nextDouble();
+    TradingCard card;
+    if(randNum > .2) {
+        card = new TradingCard(makeDoll());
+    }else if(randNum > .1) {
+        card = new CoinCard(makeDoll());
+    }else {
+        card = new RingCard(makeDoll());
+    }
     CanvasElement finishedProduct = await card.draw();
     finishedProduct.className = "cardCanvas";
     innerDiv.append(finishedProduct);
