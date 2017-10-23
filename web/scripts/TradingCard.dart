@@ -118,6 +118,7 @@ class TradingCard {
         }else {
             type = rand.pickFrom(randomFirstWords);
         }
+
         return "$type of ${rand.pickFrom(randomSecondWords)}";
     }
 
