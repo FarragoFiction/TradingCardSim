@@ -40,7 +40,7 @@ Doll makeDoll()  {
     doll = new HomestuckTrollDoll();
   } else if (randNum > 0.25) {
     doll = new ConsortDoll();
-  }else if (randNum > 0.05) {
+  }else if (randNum > 0.10) {
     doll = new DenizenDoll();
   }else {
       if(randNum % 2 == 0) {
