@@ -33,15 +33,21 @@ Have just one target and one effect at first, to test with. expand out.
 
 
 
-Possible targets:
+Possible targets:  (all can be your/enemy)
  * discard pile/graveyard/irrelevancy corner
  * deck/cards/stockpile
  * creature/monster
  * coin
  * ring
  * egg
- * card/deed/feat/artifact
+ * deed/feat/artifact/fraymotif
  * enemy/oponent/other player/ god / head
+ * color card.
+    Blue Lady
+    Yellow Yard
+    Red Mile
+    Shubbery
+    Black Inch
 
  Possible effects:
 
