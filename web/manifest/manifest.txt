@@ -179,6 +179,9 @@ images/Homestuck/LeftEye/LeftEye
     51.png
     52.png
     53.png
+    54.png
+    55.png
+    56.png
     6.png
     7.png
     8.png
@@ -187,6 +190,9 @@ images/Homestuck/LeftEye/LeftEye
 images/Homestuck/LeftFin/LeftFin
     0.png
     1.png
+    2.png
+    3.png
+    4.png
 
 images/Homestuck/LeftHorn/LeftHorn1
     0.png
@@ -295,6 +301,9 @@ images/Homestuck/Mouth/Mouth
     44.png
     45.png
     46.png
+    47.png
+    48.png
+    49.png
     5.png
     6.png
     7.png
@@ -352,6 +361,9 @@ images/Homestuck/RightEye/RightEye
     51.png
     52.png
     53.png
+    54.png
+    55.png
+    56.png
     6.png
     7.png
     8.png
@@ -380,7 +392,10 @@ images/Homestuck/Glasses/Glasses
     26.png
     27.png
     28.png
+    29.png
     3.png
+    30.png
+    31.png
     4.png
     5.png
     6.png
@@ -399,6 +414,7 @@ images/Homestuck/Consort/Consort
     15.png
     16.png
     17.png
+    18.png
     2.png
     3.png
     4.png
@@ -411,6 +427,9 @@ images/Homestuck/Consort/Consort
 images/Homestuck/RightFin/RightFin
     0.png
     1.png
+    2.png
+    3.png
+    4.png
 
 images/Homestuck/RightHorn/RightHorn1
     0.png
