@@ -39,8 +39,8 @@ class TradingCard {
     List<String> randomFirstWords = <String>["Lord","Elf","Muse","Priest","Dame","Guard","Sage","Smith","Scribe","Grace","Waste","Monk","Beast","Knight","Seer","Bard","Heir","Maid","Rogue","Page","Thief","Sylph","Witch","Prince","Mage","Bane","Scout","Guide","Nymph","Fool","Wright","Clown","King","Queen","Jack","Pawn","Nurse", "Serf","Masque"];
     List<String> randomSecondWords = <String>["Blood","Mind","Rage","Void","Time","Heart","Breath","Light","Space","Hope","Life","Doom","Dream","Rain","Might","Sand","Mist","Null","Flow","Rhyme","Stars","Sky","Fate","Heat","Frost","Snow","Law","Flame","Flood","Quake","Ice","Mud","Calm","Peace","Zap","Soft","Hard","Home","Code","Death","Fire","Hyper"];
 
-    List<String> verbs = <String>["tap","use","discard","draw","imbibe","create","devour","vore","scatter","shred","place","select","choose","levitate","burn","throw away","place","dominate","humiliate","oggle","auto-parry","be","wear","flip","fondly regard","retrieve","throw","slay","defeat","become","grab","order","steal","smell","sample","taste","caress","fondle","placate","handle","pirouette","entrench","crumple","shatter","drop","farm","sign","pile","smash","resist","sip","understand","contemplate", "murder", "elevate", "enslave"];
-    List<String> nouns =<String> ["opponent","graveyard","irrelevancy corner","card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana","deck","creature","sword","legendary artifact","legendary weapon","god","meme","red mile", "ring of orbs no-fold","arm","mechanical bull","mystery","token","shrubery","Blue Lady","gem","egg","coin","talisman", "turn", "head","goddamn mushroom"];
+    List<String> verbs = <String>["imagine","tap","use","discard","draw","imbibe","create","devour","vore","scatter","shred","place","select","choose","levitate","burn","throw away","place","dominate","humiliate","oggle","auto-parry","be","wear","flip","fondly regard","retrieve","throw","slay","defeat","become","grab","order","steal","smell","sample","taste","caress","fondle","placate","handle","pirouette","entrench","crumple","shatter","drop","farm","sign","pile","smash","resist","sip","understand","contemplate", "murder", "elevate", "enslave"];
+    List<String> nouns =<String> ["opponent","graveyard","irrelevancy corner","card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana","deck","creature","sword","legendary artifact","legendary weapon","god","meme","red mile", "ring of orbs no-fold","arm","mechanical bull","mystery","token","shrubbery","Blue Lady","gem","egg","coin","talisman", "turn", "head","goddamn mushroom"];
     List<String> effects = <String>["legal","so totally illegal","illegal","extra legal","ironic","ripe","angsting","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic","addicted","uncomfortable","boggling", "goaded", "enhanced", "murdered"];
 
 
@@ -74,6 +74,17 @@ class TradingCard {
         String noun  = rand.pickFrom(nouns);
         String effect = rand.pickFrom(effects);
         List<String> possibilities = <String>["For every $noun in play, $verb a card.","$verb any number of your ${noun}s. For each $noun you $verb, $verb one from your opponent's deck as well. ","Set the enemy $noun on fire. And your $noun, too. Fuck this game.","$verb the $name, discarding it in order to make the ${noun} ${effect}.","$verb two ${noun}s from your deck. Attach them to the $name.","Pick one enemy ${noun}, $verb it.  Your $name is now ${effect}","Double the ${name}'s power for the next two turns.","$verb all ${noun}s in play. For every ${noun} ${verb}ed, $name gets +1 power."];
+        possibilities.add("${verb} all of your opponent's cards that are ${effect}. End your turn immediately. Do not pass go, do not collect 200 ${nouns}s.");
+        possibilities.add("Remove target ${noun} from the game. Then remove it from the removed-from-game zone and put it into the garbage.");
+        possibilities.add("Strife with an opponent. If you win, choose a ${noun} from the opponent's deck to add to your deck. If you lose, surrender this ${name}.");
+        possibilities.add("${verb} a ${noun}. The ${noun} is now imaginary.");
+        possibilities.add("All ${noun}s have protection from ${effect} until ${name} is discarded.");
+        possibilities.add("Destroy target ${noun}. Discard ${name}, weeping for the loss.");
+        possibilities.add("Trick your opponent into ${verb}ing a ${noun}. You are now better than them.");
+        possibilities.add("Remove one $noun of your choosing from the universe.");
+        possibilities.add("Try to forget ${noun}s exist. When asked, convincingly lie. Should you fail, the ${name} is now ${effect}.");
+        possibilities.add("$verb the $name. It is now the winner of the game. The game is over. Why did you play this card?");
+        possibilities.add("All ${noun}s in play are now ${effect}. This is still better than being you.");
         return toBeginningOfSentenceCase(rand.pickFrom(possibilities));
     }
 
@@ -88,6 +99,7 @@ class TradingCard {
         possibilities.add("I am the $noun. It is me.");
         possibilities.add("When it comes to $verb, I am simple the best there is.");
         possibilities.add("It's sharp and it's $effect and it's a $noun.");
+        possibilities.add("The ${name} is the winner of the game. Not you. Never you.");
         possibilities.add("You should always have at least 5 ${noun}s on you at all times, like a sensible person.");
         possibilities.add("It is an immutable fact I am stating, that that $noun is $verb.");
         possibilities.add("It's hard being $effect. It's hard and nobody understands.");
