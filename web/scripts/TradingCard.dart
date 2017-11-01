@@ -74,7 +74,7 @@ class TradingCard {
         String noun  = rand.pickFrom(nouns);
         String effect = rand.pickFrom(effects);
         List<String> possibilities = <String>["For every $noun in play, $verb a card.","$verb any number of your ${noun}s. For each $noun you $verb, $verb one from your opponent's deck as well. ","Set the enemy $noun on fire. And your $noun, too. Fuck this game.","$verb the $name, discarding it in order to make the ${noun} ${effect}.","$verb two ${noun}s from your deck. Attach them to the $name.","Pick one enemy ${noun}, $verb it.  Your $name is now ${effect}","Double the ${name}'s power for the next two turns.","$verb all ${noun}s in play. For every ${noun} ${verb}ed, $name gets +1 power."];
-        possibilities.add("${verb} all of your opponent's cards that are ${effect}. End your turn immediately. Do not pass go, do not collect 200 ${nouns}s.");
+        possibilities.add("${verb} all of your opponent's cards that are ${effect}. End your turn immediately. Do not pass go, do not collect 200 ${noun}s.");
         possibilities.add("Remove target ${noun} from the game. Then remove it from the removed-from-game zone and put it into the garbage.");
         possibilities.add("Strife with an opponent. If you win, choose a ${noun} from the opponent's deck to add to your deck. If you lose, surrender this ${name}.");
         possibilities.add("${verb} a ${noun}. The ${noun} is now imaginary.");
