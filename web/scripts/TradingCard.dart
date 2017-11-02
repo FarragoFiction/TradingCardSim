@@ -251,7 +251,7 @@ class TradingCard {
     Future<CanvasElement> drawSymbol() async {
         CanvasElement cardElement = new CanvasElement(width: width, height: height);
 
-        for(SpriteLayer layer in doll.layers) {
+        for(SpriteLayer layer in doll.renderingOrderLayers) {
             if(layer.imgNameBase.contains("Symbol")) {
                 await Renderer.drawWhateverFuture(cardElement, "images/element.png");
                 await Renderer.drawWhateverFuture(cardElement, layer.imgLocation);
