@@ -49,6 +49,7 @@ class TradingCard {
         randomizeStats();
         tint = new Colour(rand.nextInt(255), rand.nextInt(255),rand.nextInt(255));
         if(name == null) name = randomName();
+        setColorForName();
         if(description == null) description = randomDescription();
         if(shittyPoem == null) shittyPoem = randomPoem();
         nameLayer = new TextLayer("Name",name,35.0,28.0, fontSize: 18, maxWidth: 300);
@@ -56,6 +57,40 @@ class TradingCard {
         statLayer = new TextLayer("Stats",stats,250.0,418.0, fontSize: 18);
         descriptionLayer = new TextLayer("Description",description,46.0,280.0, fontSize: 18, maxWidth: 180);
         shittyPoemLayer = new TextLayer("Flavor Text",shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 16, maxWidth: 180);
+    }
+
+
+
+    void setColorForName() {
+        //if you don't use a palette that has the same names as space, then nothing changes.
+        if(name.contains("Space")){
+            doll.setPalette(ReferenceColours.SPACE);
+        }else if(name.contains("Time")) {
+            doll.setPalette(ReferenceColours.TIME);
+        }else if(name.contains("Blood")) {
+            doll.setPalette(ReferenceColours.BLOOD);
+        }else if(name.contains("Mind")) {
+            doll.setPalette(ReferenceColours.MIND);
+        }else if(name.contains("Rage")) {
+            doll.setPalette(ReferenceColours.RAGE);
+        }else if(name.contains("Void")) {
+            doll.setPalette(ReferenceColours.VOID);
+        }else if(name.contains("Heart")) {
+            doll.setPalette(ReferenceColours.HEART);
+        }else if(name.contains("Light")) {
+            doll.setPalette(ReferenceColours.LIGHT);
+        }else if(name.contains("Breath")) {
+            doll.setPalette(ReferenceColours.BREATH);
+        }else if(name.contains("Hope")) {
+            doll.setPalette(ReferenceColours.HOPE);
+        }else if(name.contains("Doom")) {
+            doll.setPalette(ReferenceColours.DOOM);
+        }else if(name.contains("Life")) {
+            doll.setPalette(ReferenceColours.LIFE);
+        }else if(name.contains("Dream")) {
+            doll.setPalette(ReferenceColours.DREAM);
+        }
+
     }
 
     String get stats => "${power}/${health}/${mana}";
