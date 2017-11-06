@@ -32,23 +32,16 @@ Future<bool> drawDeck() async {
 
 Doll makeDoll()  {
   Doll doll;
-  double randNum = rand.nextDouble();
+  WeightedList<Doll> dolls = new WeightedList<Doll>();
+  dolls.add(new HomestuckDoll());
+  dolls.add(new HomestuckTrollDoll());
+  dolls.add(new ConsortDoll());
+  dolls.add(new DenizenDoll());
+  dolls.add(new EggDoll(),0.5);
+  dolls.add(new TrollEggDoll(), 0.5);
+  dolls.add(new DadDoll());
 
-  if(randNum > 0.75) {
-    doll = new HomestuckDoll();
-  }else if (randNum > 0.5) {
-    doll = new HomestuckTrollDoll();
-  } else if (randNum > 0.25) {
-    doll = new ConsortDoll();
-  }else if (randNum > 0.10) {
-    doll = new DenizenDoll();
-  }else {
-      if(randNum % 2 == 0) {
-          doll = new EggDoll();
-      }else {
-          doll = new TrollEggDoll();
-      }
-  }
+  doll = rand.pickFrom(dolls);
   return doll;
 }
 
