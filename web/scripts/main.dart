@@ -37,6 +37,7 @@ Doll makeDoll()  {
   dolls.add(new HomestuckTrollDoll());
   dolls.add(new ConsortDoll());
   dolls.add(new DenizenDoll());
+  dolls.add(new QueenDoll());
   dolls.add(new EggDoll(),0.5);
   dolls.add(new TrollEggDoll(), 0.5);
   dolls.add(new DadDoll());
