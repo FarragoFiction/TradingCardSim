@@ -10,9 +10,20 @@ import 'dart:html';
 BattleField battleField;
 int frame = 0;
 Element div = querySelector("#contents");
-bool egg = true;
+bool egg = false;
+bool troll = false;
 void main() {
     loadNavbar();
+
+    if(getParameterByName("easter",null)  == "egg"){
+        egg = true;
+        window.alert("Yo Dawg, I herd you liek easter eggs???");
+    }else if(getParameterByName("easter",null)  == "troll")  {
+        troll = true;
+        window.alert("Huh. That's a weird sort of Lusus.");
+
+    }
+
     init();
 }
 
@@ -20,7 +31,9 @@ void main() {
 Combatant getPlayer1() {
     if(egg) {
         return new Combatant(new EggDoll());
-    }else {
+    }else if(troll) {
+        return new Combatant(new HomestuckTrollDoll());
+    }{
         return new Combatant(new HomestuckDoll());
     }
 }
