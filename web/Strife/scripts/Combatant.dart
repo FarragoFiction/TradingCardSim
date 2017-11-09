@@ -9,6 +9,7 @@ import 'dart:html';
 class Combatant {
     Doll doll;
     CanvasElement canvas;
+    CanvasElement turnWaysCanvas;
     bool dirty = true;
 
     Combatant(this.doll);
@@ -26,5 +27,14 @@ class Combatant {
         }
 
         return canvas;
+    }
+
+    Future<CanvasElement> drawTurnways() async {
+        if(turnWaysCanvas == null) turnWaysCanvas = new CanvasElement(width: doll.width, height: doll.height);
+        if(canvas == null) await draw();
+        turnWaysCanvas.context2D.translate(canvas.width, 0);
+        turnWaysCanvas.context2D.scale(-1, 1);
+        turnWaysCanvas.context2D.drawImage(canvas,0, 0);
+        return turnWaysCanvas;
     }
 }

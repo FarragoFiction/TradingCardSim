@@ -15,7 +15,9 @@ void main() {
 }
 
 Future<Null> init() async{
-    battleField = new BattleField(new Combatant(new HomestuckDoll()), new Combatant(new DadDoll()));
+    AudioElement bgMusic = querySelector("#audio");
+    print("bgMusic is $bgMusic");
+    battleField = new BattleField(new Combatant(new HomestuckDoll()), new Combatant(new DadDoll()), bgMusic);
     CanvasElement finishedProduct = await battleField.draw();
     finishedProduct.className = "cardCanvas";
     div.append(finishedProduct);
