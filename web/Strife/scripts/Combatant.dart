@@ -13,6 +13,7 @@ class Combatant {
     CanvasElement canvas;
     CanvasElement turnWaysCanvas;
     Colour textColor;
+    bool defending = false;
     bool dirty = true; //TODO maybe need to update sprite in some way instead of just rotate/scale it?
     int buffer = 50;
     bool turnWays = false;
