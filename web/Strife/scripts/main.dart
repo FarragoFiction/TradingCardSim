@@ -19,16 +19,11 @@ Future<Null> init() async{
     AudioElement bgMusic = querySelector("#audio");
     print("bgMusic is $bgMusic");
     battleField = new BattleField(new Combatant(new HomestuckDoll()), new Combatant(new DadDoll()), bgMusic);
-    CanvasElement onScreenCanvas = await battleField.draw(frame);
+    Element holder = await battleField.firstDraw();
     bgMusic.play();
-    onScreenCanvas.className = "cardCanvas";
-    div.append(onScreenCanvas);
-    animate(1);
+    holder.className = "cardCanvas";
+    div.append(holder);
+    battleField.animate(1);
 }
 
 
-Future<Null> animate(int frame) async {
-    battleField.draw(frame);
-    frame ++;
-    new Timer(new Duration(milliseconds: battleField.frameRate), () => animate(frame));
-}
