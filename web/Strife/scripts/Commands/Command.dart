@@ -1,9 +1,11 @@
 import 'dart:html';
 import "../../../scripts/DollLib/src/includes/predicates.dart";
+import "../../../scripts/DollLib/DollRenderer.dart";
 
 class Command {
     ImageElement image;
 
+    Colour textColor = new Colour(0,0,0);
     String folder = "../images/Commands/";
     //maybe display that gif thing of PL's?
     List<AttackDefensePair> results = new List<AttackDefensePair>();

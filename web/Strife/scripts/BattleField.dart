@@ -15,6 +15,7 @@ class BattleField {
     //should be in pairs based on the command. Irnoic Negligence is defended with Abstain.
     String currentText = "";
     AttackDefensePair currentAttack;
+    Colour textColor = new Colour(0,0,0);
     bool idle = true;
     Random rand;
     int frameRate = 50;
@@ -35,12 +36,21 @@ class BattleField {
         player1.x = 500;
         player2.x = 50;
         commands.add(new Aggrieve(attack));
+        commands.add(new Aggress(jumpAttack));
     }
 
     Future<Null> attack(Command c) {
         idle = false;
+        textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
         atackP1Animation(0);
+    }
+
+    Future<Null> jumpAttack(Command c) {
+        idle = false;
+        textColor = c.textColor;
+        currentAttack = rand.pickFrom(c.results);
+        jumpAttackP1Animation(0);
     }
 
 
@@ -72,6 +82,7 @@ class BattleField {
         canvas.context2D.drawImage(player2Canvas,player2.x, player2.y);
         canvas.context2D.drawImage(player1Canvas, player1.x, player1.y);
         int fontSize = 48;
+        canvas.context2D.fillStyle = textColor.toStyleString();
         canvas.context2D.textAlign="center";
         canvas.context2D.font = "${fontSize}px Strife";
         canvas.context2D.fillText(currentText,500,fontSize);
@@ -108,6 +119,34 @@ class BattleField {
         frame ++;
         if(frame < numberFrames*1.5) {
             new Timer(new Duration(milliseconds: frameRate), () => atackP1Animation(frame));
+        }else {
+            if(rand.nextBool()) {
+                new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(0));
+            }else {
+                new Timer(new Duration(milliseconds: frameRate), () => defendP2Animation(0));
+            }
+        }
+    }
+
+
+    //guy on right attacks guy on left.
+    Future<Null> jumpAttackP1Animation(int frame) async {
+        currentText = currentAttack.attack;
+        int numberFrames = 10;
+        double angle = frame * 360.0/numberFrames;
+        double rotation = angle * Math.PI / 180.0;
+        player1.rotation = -1*rotation;
+        player1.x += -40;
+        if(player1.y <= 0) {
+            player1.y += 40;
+        }else {
+            player1.y += -40;
+        }
+
+        draw();
+        frame ++;
+        if(frame < numberFrames*1.5) {
+            new Timer(new Duration(milliseconds: frameRate), () => jumpAttackP1Animation(frame));
         }else {
             if(rand.nextBool()) {
                 new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(0));
