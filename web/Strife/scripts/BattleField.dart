@@ -35,7 +35,7 @@ class BattleField {
     Future<CanvasElement> draw(int frame) async
     {
 
-        print("rendering frame $frame");
+       // print("rendering frame $frame");
         double rotation = frameToRotation(frame);
         //redraw on existing canvas if need be.
         if(canvas == null) canvas = new CanvasElement(width: width, height: height);

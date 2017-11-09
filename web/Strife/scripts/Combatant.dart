@@ -36,7 +36,7 @@ class Combatant {
     }
 
     Future<CanvasElement> drawWithRotation(CanvasElement c, double rotation, bool turnways) async{
-        print('drawing with rotation $rotation');
+        //print('drawing with rotation $rotation');
         CanvasElement ret = new CanvasElement(width: doll.width+buffer, height: doll.height+buffer);
         ret.context2D.translate(ret.width/2, ret.height/2);
         ret.context2D.rotate(rotation);
