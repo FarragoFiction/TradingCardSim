@@ -1,6 +1,8 @@
 import "../../scripts/DollLib/DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
+import "dart:math" as Math;
+
 /*
     has doll and stats like attack/health. and potential commands. and responses to commands.
     commands should have synonyms that start with a so it's different every time.
@@ -10,55 +12,60 @@ class Combatant {
     Doll doll;
     CanvasElement canvas;
     CanvasElement turnWaysCanvas;
-    bool dirty = true;
+    bool dirty = true; //TODO maybe need to update sprite in some way instead of just rotate/scale it?
     int buffer = 50;
+    bool turnWays = false;
+    int x = 0;
+    int y = 0;
+    double _scaleX = 1.0;
+    double _scaleY = 1.0;
+    double rotation = 0.0;
+    int width = 0;
+    int height = 0;
 
-    Combatant(this.doll);
 
-    Future<CanvasElement> draw(double rotation) async
-    {
-
-        //redraw on existing canvas if need be.
-        if(canvas == null) canvas = new CanvasElement(width: doll.width+buffer, height: doll.height+buffer);
-
-        //only redraw self if something has changed.
-        if(dirty) {
-            await Renderer.drawDoll(canvas, doll);
-            dirty = false;
-        }
-
-        if(rotation == 0) {
-            return canvas; //just the cached one
-        }else {
-            return await drawWithRotation(canvas, rotation,false);
-        }
+    Combatant(this.doll) {
+        //needs to be a square so i can do full rotation.
+        width = Math.max(doll.width, doll.height);
+        height = width;
 
     }
 
-    Future<CanvasElement> drawWithRotation(CanvasElement c, double rotation, bool turnways) async{
+    void setScale(double x, double y) {
+        _scaleX = x;
+        _scaleY = y;
+        dirty = true;
+    }
+
+    Future<CanvasElement> draw() async
+    {
+
+        //redraw on existing canvas if need be.
+        if(canvas == null) canvas = new CanvasElement(width: width, height: height);
+        if(dirty) {
+            dirty = false;
+            await Renderer.drawDoll(canvas,doll);
+        }
+
+
+        return drawForReal(canvas);
+
+    }
+
+    Future<CanvasElement> drawForReal(CanvasElement c) async{
         //print('drawing with rotation $rotation');
-        CanvasElement ret = new CanvasElement(width: doll.width+buffer, height: doll.height+buffer);
+        dirty = false;
+        CanvasElement ret = new CanvasElement(width: width, height: height);
         ret.context2D.translate(ret.width/2, ret.height/2);
         ret.context2D.rotate(rotation);
-        if(turnways) ret.context2D.scale(-1,1);
+
+        if(turnWays) {
+            ret.context2D.scale(-1*_scaleX, _scaleY);
+        }else {
+            ret.context2D.scale(_scaleX, _scaleY);
+        }
         ret.context2D.drawImage(canvas, -ret.width/2, -ret.height/2);
         return ret;
     }
 
-
-
-    Future<CanvasElement> drawTurnways(double rotation) async {
-        if(turnWaysCanvas == null) turnWaysCanvas = new CanvasElement(width: doll.width+buffer, height: doll.height+buffer);
-        if(canvas == null) await draw(0.0);
-        turnWaysCanvas.context2D.translate(canvas.width, 0);
-        turnWaysCanvas.context2D.scale(-1, 1);
-        turnWaysCanvas.context2D.drawImage(canvas,0, 0);
-
-        if(rotation == 0) {
-            return turnWaysCanvas; //just the cached one
-        }else {
-            //twitch opposite of regular sprite.
-            return await drawWithRotation(turnWaysCanvas, -1* rotation, true);
-        }
-    }
 }

@@ -23,7 +23,7 @@ Future<Null> init() async{
     bgMusic.play();
     holder.className = "cardCanvas";
     div.append(holder);
-    battleField.animate(1);
+    battleField.idleAnimation(1);
 }
 
 

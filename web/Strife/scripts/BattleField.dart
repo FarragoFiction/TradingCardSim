@@ -15,7 +15,7 @@ class BattleField {
     CanvasElement canvas;
     String currentEffect = "Test";
     bool idle = true;
-    int frameRate = 100;
+    int frameRate = 50;
     AudioElement backGroundMusic;
     Combatant player1;
     Combatant player2;
@@ -26,23 +26,22 @@ class BattleField {
     BattleField(this.player1, this.player2, this.backGroundMusic) {
         height = Math.max(height, player1.doll.height);
         height = Math.max(height, player2.doll.height);
+        player1.y = height - player1.doll.height;
+        player2.y= height - player2.doll.height;
+        player1.x = 500;
+        player2.x = 50;
         commands.add(new Command("aggrieve","Hello","World", attack));
     }
 
     Future<Null> attack(Command c) {
-        window.alert("you attacked! Probably.");
         idle = false;
+        atackAnimation(0);
     }
 
 
-    double frameToRotation(int frame) {
-        double angle = 5.0 - 2* (frame % 3);
-        double ret = angle * Math.PI / 180.0;
-        return ret;
-    }
 
     Future<Element> firstDraw() async {
-        await draw(0);
+        await draw();
         holder  = new DivElement();
 
         for(Command c in commands) {
@@ -53,30 +52,72 @@ class BattleField {
         return holder;
     }
 
-    Future<Null> draw(int frame) async
+    Future<Null> draw() async
     {
 
        // print("rendering frame $frame");
-        double rotation = frameToRotation(frame);
         //redraw on existing canvas if need be.
         if(canvas == null) canvas = new CanvasElement(width: width, height: height);
         Renderer.clearCanvas(canvas);
 
-        CanvasElement player1Canvas = await player1.drawTurnways(rotation);
-        CanvasElement player2Canvas = await player2.draw(rotation);
+        player1.turnWays = true;
+        CanvasElement player1Canvas = await player1.draw();
+        CanvasElement player2Canvas = await player2.draw();
 
-        int player1Y = height - player1.doll.height;
-        int player2Y = height - player2.doll.height;
-        canvas.context2D.drawImage(player1Canvas, 500, player1Y);
-        canvas.context2D.drawImage(player2Canvas,50, player2Y);
+        canvas.context2D.drawImage(player2Canvas,player2.x, player2.y);
+        canvas.context2D.drawImage(player1Canvas, player1.x, player1.y);
 
     }
 
 
-    Future<Null> animate(int frame) async {
-        draw(frame);
+    Future<Null> idleAnimation(int frame) async {
+        double angle = 5.0 - 2* (frame % 3);
+        double rotation = angle * Math.PI / 180.0;
+        player1.rotation = -1*rotation;
+        player2.rotation = rotation;
+        player1.y = height - player1.doll.height;
+        player2.y= height - player2.doll.height;
+        player1.x = 500;
+        player2.x = 50;
+        draw();
         frame ++;
-        if(idle) new Timer(new Duration(milliseconds: frameRate), () => animate(frame));
+        if(idle) new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(frame));
+    }
+
+    //guy on right attacks guy on left.
+    Future<Null> atackAnimation(int frame) async {
+        int numberFrames = 10;
+        double angle = frame * 360.0/numberFrames;
+        double rotation = angle * Math.PI / 180.0;
+        player1.rotation = -1*rotation;
+        player1.x += -40;
+        draw();
+        frame ++;
+        if(frame < numberFrames*1.5) {
+            new Timer(new Duration(milliseconds: frameRate), () => atackAnimation(frame));
+        }else {
+            idle = true;
+            new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(0));
+
+        }
+    }
+
+    Future<Null> damageP2Animation(int frame) async {
+        int numberFrames = 4;
+        double angle = frame * 10/numberFrames;
+        double rotation = angle * Math.PI / 180.0;
+
+        player2.rotation = -1*rotation;
+        player2.y += -1;
+        draw();
+        frame ++;
+        if(frame < numberFrames) {
+            new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(frame));
+        }else {
+            idle = true;
+            new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(0));
+
+        }
     }
 
 
