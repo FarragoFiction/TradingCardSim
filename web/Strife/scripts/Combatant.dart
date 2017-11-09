@@ -20,6 +20,7 @@ class Combatant {
     double _scaleX = 1.0;
     double _scaleY = 1.0;
     double rotation = 0.0;
+    CanvasRenderingContext2D defaultContext;
     int width = 0;
     int height = 0;
 
@@ -31,17 +32,23 @@ class Combatant {
 
     }
 
+    void restoreCanvas() {
+        canvas.context2D.restore();
+    }
+
     void setScale(double x, double y) {
         _scaleX = x;
         _scaleY = y;
-        dirty = true;
     }
 
     Future<CanvasElement> draw() async
     {
 
         //redraw on existing canvas if need be.
-        if(canvas == null) canvas = new CanvasElement(width: width, height: height);
+        if(canvas == null) {
+            canvas = new CanvasElement(width: width, height: height);
+            canvas.context2D.save(); //need to know what an unmodified canvas looks like.
+        }
         if(dirty) {
             dirty = false;
             await Renderer.drawDoll(canvas,doll);

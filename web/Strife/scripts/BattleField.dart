@@ -15,6 +15,7 @@ class BattleField {
     CanvasElement canvas;
     String currentEffect = "Test";
     bool idle = true;
+    Random rand;
     int frameRate = 50;
     AudioElement backGroundMusic;
     Combatant player1;
@@ -24,6 +25,8 @@ class BattleField {
     List<Command> commands = new List<Command>();
 
     BattleField(this.player1, this.player2, this.backGroundMusic) {
+        rand = new Random();
+        rand.nextInt(255);
         height = Math.max(height, player1.doll.height);
         height = Math.max(height, player2.doll.height);
         player1.y = height - player1.doll.height;
@@ -35,7 +38,7 @@ class BattleField {
 
     Future<Null> attack(Command c) {
         idle = false;
-        atackAnimation(0);
+        atackP1Animation(0);
     }
 
 
@@ -79,13 +82,15 @@ class BattleField {
         player2.y= height - player2.doll.height;
         player1.x = 500;
         player2.x = 50;
+        player1.setScale(1.0, 1.0);
+        player2.setScale(1.0, 1.0);
         draw();
         frame ++;
         if(idle) new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(frame));
     }
 
     //guy on right attacks guy on left.
-    Future<Null> atackAnimation(int frame) async {
+    Future<Null> atackP1Animation(int frame) async {
         int numberFrames = 10;
         double angle = frame * 360.0/numberFrames;
         double rotation = angle * Math.PI / 180.0;
@@ -94,11 +99,13 @@ class BattleField {
         draw();
         frame ++;
         if(frame < numberFrames*1.5) {
-            new Timer(new Duration(milliseconds: frameRate), () => atackAnimation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => atackP1Animation(frame));
         }else {
-            idle = true;
-            new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(0));
-
+            if(rand.nextBool()) {
+                new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(0));
+            }else {
+                new Timer(new Duration(milliseconds: frameRate), () => defendP2Animation(0));
+            }
         }
     }
 
@@ -113,6 +120,27 @@ class BattleField {
         frame ++;
         if(frame < numberFrames) {
             new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(frame));
+        }else {
+            idle = true;
+            new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(0));
+
+        }
+    }
+
+
+    Future<Null> defendP2Animation(int frame) async {
+        print("defend");
+        int numberFrames = 4;
+        double angle = frame * 10/numberFrames;
+        double rotation = angle * Math.PI / 180.0;
+
+        player2.rotation = rotation;
+        player2.setScale(1.05, 1.05);
+        player2.y += -10;
+        draw();
+        frame ++;
+        if(frame < numberFrames) {
+            new Timer(new Duration(milliseconds: frameRate), () => defendP2Animation(frame));
         }else {
             idle = true;
             new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(0));
