@@ -4,16 +4,17 @@
 
  */
 import 'dart:html';
-import "Combatant.dart";
+import "StrifeLib.dart";
 import 'dart:async';
 import "dart:math" as Math;
 import "../../scripts/DollLib/DollRenderer.dart";
-import "Command.dart";
 
 class BattleField {
     DivElement holder;
     CanvasElement canvas;
-    String currentEffect = "Test";
+    //should be in pairs based on the command. Irnoic Negligence is defended with Abstain.
+    String currentText = "";
+    AttackDefensePair currentAttack;
     bool idle = true;
     Random rand;
     int frameRate = 50;
@@ -33,11 +34,12 @@ class BattleField {
         player2.y= height - player2.doll.height;
         player1.x = 500;
         player2.x = 50;
-        commands.add(new Command("aggrieve","Hello","World", attack));
+        commands.add(new Aggrieve(attack));
     }
 
     Future<Null> attack(Command c) {
         idle = false;
+        currentAttack = rand.pickFrom(c.results);
         atackP1Animation(0);
     }
 
@@ -69,11 +71,16 @@ class BattleField {
 
         canvas.context2D.drawImage(player2Canvas,player2.x, player2.y);
         canvas.context2D.drawImage(player1Canvas, player1.x, player1.y);
+        int fontSize = 48;
+        canvas.context2D.textAlign="center";
+        canvas.context2D.font = "${fontSize}px Strife";
+        canvas.context2D.fillText(currentText,500,fontSize);
 
     }
 
 
     Future<Null> idleAnimation(int frame) async {
+        currentText = "";
         double angle = 5.0 - 2* (frame % 3);
         double rotation = angle * Math.PI / 180.0;
         player1.rotation = -1*rotation;
@@ -91,6 +98,7 @@ class BattleField {
 
     //guy on right attacks guy on left.
     Future<Null> atackP1Animation(int frame) async {
+        currentText = currentAttack.attack;
         int numberFrames = 10;
         double angle = frame * 360.0/numberFrames;
         double rotation = angle * Math.PI / 180.0;
@@ -110,7 +118,8 @@ class BattleField {
     }
 
     Future<Null> damageP2Animation(int frame) async {
-        int numberFrames = 4;
+        int numberFrames = 8;
+        currentText = "HIT!";
         double angle = frame * 10/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
@@ -130,13 +139,14 @@ class BattleField {
 
     Future<Null> defendP2Animation(int frame) async {
         print("defend");
-        int numberFrames = 4;
-        double angle = frame * 10/numberFrames;
+        int numberFrames = 8;
+        currentText = currentAttack.defense;
+        double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
         player2.rotation = rotation;
         player2.setScale(1.05, 1.05);
-        player2.y += -10;
+        player2.y += -2;
         draw();
         frame ++;
         if(frame < numberFrames) {

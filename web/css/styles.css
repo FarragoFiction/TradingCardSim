@@ -8,6 +8,17 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
+.label{
+  font-family: 'strife', sans-serif;
+
+}
+
+@font-face {
+    font-family: strife;
+    src: url(../Fonts/Strife.ttf);
+}
+
+
 #output {
   padding: 20px;
   text-align: center;
