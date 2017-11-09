@@ -21,22 +21,23 @@ class BattleField {
     Random rand;
     int frameRate = 50;
     AudioElement backGroundMusic;
-    Combatant player1;
-    Combatant player2;
+    Combatant player;
+    Combatant enemy;
     int width = 1000;
     int height = 400;
     List<Command> commands = new List<Command>();
     List<Command> enemyCommands = new List<Command>();
 
-    BattleField(this.player1, this.player2, this.backGroundMusic) {
+    BattleField(this.player, this.enemy, this.backGroundMusic) {
         rand = new Random();
         rand.nextInt(255);
-        height = Math.max(height, player1.doll.height);
-        height = Math.max(height, player2.doll.height);
-        player1.y = height - player1.doll.height;
-        player2.y= height - player2.doll.height;
-        player1.x = 500;
-        player2.x = 50;
+        height = Math.max(height, player.doll.height);
+        height = Math.max(height, enemy.doll.height);
+        player.y = height - player.doll.height;
+        enemy.y= height - enemy.doll.height;
+        player.x = 500;
+        enemy.x = 50;
+        //TODO randomly pick one of two attack, defense, etc. commands.
         commands.add(new Aggrieve(attack));
         commands.add(new Aggress(jumpAttack));
         //TODO once i have more than just dads, different attacks
@@ -64,46 +65,46 @@ class BattleField {
     }
 
     void resetSprites() {
-        player1.y = height - player1.doll.height;
-        player2.y= height - player2.doll.height;
-        player1.x = 500;
-        player2.x = 50;
-        player1.setScale(1.0, 1.0);
-        player2.setScale(1.0, 1.0);
-        player1.rotation = 0.0;
-        player2.rotation = 0.0;
+        player.y = height - player.doll.height;
+        enemy.y= height - enemy.doll.height;
+        player.x = 500;
+        enemy.x = 50;
+        player.setScale(1.0, 1.0);
+        enemy.setScale(1.0, 1.0);
+        player.rotation = 0.0;
+        enemy.rotation = 0.0;
     }
 
     Future<Null> attack(Command c) {
         idle = false;
-        player1.defending = false;
+        player.defending = false;
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
-        atackP1Animation(0);
+        playerRollAttackAnimation(0);
     }
 
     Future<Null> lameAttack(Command c) {
         idle = false;
         textColor = c.textColor;
-        player2.defending = false;
+        enemy.defending = false;
         currentAttack = rand.pickFrom(c.results);
-        attackP2Animation(0);
+        enemyAttackAnimation(0);
     }
 
     Future<Null> lameDefense(Command c) {
         idle = false;
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
-        player2.defending = true;
-        defendP2Animation(0);
+        enemy.defending = true;
+        enemyDefendAnimation(0);
     }
 
     Future<Null> jumpAttack(Command c) {
         idle = false;
-        player1.defending = false;
+        player.defending = false;
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
-        jumpAttackP1Animation(0);
+        playerJumpAttackAnimation(0);
     }
 
 
@@ -128,12 +129,12 @@ class BattleField {
         if(canvas == null) canvas = new CanvasElement(width: width, height: height);
         Renderer.clearCanvas(canvas);
 
-        player1.turnWays = true;
-        CanvasElement player1Canvas = await player1.draw();
-        CanvasElement player2Canvas = await player2.draw();
+        player.turnWays = true;
+        CanvasElement player1Canvas = await player.draw();
+        CanvasElement player2Canvas = await enemy.draw();
 
-        canvas.context2D.drawImage(player2Canvas,player2.x, player2.y);
-        canvas.context2D.drawImage(player1Canvas, player1.x, player1.y);
+        canvas.context2D.drawImage(player2Canvas,enemy.x, enemy.y);
+        canvas.context2D.drawImage(player1Canvas, player.x, player.y);
         int fontSize = 48;
         canvas.context2D.fillStyle = textColor.toStyleString();
         canvas.context2D.textAlign="center";
@@ -153,8 +154,8 @@ class BattleField {
         double rotation = angle * Math.PI / 180.0;
         resetSprites();
 
-        player1.rotation = -1*rotation;
-        player2.rotation = rotation;
+        player.rotation = -1*rotation;
+        enemy.rotation = rotation;
 
         draw();
         frame ++;
@@ -162,20 +163,20 @@ class BattleField {
     }
 
     //guy on right attacks guy on left.
-    Future<Null> atackP1Animation(int frame) async {
+    Future<Null> playerRollAttackAnimation(int frame) async {
         currentText = currentAttack.attack;
         int numberFrames = 10;
         double angle = frame * 360.0/numberFrames;
         double rotation = angle * Math.PI / 180.0;
-        player1.rotation = -1*rotation;
-        player1.x += -40;
+        player.rotation = -1*rotation;
+        player.x += -40;
         draw();
         frame ++;
         if(frame < numberFrames*1.5) {
-            new Timer(new Duration(milliseconds: frameRate), () => atackP1Animation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => playerRollAttackAnimation(frame));
         }else {
-            if(player2.defending) {
-                new Timer(new Duration(milliseconds: frameRate), () => defendP2Animation(0));
+            if(enemy.defending) {
+                new Timer(new Duration(milliseconds: frameRate), () => enemyDefendAnimation(0));
             }else {
                 new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(0));
             }
@@ -184,19 +185,19 @@ class BattleField {
 
 
     //guy on right attacks guy on left.
-    Future<Null> attackP2Animation(int frame) async {
+    Future<Null> enemyAttackAnimation(int frame) async {
         currentText = currentAttack.attack;
         int numberFrames = 10;
         double angle = frame * 360.0/numberFrames;
         double rotation = angle * Math.PI / 180.0;
-        player2.rotation = -1*rotation;
-        player2.x += 40;
+        enemy.rotation = -1*rotation;
+        enemy.x += 40;
         draw();
         frame ++;
         if(frame < numberFrames*1.5) {
-            new Timer(new Duration(milliseconds: frameRate), () => attackP2Animation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => enemyAttackAnimation(frame));
         }else {
-            if(!player1.defending) {
+            if(!player.defending) {
                 new Timer(new Duration(milliseconds: frameRate), () => damageP1Animation(0));
             }else {
                 new Timer(new Duration(milliseconds: frameRate), () => defendP1Animation(0));
@@ -207,28 +208,28 @@ class BattleField {
 
 
     //guy on right attacks guy on left.
-    Future<Null> jumpAttackP1Animation(int frame) async {
+    Future<Null> playerJumpAttackAnimation(int frame) async {
         currentText = currentAttack.attack;
         int numberFrames = 10;
         double angle = frame * 360.0/numberFrames;
         double rotation = angle * Math.PI / 180.0;
-        player1.rotation = -1*rotation;
-        player1.x += -40;
-        if(player1.y <= 0) {
-            player1.y += 40;
+        player.rotation = -1*rotation;
+        player.x += -40;
+        if(player.y <= 0) {
+            player.y += 40;
         }else {
-            player1.y += -40;
+            player.y += -40;
         }
 
         draw();
         frame ++;
         if(frame < numberFrames*1.5) {
-            new Timer(new Duration(milliseconds: frameRate), () => jumpAttackP1Animation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => playerJumpAttackAnimation(frame));
         }else {
-            if(!player2.defending) {
+            if(!enemy.defending) {
                 new Timer(new Duration(milliseconds: frameRate), () => damageP2Animation(0));
             }else {
-                new Timer(new Duration(milliseconds: frameRate), () => defendP2Animation(0));
+                new Timer(new Duration(milliseconds: frameRate), () => enemyDefendAnimation(0));
             }
         }
     }
@@ -239,8 +240,8 @@ class BattleField {
         double angle = frame * 10/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
-        player2.rotation = -1*rotation;
-        player2.y += -1;
+        enemy.rotation = -1*rotation;
+        enemy.y += -1;
         draw();
         frame ++;
         if(frame < numberFrames) {
@@ -253,20 +254,20 @@ class BattleField {
     }
 
 
-    Future<Null> defendP2Animation(int frame) async {
+    Future<Null> enemyDefendAnimation(int frame) async {
         print("defend");
         int numberFrames = 8;
         currentText = currentAttack.defense;
         double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
-        player2.rotation = rotation;
-        player2.setScale(1.05, 1.05);
-        player2.y += -2;
+        enemy.rotation = rotation;
+        enemy.setScale(1.05, 1.05);
+        enemy.y += -2;
         draw();
         frame ++;
         if(frame < numberFrames) {
-            new Timer(new Duration(milliseconds: frameRate), () => defendP2Animation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => enemyDefendAnimation(frame));
         }else {
             idle = true;
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
@@ -281,8 +282,8 @@ class BattleField {
         double angle = frame * 10/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
-        player1.rotation = -1*rotation;
-        player1.y += -1;
+        player.rotation = -1*rotation;
+        player.y += -1;
         draw();
         frame ++;
         if(frame < numberFrames) {
@@ -302,9 +303,9 @@ class BattleField {
         double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
-        player1.rotation = rotation;
-        player1.setScale(1.05, 1.05);
-        player1.y += -2;
+        player.rotation = rotation;
+        player.setScale(1.05, 1.05);
+        player.y += -2;
         draw();
         frame ++;
         if(frame < numberFrames) {
