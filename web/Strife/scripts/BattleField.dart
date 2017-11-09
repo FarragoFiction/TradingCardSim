@@ -34,9 +34,11 @@ class BattleField {
         CanvasElement player1Canvas = await player1.drawTurnways();
         CanvasElement player2Canvas = await player2.draw();
 
-        canvas.context2D.drawImage(player1Canvas, 400, 0);
+        int player1Y = height - player1.doll.height;
+        int player2Y = height - player2.doll.height;
+        canvas.context2D.drawImage(player1Canvas, 400, player1Y);
         //TODO no. You gotta flip it TURN ways.
-        canvas.context2D.drawImage(player2Canvas,0, 0);
+        canvas.context2D.drawImage(player2Canvas,0, player2Y);
 
         return canvas;
     }
