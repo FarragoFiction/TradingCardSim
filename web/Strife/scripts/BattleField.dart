@@ -218,9 +218,16 @@ class BattleField {
     Future<Null> playerFraymotifAnimation(int frame) async {
         //TODO fraymotif knows how to animate itself.
         currentText = fraymotifInEffect.name;
+        int numberFrames = 100;
         print("current text is $currentText");
+        //TODO have fraymotif animate itself and the enemy (should the enemy be not defending).
         draw();
         frame ++;
+        if(frame < numberFrames) {
+            new Timer(new Duration(milliseconds: frameRate), () => playerFraymotifAnimation(frame));
+        }else {
+            new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
+        }
     }
 
     //guy on right attacks guy on left.
