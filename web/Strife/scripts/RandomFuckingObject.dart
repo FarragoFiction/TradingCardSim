@@ -4,13 +4,14 @@ import 'dart:html';
 class RandomFuckingObject {
 
     CanvasElement canvas;
-    static int maxItemNumber = 5;
+    static int maxItemNumber = 40;//40
     String _imgFolder = "images/Homestuck/Fraymotifs";
 
     int imgNumber;
-    int x = 0;
-    int y = 0;
-    //where are you in this random fucking grid?
+    //changes as the fraymotif goes on.
+    int _x = 0;
+    int _y = 0;
+    //where are you in this random fucking grid? shouldn't change
     int offsetX = 0;
     int offsetY = 0;
     double _scaleX = 1.0;
@@ -18,6 +19,17 @@ class RandomFuckingObject {
     double rotation = 0.0;
 
     RandomFuckingObject(this.imgNumber, this.offsetX, this.offsetY);
+
+    int get x => _x + offsetX;
+    int get y => _y + offsetY;
+
+    void set x(int xval) {
+        _x = xval;
+    }
+
+    void set y(int yval) {
+        _y = yval;
+    }
 
     String get imageLocation {
         return "${_imgFolder}/${imgNumber}.png";

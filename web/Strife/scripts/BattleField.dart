@@ -242,8 +242,8 @@ class BattleField {
         if(frame < numberFrames) {
             new Timer(new Duration(milliseconds: frameRate), () => playerFraymotifAnimation(frame));
         }else {
-            fraymotifInEffect = null; //done
-            new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
+           //TODO turn this back on fraymotifInEffect = null; //done
+            //TODO turn this back on when done debugging fraymotifs new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
         }
     }
 

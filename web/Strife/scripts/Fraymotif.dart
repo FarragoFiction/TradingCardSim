@@ -40,7 +40,7 @@ class Fraymotif {
     }
 
     void randomEffects() {
-        List<FraymotifEffect> possibilities = <FraymotifEffect>[new Swell(), new Shrink(), new Spin(), new Warp(), new Jitter(), new Bounce(), new MoveLeft(), new MoveRight()];
+        List<FraymotifEffect> possibilities = <FraymotifEffect>[new Shrink(), new Spin(), new Warp(), new Jitter(), new Bounce(), new MoveLeft()];
         
         int number = rand.nextInt(5)+2;
         for(int i = 0; i<number; i++) {
@@ -53,10 +53,11 @@ class Fraymotif {
 
     void initRandomFuckingObjects(int w, int h) {
         List<int> chosenObjects = <int>[rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber)];
-        for(int i = 0; i < 2*w; i += (300+rand.nextInt(300))) {
-            for(int j = 0; j < 2*h; j += (150+rand.nextInt(300))) {
+        for(int i = 0; i < 2*w; i += 400) {
+            for(int j = 0; j < 2*h; j += 400) {
                 int iOffset = (w/-2).floor() + i + rand.nextInt(50);
                 int jOffset = (h/-2).floor() + j + rand.nextInt(50);
+                print("adding item at ${iOffset} ${jOffset}");
                 randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),iOffset,jOffset));
             }
         }
@@ -173,6 +174,7 @@ abstract class FraymotifEffect {
             //it's private but i'm in same file so it's fine (it's private to file not class apparently)
             c.setScale(f._scaleX, f._scaleY);
         }
+        print("syncing enemy");
         for(RandomFuckingObject r in f.randomFuckingObjects) {
             r.rotation = f.rotation;
             r.x = f.x + r.offsetX;
