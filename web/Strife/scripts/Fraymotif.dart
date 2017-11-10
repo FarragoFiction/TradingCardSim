@@ -23,16 +23,17 @@ class Fraymotif {
     double _scaleX = 1.0;
     double _scaleY = 1.0;
     double rotation = 0.0;
-    List<FraymotifEffect> effects;
+    List<FraymotifEffect> effects = new List<FraymotifEffect>();
 
     Fraymotif(this.name, this.imgName, this.musicalThemeName, this.initialSeed) {
         resetRandom();
         randomEffects();
     }
 
-    void apply(Combatant c) {
+    void apply(Combatant c, int w,  int h) {
+        resetRandom(); //always do the exact same things. makes it look designed.
         for(FraymotifEffect f in effects) {
-            f.apply(this, c);
+            f.apply(this, c, w, h);
         }
     }
 
@@ -109,14 +110,60 @@ Some fraymotifs will suck the enemy to their location, others will go to the ene
  */
 abstract class FraymotifEffect {
 
-    void apply(Fraymotif f, Combatant c);
+    void apply(Fraymotif f, Combatant c, int w, int h);
+
+
+    void keepInBounds(Fraymotif f,int w,int h) {
+        if(f.x > w) f.x = w;
+        if(f.y > h) f.x = h;
+        if(f.x < 0) f.x = 0;
+        if(f.y < 0) f.x = 0;
+    }
 
 }
 
-class MoveLeft extends FraymotifEffect {
+
+class Warp extends FraymotifEffect {
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        int changeX = f.rand.nextInt(100);
+        int changeY = f.rand.nextInt(100);
+        int newX = 0;
+        int newY = 0;
+        if(f.rand.nextBool()) {
+            newX = f.x + changeX;
+        }else {
+            newX = f.x - changeX;
+        }
+
+        if(f.rand.nextBool()) {
+            newY = f.y + changeY;
+        }else {
+            newY = f.y - changeY;
+        }
+        f.x = newX;
+        f.y = newY;
+        keepInBounds(f,w,h);
+        
+        if(!c.defending) {
+            c.x = newX;
+            c.y = newY;
+        }
+    }
+}
+
+class MoveRight extends FraymotifEffect {
   @override
-  void apply(Fraymotif f, Combatant c) {
+  void apply(Fraymotif f, Combatant c, int w, int h) {
     f.x += 10;
     if(!c.defending) c.x += 10;
   }
+}
+
+class MoveLeft extends FraymotifEffect {
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        f.x += 10;
+        if(!c.defending) c.x += -10;
+    }
 }
