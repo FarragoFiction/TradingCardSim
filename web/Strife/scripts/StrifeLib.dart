@@ -13,3 +13,4 @@ export "Commands/Abscond.dart";
 export "Commands/DadAttackCommands.dart";
 export "Commands/DadDefenseCommands.dart";
 export "Fraymotif.dart";
+export "RandomFuckingObject.dart";

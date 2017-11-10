@@ -192,6 +192,10 @@ class BattleField {
 
         if(fraymotifInEffect != null) {
             CanvasElement fraymotifCanvas = await fraymotifInEffect.draw(canvas.width, canvas.height);
+            for(RandomFuckingObject r in fraymotifInEffect.randomFuckingObjects) {
+                CanvasElement objCanvas = await r.draw(canvas.width, canvas.height);
+                canvas.context2D.drawImage(objCanvas,r.x, r.y);
+            }
             canvas.context2D.drawImage(fraymotifCanvas,fraymotifInEffect.x, fraymotifInEffect.y);
         }
 

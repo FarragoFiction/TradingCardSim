@@ -2,6 +2,7 @@ import "../../scripts/DollLib/DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
 import 'Combatant.dart';
+import "RandomFuckingObject.dart";
 import "dart:math" as Math;
 //fraymotifs are owned by combatants.
 class Fraymotif {
@@ -15,6 +16,7 @@ class Fraymotif {
     String imgName;
     String _musicFolder = "../music/";
     String musicalThemeName;
+    List<RandomFuckingObject> randomFuckingObjects = new List<RandomFuckingObject>();
     CanvasElement canvas;
     int initialSeed = 0;
     String name;
@@ -45,7 +47,17 @@ class Fraymotif {
             effects.add(rand.pickFrom(possibilities));
 
         }
+
         
+    }
+
+    void initRandomFuckingObjects(int w, int h) {
+        List<int> chosenObjects = <int>[rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber)];
+        for(int i = 0; i < w; i += rand.nextInt(50)) {
+            for(int j = 0; j < h; j += rand.nextInt(50)) {
+                randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),i,j));
+            }
+        }
     }
 
     void setScale(double x, double y) {
@@ -77,6 +89,7 @@ class Fraymotif {
             ImageElement image = await Loader.getResource((imageLocation));
             canvas = new CanvasElement(width: image.width, height: image.height);
             canvas.context2D.drawImage(image, 0, 0);
+            initRandomFuckingObjects(w, h);
         }
         return drawForReal(canvas,w,h);
     }
@@ -89,7 +102,7 @@ class Fraymotif {
     //wizards and grist and generic objects and shit.
     Future<CanvasElement> drawForReal(CanvasElement c, int w, int h) async{
         //print('drawing with rotation $rotation');
-        CanvasElement ret = new CanvasElement(width:w, height: h);
+        CanvasElement ret = new CanvasElement(width:c.width, height: c.height);
         ret.context2D.translate(ret.width/2, ret.height/2);
         ret.context2D.rotate(rotation);
         ret.context2D.scale(_scaleX, _scaleY);
@@ -157,6 +170,12 @@ abstract class FraymotifEffect {
             c.rotation = f.rotation;
             //it's private but i'm in same file so it's fine (it's private to file not class apparently)
             c.setScale(f._scaleX, f._scaleY);
+        }
+        for(RandomFuckingObject r in f.randomFuckingObjects) {
+            r.rotation = f.rotation;
+            r.x = f.x + r.offsetX;
+            r.y = f.y + r.offsetY;
+            r.setScale(f._scaleX, f._scaleY);
         }
     }
 
@@ -322,3 +341,4 @@ class MoveLeft extends FraymotifEffect {
         syncEnemy(c, f);
     }
 }
+
