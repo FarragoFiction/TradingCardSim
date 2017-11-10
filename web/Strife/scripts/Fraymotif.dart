@@ -53,9 +53,11 @@ class Fraymotif {
 
     void initRandomFuckingObjects(int w, int h) {
         List<int> chosenObjects = <int>[rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber)];
-        for(int i = 0; i < w; i += rand.nextInt(50)) {
-            for(int j = 0; j < h; j += rand.nextInt(50)) {
-                randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),i,j));
+        for(int i = 0; i < 2*w; i += (300+rand.nextInt(300))) {
+            for(int j = 0; j < 2*h; j += (150+rand.nextInt(300))) {
+                int iOffset = (w/-2).floor() + i + rand.nextInt(50);
+                int jOffset = (h/-2).floor() + j + rand.nextInt(50);
+                randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),iOffset,jOffset));
             }
         }
     }
