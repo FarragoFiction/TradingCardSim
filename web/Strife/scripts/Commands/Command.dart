@@ -10,7 +10,7 @@ class Command {
     //maybe display that gif thing of PL's?
     List<AttackDefensePair> results = new List<AttackDefensePair>();
 
-    List <String> modifier = <String>["Passive","Ironic","Flamboyant","Acrobatic","Flaming","Double","Sneak","Manly","Shifty","Suspicious","Sweet","Nice","Fortunate","Swift","Ninja","Bumbling","Sleep","Fluffy","Angery","Sincere","Nostalgic","Poignant","Festering","Tasty"];
+    List <String> modifier = <String>["Passive","Ironic","Flamboyant","Acrobatic","Flaming","Double","Sneak","Manly","Shifty","Suspicious","Sweet","Nice","Fortunate","Swift","Ninja","Bumbling","Sleep","Fluffy","Angery","Sincere","Nostalgic","Poignant","Festering","Tasty","Post-Ironic","Pre-Ironic","Totally Sincere","Ironically Sincere","Partially Sincere","Serious","Miraculous","Crabby","Well Reasoned","Pre-planned","Twirling","Totally Fake","Well intentioned"];
     Lambda methodToCall;
 
     Command(String imgPath,this.methodToCall) {
