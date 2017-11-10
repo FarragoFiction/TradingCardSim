@@ -12,6 +12,8 @@ int frame = 0;
 Element div = querySelector("#contents");
 bool egg = false;
 bool troll = false;
+int musicIndex = 0;
+List<String> backGroundMusicSnippets = <String>["Showdads_Strifing_Part_1.ogg","Showdads_Strifing_Part_2.ogg","Showdads_Strifing_Part_3.ogg","Showdads_Strifing_Part_4.ogg","Showdads_Strifing_Part_5.ogg"];
 void main() {
     loadNavbar();
 
@@ -42,12 +44,29 @@ Combatant getPlayer2() {
     return new Combatant(new DadDoll());
 }
 
+String getNextSong() {
+    musicIndex++;
+
+    if(musicIndex >= backGroundMusicSnippets.length) {
+        musicIndex = 0;
+        print("Starting over");
+    }
+    print("music index is");
+    return "../music/${backGroundMusicSnippets[musicIndex]}";
+}
+
 
 //TODO ((in fact, i just decided that only by beating the queen can you enter in your own players, or learn the secret to do it from the start))
 Future<Null> init() async{
     AudioElement bgMusic = querySelector("#bgAudio");
     AudioElement fxMusic = querySelector("#fxAudio");
     print("bgMusic is $bgMusic");
+
+    bgMusic.onEnded.listen((e) {
+        bgMusic.src = getNextSong();
+        bgMusic.currentTime = 0;
+        bgMusic.play();
+    });
     battleField = new BattleField(getPlayer1(), getPlayer2(), bgMusic, fxMusic);
     Element holder = await battleField.firstDraw();
     bgMusic.play();

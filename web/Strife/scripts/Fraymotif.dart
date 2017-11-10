@@ -14,9 +14,19 @@ class Fraymotif {
     int initialSeed = 0;
     String name;
     Random rand;
+    int x = 0;
+    int y = 0;
+    double _scaleX = 1.0;
+    double _scaleY = 1.0;
+    double rotation = 0.0;
 
     Fraymotif(this.name, this.imgName, this.musicalThemeName, this.initialSeed) {
         resetRandom();
+    }
+
+    void setScale(double x, double y) {
+        _scaleX = x;
+        _scaleY = y;
     }
 
     static Fraymotif randomFraymotif() {
@@ -27,9 +37,9 @@ class Fraymotif {
 
     static String randomName() {
         Random rand = new Random();
-        int number = rand.nextInt(3);
+        int number = rand.nextInt(3)+1;
         String ret = "";
-        for(int i = 0; i<= number; i++) {
+        for(int i = 0; i< number; i++) {
             ret += "${rand.pickFrom(nameChoices)} ";
         }
         ret += "${rand.pickFrom(musicalNameChoices)}";
@@ -58,7 +68,7 @@ class Fraymotif {
     }
 
     String get musicLocation {
-        return "${_musicFolder}${musicalThemeName}.png";
+        return "${_musicFolder}${musicalThemeName}";
     }
 }
 

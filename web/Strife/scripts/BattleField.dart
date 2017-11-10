@@ -12,6 +12,7 @@ import "../../scripts/DollLib/DollRenderer.dart";
 class BattleField {
     DivElement holder;
     CanvasElement canvas;
+    Fraymotif fraymotifInEffect;
     //should be in pairs based on the command. Irnoic Negligence is defended with Abstain.
     String currentText = "";
     bool enemyTurn = false;
@@ -95,13 +96,21 @@ class BattleField {
         playerRollAttackAnimation(0);
     }
 
-    //TODO this either starts up a fraymotif, or (if the timing is wrong) defends.
     Future<Null> special(Command c) {
         idle = false;
         player.defending = false;
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
-        playerRollAttackAnimation(0);
+        //TODO fraymotifs will do nothing if you don't satisfy their initial conditions. Think Sepulchritude.
+        fraymotifInEffect = rand.pickFrom(player.fraymotifs);
+        print("fraymotif chosen is ${fraymotifInEffect.name}");
+        changeMusic(fraymotifInEffect.musicLocation);
+        playerFraymotifAnimation(0);
+    }
+
+    void changeMusic(String newMusicLocation) {
+        backGroundMusic.src = newMusicLocation;
+        backGroundMusic.play();
     }
 
     Future<Null> defend(Command c) {
@@ -198,6 +207,14 @@ class BattleField {
         draw();
         frame ++;
         if(idle) new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(frame));
+    }
+
+    Future<Null> playerFraymotifAnimation(int frame) async {
+        //TODO fraymotif knows how to animate itself.
+        currentText = fraymotifInEffect.name;
+        print("current text is $currentText");
+        draw();
+        frame ++;
     }
 
     //guy on right attacks guy on left.
