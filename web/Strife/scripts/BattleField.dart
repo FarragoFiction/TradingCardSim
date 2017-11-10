@@ -40,6 +40,9 @@ class BattleField {
         //TODO randomly pick one of two attack, defense, etc. commands.
         commands.add(new Aggrieve(attack));
         commands.add(new Aggress(jumpAttack));
+        commands.add(new Abjure(defend));
+        commands.add(new Abstain(defend));
+        commands.add(new Abscond(abscond));
         //TODO once i have more than just dads, different attacks
         enemyCommands.add(new DadAttackCommands(lameAttack));
         enemyCommands.add(new DadAttackCommands(lameDefense));
@@ -81,6 +84,23 @@ class BattleField {
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
         playerRollAttackAnimation(0);
+    }
+
+    Future<Null> defend(Command c) {
+        idle = false;
+        player.defending = true;
+        textColor = c.textColor;
+        currentAttack = rand.pickFrom(c.results);
+        defendPlayerAnimation(0);
+    }
+
+
+    Future<Null> abscond(Command c) {
+        idle = false;
+        player.defending = true;
+        textColor = c.textColor;
+        currentAttack = rand.pickFrom(c.results);
+        abscondPlayerAnimation(0);
     }
 
     Future<Null> lameAttack(Command c) {
@@ -187,11 +207,12 @@ class BattleField {
     //guy on right attacks guy on left.
     Future<Null> enemyAttackAnimation(int frame) async {
         currentText = currentAttack.attack;
-        int numberFrames = 10;
-        double angle = frame * 360.0/numberFrames;
+        int numberFrames = 5;
+        double angle = 5.0 - 2* (frame % 3);
         double rotation = angle * Math.PI / 180.0;
-        enemy.rotation = -1*rotation;
-        enemy.x += 40;
+        enemy.rotation = rotation;
+        enemy.x += 80;
+
         draw();
         frame ++;
         if(frame < numberFrames*1.5) {
@@ -200,7 +221,7 @@ class BattleField {
             if(!player.defending) {
                 new Timer(new Duration(milliseconds: frameRate), () => damageP1Animation(0));
             }else {
-                new Timer(new Duration(milliseconds: frameRate), () => defendP1Animation(0));
+                new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(0));
             }
         }
     }
@@ -290,13 +311,13 @@ class BattleField {
             new Timer(new Duration(milliseconds: frameRate), () => damageP1Animation(frame));
         }else {
             idle = true;
-            new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(0));
+            new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
 
         }
     }
 
 
-    Future<Null> defendP1Animation(int frame) async {
+    Future<Null> defendPlayerAnimation(int frame) async {
         print("defend");
         int numberFrames = 8;
         currentText = currentAttack.defense;
@@ -309,10 +330,30 @@ class BattleField {
         draw();
         frame ++;
         if(frame < numberFrames) {
-            new Timer(new Duration(milliseconds: frameRate), () => defendP1Animation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(frame));
         }else {
             idle = true;
-            new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(0));
+            new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
+
+        }
+    }
+
+    Future<Null> abscondPlayerAnimation(int frame) async {
+        int numberFrames = 8;
+        currentText = currentAttack.defense;
+        double angle = frame * 5/numberFrames;
+        double rotation = angle * Math.PI / 180.0;
+
+        player.rotation = rotation;
+        player.setScale(1.05, 1.05);
+        player.y += 20; //just leave. can't be hurt.
+        draw();
+        frame ++;
+        if(frame < numberFrames) {
+            new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(frame));
+        }else {
+            idle = true;
+            new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
 
         }
     }
