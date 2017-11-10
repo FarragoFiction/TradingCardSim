@@ -5,6 +5,7 @@ import "../../../scripts/DollLib/DollRenderer.dart";
 class DadAttackCommands extends Command {
     DadAttackCommands(Lambda methodToCall) : super("aggrieve",methodToCall) {
         textColor = new Colour.fromStyleString("#555555");
+        List<String> actions = <String> ["Teach","Example","Mentor", "Lesson", "Parable", "Boring Story", "Awkward Conversation", "Embarassment"];
         Random rand = new Random();
         rand.nextInt();
         results.add(new AttackDefensePair("Go to Your Room!", "You're not my REAL dad!"));
@@ -17,7 +18,15 @@ class DadAttackCommands extends Command {
         results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parent!", "Ogloparry"));
         results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parent!", "Auto-Pirate"));
         results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parent!", "Fuck no!"));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parent!", "You tried."));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Awkward Conversation!", "Fuck no!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Lesson!", "Not Listening!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "You tried."));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "You tried."));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "Fuck no!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "Abjure"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "You're not my REAL dad!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "You tried."));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "You're not my REAL dad!"));
     }
 
 }
