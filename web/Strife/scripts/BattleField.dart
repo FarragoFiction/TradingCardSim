@@ -108,6 +108,8 @@ class BattleField {
             changeMusic(fraymotifInEffect.musicLocation);
             fraymotifInEffect.x = player.x;
             fraymotifInEffect.y = player.y;
+            fraymotifInEffect.resetRandom(); //always do the exact same things. makes it look designed.
+
             playerFraymotifAnimation(0);
         }else {
             player.defending = true;
@@ -189,7 +191,7 @@ class BattleField {
         CanvasElement player2Canvas = await enemy.draw();
 
         if(fraymotifInEffect != null) {
-            CanvasElement fraymotifCanvas = await fraymotifInEffect.draw();
+            CanvasElement fraymotifCanvas = await fraymotifInEffect.draw(canvas.width, canvas.height);
             canvas.context2D.drawImage(fraymotifCanvas,fraymotifInEffect.x, fraymotifInEffect.y);
         }
 

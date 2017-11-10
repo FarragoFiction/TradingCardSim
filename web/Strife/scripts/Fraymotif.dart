@@ -2,6 +2,7 @@ import "../../scripts/DollLib/DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
 import 'Combatant.dart';
+import "dart:math" as Math;
 //fraymotifs are owned by combatants.
 class Fraymotif {
     static List<String> imageNames = <String>["blood","mind","rage","void","time","heart","breath","light","space","hope","life","doom"];
@@ -31,14 +32,20 @@ class Fraymotif {
     }
 
     void apply(Combatant c, int w,  int h) {
-        resetRandom(); //always do the exact same things. makes it look designed.
         for(FraymotifEffect f in effects) {
             f.apply(this, c, w, h);
         }
     }
 
     void randomEffects() {
-        effects.add(new Warp());
+        List<FraymotifEffect> possibilities = <FraymotifEffect>[new Swell(), new Shrink(), new Spin(), new Warp(), new Jitter(), new Bounce(), new MoveLeft(), new MoveRight()];
+        
+        int number = rand.nextInt(5)+2;
+        for(int i = 0; i<number; i++) {
+            effects.add(rand.pickFrom(possibilities));
+
+        }
+        
     }
 
     void setScale(double x, double y) {
@@ -64,13 +71,30 @@ class Fraymotif {
         return ret;
     }
 
-    Future<CanvasElement> draw() async {
+
+    Future<CanvasElement> draw(int w, int h) async {
         if(canvas == null) {
             ImageElement image = await Loader.getResource((imageLocation));
             canvas = new CanvasElement(width: image.width, height: image.height);
             canvas.context2D.drawImage(image, 0, 0);
         }
-        return canvas;
+        return drawForReal(canvas,w,h);
+    }
+
+
+    //TODO: have all sorts of random shit that can be drawn here.
+    //keep array of images that could be drawn in random spots.
+    //they have same rotation and etc as fraymotif, and are drawn relative to it, so crazy shit is happenign even without it.
+    //save their canvas here too.
+    //wizards and grist and generic objects and shit.
+    Future<CanvasElement> drawForReal(CanvasElement c, int w, int h) async{
+        //print('drawing with rotation $rotation');
+        CanvasElement ret = new CanvasElement(width:w, height: h);
+        ret.context2D.translate(ret.width/2, ret.height/2);
+        ret.context2D.rotate(rotation);
+        ret.context2D.scale(_scaleX, _scaleY);
+        ret.context2D.drawImage(canvas, -ret.width/2, -ret.height/2);
+        return ret;
     }
 
     static String randomSong() {
@@ -87,6 +111,8 @@ class Fraymotif {
     //fraymotifs carry their own random so their motions are the same each time, but still random.
     void resetRandom() {
         rand = new Random(initialSeed);
+        setScale(1.0, 1.0);
+        rotation = 0.0;
     }
 
     String get imageLocation {
@@ -120,7 +146,79 @@ abstract class FraymotifEffect {
         if(f.y < 0) f.x = 0;
     }
 
+    void reset() {
+
+    }
+
+    void syncEnemy(Combatant c, Fraymotif f) {
+        if(!c.defending) {
+            c.x = f.x;
+            c.y = f.y;
+            c.rotation = f.rotation;
+            //it's private but i'm in same file so it's fine (it's private to file not class apparently)
+            c.setScale(f._scaleX, f._scaleY);
+        }
+    }
+
 }
+
+
+class Bounce extends FraymotifEffect {
+    double direction;
+    double magnitude = 10.0;
+
+    @override
+    void reset() {
+        direction = null;
+        magnitude = 10.0;
+    }
+
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        if(direction == null) direction = (360* f.rand.nextDouble())*  (Math.PI / 180);
+        int savedX = f.x;
+        int savedY = f.y;
+        keepInBounds(f, w, h);
+        if(savedX != f.x || savedY != f.y) {
+            //then i'm at an edge
+            direction = -1 * direction;
+        }
+        double x =   this.magnitude * Math.cos(this.direction);
+        double y =  this.magnitude * Math.sin(this.direction);
+        f.x += x.floor();
+        f.y += y.floor();
+        syncEnemy(c, f);
+    }
+}
+
+
+
+class Jitter extends FraymotifEffect {
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        int changeX = f.rand.nextInt(10);
+        int changeY = f.rand.nextInt(10);
+        int newX = 0;
+        int newY = 0;
+        if(f.rand.nextBool()) {
+            newX = f.x + changeX;
+        }else {
+            newX = f.x - changeX;
+        }
+
+        if(f.rand.nextBool()) {
+            newY = f.y + changeY;
+        }else {
+            newY = f.y - changeY;
+        }
+        f.x = newX;
+        f.y = newY;
+        keepInBounds(f,w,h);
+
+        syncEnemy(c, f);
+    }
+}
+
 
 
 class Warp extends FraymotifEffect {
@@ -145,25 +243,82 @@ class Warp extends FraymotifEffect {
         f.y = newY;
         keepInBounds(f,w,h);
 
-        if(!c.defending) {
-            c.x = newX;
-            c.y = newY;
-        }
+        syncEnemy(c, f);
     }
 }
 
 class MoveRight extends FraymotifEffect {
+
+    int speed = 0;
+
+    @override
+    void reset() {
+        speed = 0;
+    }
+
   @override
   void apply(Fraymotif f, Combatant c, int w, int h) {
-    f.x += 10;
-    if(!c.defending) c.x += 10;
+      if(speed ==0) speed = f.rand.nextInt(50);
+      f.x += 1* speed;
+    keepInBounds(f, w, h);
+    syncEnemy(c, f);
   }
 }
 
-class MoveLeft extends FraymotifEffect {
+
+class Spin extends FraymotifEffect {
+    double angle = 0.0;
+    int speed = 0;
+
+    @override
+    void reset() {
+        angle = 0.0;
+        speed = 0;
+    }
     @override
     void apply(Fraymotif f, Combatant c, int w, int h) {
-        f.x += 10;
-        if(!c.defending) c.x += -10;
+        if(speed == 0) speed = f.rand.nextInt(50);
+        angle += 1.0* speed;
+        double rotation = angle * Math.PI / 180.0;
+        f.rotation  = rotation;
+        syncEnemy(c, f);
+    }
+}
+
+class Swell extends FraymotifEffect {
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        f._scaleX += 0.1;
+        f._scaleY += 0.1;
+        keepInBounds(f, w, h);
+        syncEnemy(c, f);
+    }
+}
+
+
+class Shrink extends FraymotifEffect {
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        f._scaleX += -0.01;
+        f._scaleY += -0.01;
+        keepInBounds(f, w, h);
+        syncEnemy(c, f);
+    }
+}
+
+class MoveLeft extends FraymotifEffect {
+
+    int speed = 0;
+
+    @override
+    void reset() {
+        speed = 0;
+    }
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        if(speed ==0) speed = f.rand.nextInt(50);
+        f.x += 1* speed;
+        keepInBounds(f, w, h);
+        syncEnemy(c, f);
     }
 }
