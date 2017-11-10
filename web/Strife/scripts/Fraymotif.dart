@@ -40,7 +40,7 @@ class Fraymotif {
     }
 
     void randomEffects() {
-        List<FraymotifEffect> possibilities = <FraymotifEffect>[new Shrink(), new Spin(), new Warp(), new Jitter(), new Bounce(), new MoveLeft()];
+        List<FraymotifEffect> possibilities = <FraymotifEffect>[new Shrink(), new Spin(), new Warp(), new Jitter(), new Bounce(), new MoveLeft(),new Fall(),new Rise(), new MoveRight()];
         
         int number = rand.nextInt(5)+2;
         for(int i = 0; i<number; i++) {
@@ -53,10 +53,10 @@ class Fraymotif {
 
     void initRandomFuckingObjects(int w, int h) {
         List<int> chosenObjects = <int>[rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber)];
-        for(int i = 0; i < 2*w; i += 200) {
-            for(int j = 0; j < 2*h; j += 200) {
-                int iOffset = (w/-2).floor() + i + rand.nextInt(50);
-                int jOffset = (h/-2).floor() + j + rand.nextInt(50);
+        for(int i = 0; i < 2*w; i += 400) {
+            for(int j = 0; j < 2*h; j += 400) {
+                int iOffset = (w/-2).floor() + i + rand.nextInt(100);
+                int jOffset = (h/-2).floor() + j + rand.nextInt(100);
                 print("adding item at ${iOffset} ${jOffset}");
                 randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),iOffset,jOffset));
             }
@@ -129,6 +129,12 @@ class Fraymotif {
         rand = new Random(initialSeed);
         setScale(1.0, 1.0);
         rotation = 0.0;
+        for(RandomFuckingObject r in randomFuckingObjects) {
+            r.x = 0;
+            r.y = 0;
+            r.rotation = 0.0;
+            r.setScale(1.0, 1.0);
+        }
     }
 
     String get imageLocation {
@@ -156,17 +162,25 @@ abstract class FraymotifEffect {
 
 
     void keepInBounds(Fraymotif f,int w,int h) {
-        if(f.x > w) f.x = w;
-        if(f.y > h) f.x = h;
-        if(f.x < 0) f.x = 0;
-        if(f.y < 0) f.x = 0;
+        if(f.canvas != null) {
+            if (f.x + f.canvas.width > w) f.x = w;
+            if (f.y + f.canvas.height > h) f.x = h;
+            if(f.x - f.canvas.width < 0) f.x = 0;
+            if(f.y - f.canvas.height < 0) f.x = 0;
+        }else {
+            if (f.x + 100 > w) f.x = w;
+            if (f.y + 100 > h) f.x = h;
+            if(f.x - 100 < 0) f.x = 0;
+            if(f.y- 100 < 0) f.x = 0;
+        }
+
     }
 
     void reset() {
 
     }
 
-    void syncEnemy(Combatant c, Fraymotif f) {
+    void syncEnemy(Combatant c, Fraymotif f, int width, int height) {
         if(!c.defending) {
             c.x = f.x;
             c.y = f.y;
@@ -174,12 +188,15 @@ abstract class FraymotifEffect {
             //it's private but i'm in same file so it's fine (it's private to file not class apparently)
             c.setScale(f._scaleX, f._scaleY);
         }
-        print("syncing enemy");
+        //print("syncing enemy");
         for(RandomFuckingObject r in f.randomFuckingObjects) {
             r.rotation = f.rotation;
-            r.x = f.x + r.offsetX;
-            r.y = f.y + r.offsetY;
-            r.setScale(f._scaleX, f._scaleY);
+            //r.x = f.x + r.offsetX;
+            r.y = f.y + f.rand.nextInt(20) + 20;
+            if(r.y > height) {
+                r.y = 0; //zap back up
+            }
+            //r.setScale(f._scaleX, f._scaleY);
         }
     }
 
@@ -210,7 +227,7 @@ class Bounce extends FraymotifEffect {
         double y =  this.magnitude * Math.sin(this.direction);
         f.x += x.floor();
         f.y += y.floor();
-        syncEnemy(c, f);
+        syncEnemy(c, f,w,h);
     }
 }
 
@@ -238,7 +255,7 @@ class Jitter extends FraymotifEffect {
         f.y = newY;
         keepInBounds(f,w,h);
 
-        syncEnemy(c, f);
+        syncEnemy(c, f,w,h);
     }
 }
 
@@ -266,7 +283,7 @@ class Warp extends FraymotifEffect {
         f.y = newY;
         keepInBounds(f,w,h);
 
-        syncEnemy(c, f);
+        syncEnemy(c, f,w,h);
     }
 }
 
@@ -284,7 +301,7 @@ class MoveRight extends FraymotifEffect {
       if(speed ==0) speed = f.rand.nextInt(50);
       f.x += 1* speed;
     keepInBounds(f, w, h);
-    syncEnemy(c, f);
+    syncEnemy(c, f,w,h);
   }
 }
 
@@ -304,7 +321,7 @@ class Spin extends FraymotifEffect {
         angle += 1.0* speed;
         double rotation = angle * Math.PI / 180.0;
         f.rotation  = rotation;
-        syncEnemy(c, f);
+        syncEnemy(c, f,w,h);
     }
 }
 
@@ -314,7 +331,7 @@ class Swell extends FraymotifEffect {
         f._scaleX += 0.1;
         f._scaleY += 0.1;
         keepInBounds(f, w, h);
-        syncEnemy(c, f);
+        syncEnemy(c, f,w,h);
     }
 }
 
@@ -325,7 +342,41 @@ class Shrink extends FraymotifEffect {
         f._scaleX += -0.01;
         f._scaleY += -0.01;
         keepInBounds(f, w, h);
-        syncEnemy(c, f);
+        syncEnemy(c, f,w,h);
+    }
+}
+
+class Rise extends FraymotifEffect {
+
+    int speed = 0;
+
+    @override
+    void reset() {
+        speed = 0;
+    }
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        if(speed ==0) speed = f.rand.nextInt(50);
+        f.y += -1* speed;
+        keepInBounds(f, w, h);
+        syncEnemy(c, f,w,h);
+    }
+}
+
+class Fall extends FraymotifEffect {
+
+    int speed = 0;
+
+    @override
+    void reset() {
+        speed = 0;
+    }
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        if(speed ==0) speed = f.rand.nextInt(50);
+        f.y += 1* speed;
+        keepInBounds(f, w, h);
+        syncEnemy(c, f,w,h);
     }
 }
 
@@ -342,7 +393,7 @@ class MoveLeft extends FraymotifEffect {
         if(speed ==0) speed = f.rand.nextInt(50);
         f.x += 1* speed;
         keepInBounds(f, w, h);
-        syncEnemy(c, f);
+        syncEnemy(c, f,w,h);
     }
 }
 

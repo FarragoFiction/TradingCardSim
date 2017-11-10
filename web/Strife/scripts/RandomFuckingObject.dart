@@ -1,6 +1,8 @@
 import "../../scripts/DollLib/DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
+import "dart:math" as Math;
+
 class RandomFuckingObject {
 
     CanvasElement canvas;
@@ -43,7 +45,8 @@ class RandomFuckingObject {
     Future<CanvasElement> draw(int w, int h) async {
         if(canvas == null) {
             ImageElement image = await Loader.getResource((imageLocation));
-            canvas = new CanvasElement(width: image.width, height: image.height);
+            int width = Math.max(image.width, image.height);
+            canvas = new CanvasElement(width: width, height: width); //need extra room for space
             canvas.context2D.drawImage(image, 0, 0);
         }
         return drawForReal(canvas,w,h);

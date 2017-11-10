@@ -35,6 +35,7 @@ class Combatant {
         width = Math.max(doll.width, doll.height);
         height = width;
         fraymotifs.add(Fraymotif.randomFraymotif());
+        fraymotifs.add(Fraymotif.randomFraymotif());
         print("Made fraymotif ${fraymotifs.first.name}");
 
     }

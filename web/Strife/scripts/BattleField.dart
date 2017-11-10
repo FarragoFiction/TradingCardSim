@@ -231,19 +231,17 @@ class BattleField {
     }
 
     Future<Null> playerFraymotifAnimation(int frame) async {
-        //TODO fraymotif knows how to animate itself.
         currentText = fraymotifInEffect.name;
-        int numberFrames = 100;
+        int numberFrames = 50;
        // print("current text is $currentText");
-        //TODO have fraymotif animate itself and the enemy (should the enemy be not defending).
         fraymotifInEffect.apply(enemy,canvas.width, canvas.height);
         draw();
         frame ++;
         if(frame < numberFrames) {
             new Timer(new Duration(milliseconds: frameRate), () => playerFraymotifAnimation(frame));
         }else {
-           //TODO turn this back on fraymotifInEffect = null; //done
-            //TODO turn this back on when done debugging fraymotifs new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
+           fraymotifInEffect = null; //done
+           new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
         }
     }
 
