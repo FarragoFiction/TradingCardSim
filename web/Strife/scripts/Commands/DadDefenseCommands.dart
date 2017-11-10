@@ -7,16 +7,16 @@ class DadDefenseCommands extends Command {
         textColor = new Colour.fromStyleString("#555555");
         Random rand = new Random();
         rand.nextInt();
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
-        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", ""));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
+        results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parry!", "${rand.pickFrom(modifier)} Parry!"));
     }
 
 }

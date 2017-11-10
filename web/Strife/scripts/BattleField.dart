@@ -46,7 +46,7 @@ class BattleField {
         commands.add(new Abscond(abscond));
         //TODO once i have more than just dads, different attacks
         enemyCommands.add(new DadAttackCommands(lameAttack));
-        enemyCommands.add(new DadAttackCommands(lameDefense));
+        enemyCommands.add(new DadDefenseCommands(lameDefense));
 
     }
 
@@ -290,7 +290,7 @@ class BattleField {
         draw();
         frame ++;
         if(frame < numberFrames) {
-            new Timer(new Duration(milliseconds: frameRate), () => enemyDefendAnimation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => enemyDefendAnimation(frame, isAttack));
         }else {
             idle = true;
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
@@ -335,7 +335,7 @@ class BattleField {
         draw();
         frame ++;
         if(frame < numberFrames) {
-            new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(frame,isAttack));
         }else {
             idle = true;
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
@@ -356,7 +356,7 @@ class BattleField {
         draw();
         frame ++;
         if(frame < numberFrames) {
-            new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(frame,isAttack));
         }else {
             idle = true;
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
