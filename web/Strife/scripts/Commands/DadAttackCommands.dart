@@ -10,6 +10,7 @@ class DadAttackCommands extends Command {
         results.add(new AttackDefensePair("Go to Your Room!", "You're not my REAL dad!"));
         results.add(new AttackDefensePair("You're Grounded!", "Hell no!"));
         results.add(new AttackDefensePair("Guardian Rubric: Ironic Negligence", "Abstain"));
+        results.add(new AttackDefensePair("Guardian Rubric: Ironic Negligence", "Auto-Perrier"));
         results.add(new AttackDefensePair("Guardian Rubric: Coddlebrand", "Dodge"));
         results.add(new AttackDefensePair("Guardian Rubric: Ironic Negligence", "Abjure"));
         results.add(new AttackDefensePair("${rand.pickFrom(modifier)} Parent!", "Auto-Perrier"));
