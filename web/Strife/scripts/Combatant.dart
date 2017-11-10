@@ -1,4 +1,5 @@
 import "../../scripts/DollLib/DollRenderer.dart";
+import "Fraymotif.dart";
 import 'dart:async';
 import 'dart:html';
 import "dart:math" as Math;
@@ -10,11 +11,13 @@ import "dart:math" as Math;
  */
 class Combatant {
     Doll doll;
+    //get a new fraymotif every time you win.
+    List<Fraymotif> fraymotifs = new List<Fraymotif>();
     CanvasElement canvas;
     CanvasElement turnWaysCanvas;
     Colour textColor;
     bool defending = false;
-    bool dirty = true; //TODO maybe need to update sprite in some way instead of just rotate/scale it?
+    bool dirty = true; // maybe need to update sprite in some way instead of just rotate/scale it?
     int buffer = 50;
     bool turnWays = false;
     int x = 0;
@@ -31,6 +34,8 @@ class Combatant {
         //needs to be a square so i can do full rotation.
         width = Math.max(doll.width, doll.height);
         height = width;
+        fraymotifs.add(Fraymotif.randomFraymotif());
+        print("Made fraymotif ${fraymotifs.first.name}");
 
     }
 
