@@ -1,6 +1,7 @@
 SBURBSim Bundle Manifest
 
 
+
 images/Homestuck/HairBack/HairBack1
 ([0-9]|[1-2][0-9])\.png
 

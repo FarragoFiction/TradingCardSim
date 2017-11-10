@@ -106,6 +106,8 @@ class BattleField {
             fraymotifInEffect = rand.pickFrom(player.fraymotifs);
             print("fraymotif chosen is ${fraymotifInEffect.name}");
             changeMusic(fraymotifInEffect.musicLocation);
+            fraymotifInEffect.x = player.x;
+            fraymotifInEffect.y = player.y;
             playerFraymotifAnimation(0);
         }else {
             player.defending = true;
@@ -186,6 +188,13 @@ class BattleField {
         CanvasElement player1Canvas = await player.draw();
         CanvasElement player2Canvas = await enemy.draw();
 
+        if(fraymotifInEffect != null) {
+            CanvasElement fraymotifCanvas = await fraymotifInEffect.draw();
+            canvas.context2D.drawImage(fraymotifCanvas,fraymotifInEffect.x, fraymotifInEffect.y);
+        }
+
+
+        canvas.context2D.drawImage(player2Canvas,enemy.x, enemy.y);
         canvas.context2D.drawImage(player2Canvas,enemy.x, enemy.y);
         canvas.context2D.drawImage(player1Canvas, player.x, player.y);
         int fontSize = 48;
@@ -219,13 +228,14 @@ class BattleField {
         //TODO fraymotif knows how to animate itself.
         currentText = fraymotifInEffect.name;
         int numberFrames = 100;
-        print("current text is $currentText");
+       // print("current text is $currentText");
         //TODO have fraymotif animate itself and the enemy (should the enemy be not defending).
         draw();
         frame ++;
         if(frame < numberFrames) {
             new Timer(new Duration(milliseconds: frameRate), () => playerFraymotifAnimation(frame));
         }else {
+            fraymotifInEffect = null; //done
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
         }
     }
@@ -344,6 +354,8 @@ class BattleField {
 
         }
     }
+
+
 
 
     Future<Null> damagePlayer(int frame) async {

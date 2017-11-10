@@ -1,4 +1,6 @@
 import "../../scripts/DollLib/DollRenderer.dart";
+import 'dart:async';
+import 'dart:html';
 //fraymotifs are owned by combatants.
 class Fraymotif {
     static List<String> imageNames = <String>["blood","mind","rage","void","time","heart","breath","light","space","hope","life","doom"];
@@ -7,10 +9,11 @@ class Fraymotif {
     static List<String> nameChoices = <String>["Rage", "Barbaric", "Impossible", "Tantrum", "Juggalo", "Horrorcore", "Madness", "Carnival", "Mirthful", "Screaming", "Berserk", "MoThErFuCkInG", "War", "Haze", "Murder", "Furioso", "Aggressive", "ATBasher", "Violent", "Unbound", "Purple", "Unholy", "Hateful", "Fearful", "Inconceivable", "Impossible","Time", "Paradox", "Chrono", "Moment", "Foregone", "Reset", "Endless", "Temporal", "Shenanigans", "Clock", "Tick-Tock", "Spinning", "Repeat", "Rhythm", "Redshift", "Epoch", "Beatdown", "Slow", "Remix", "Clockwork", "Lock", "Eternal","Undefined", "untitled.mp4", "Void", "Disappearification", "Pumpkin", "Nothing", "Emptiness", "Invisible", "Dark", "Hole", "Solo", "Silent", "Alone", "Night", "Null", "[Censored]", "[???]", "Vacuous", "Abyss", "Noir", "Blank", "Tenebrous", "Antithesis", "404"];
     static List<String> musicalNameChoices = <String>["Fortississimo", "Leitmotif", "Liberetto", "Sarabande", "Serenade", "Anthem", "Crescendo", "Vivace", "Encore", "Vivante", "Allegretto", "Fugue", "Choir", "Nobilmente", "Hymn", "Eroico", "Chant", "Mysterioso", "Diminuendo", "Perdendo", "Staccato", "Allegro", "Caloroso", "Nocturne","Cadenza", "Cadence", "Waltz", "Concerto", "Finale", "Requiem", "Coda", "Dirge", "Battaglia", "Leggiadro", "Capriccio", "Presto", "Largo", "Accelerando", "Polytempo", "Overture", "Reprise", "Orchestra"];
 
-    String _imgFolder = "../images/Homestuck/Fraymotifs";
+    String _imgFolder = "images/Homestuck/Fraymotifs";
     String imgName;
     String _musicFolder = "../music/";
     String musicalThemeName;
+    CanvasElement canvas;
     int initialSeed = 0;
     String name;
     Random rand;
@@ -47,6 +50,15 @@ class Fraymotif {
         return ret;
     }
 
+    Future<CanvasElement> draw() async {
+        if(canvas == null) {
+            ImageElement image = await Loader.getResource((imageLocation));
+            canvas = new CanvasElement(width: image.width, height: image.height);
+            canvas.context2D.drawImage(image, 0, 0);
+        }
+        return canvas;
+    }
+
     static String randomSong() {
         Random rand = new Random();
         return rand.pickFrom(musicsChoices);
@@ -64,7 +76,7 @@ class Fraymotif {
     }
 
     String get imageLocation {
-        return "${_imgFolder}${imgName}.png";
+        return "${_imgFolder}/${imgName}.png";
     }
 
     String get musicLocation {
