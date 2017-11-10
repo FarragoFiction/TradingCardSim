@@ -42,6 +42,8 @@ Combatant getPlayer2() {
     return new Combatant(new DadDoll());
 }
 
+
+//TODO ((in fact, i just decided that only by beating the queen can you enter in your own players, or learn the secret to do it from the start))
 Future<Null> init() async{
     AudioElement bgMusic = querySelector("#bgAudio");
     AudioElement fxMusic = querySelector("#fxAudio");
