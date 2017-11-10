@@ -38,16 +38,22 @@ class BattleField {
         enemy.y= height - enemy.doll.height;
         player.x = 500;
         enemy.x = 50;
-        //TODO randomly pick one of two attack, defense, etc. commands.
-        commands.add(new Aggrieve(attack));
-        commands.add(new Aggress(jumpAttack));
-        commands.add(new Abjure(defend));
-        commands.add(new Abstain(defend));
+        setUpPlayerCommands();
+        setUpEnemyCommands();
+    }
+
+    void setUpPlayerCommands() {
+        List<Command> attacks = <Command>[new Aggrieve(attack),new Aggress(jumpAttack)];
+        List<Command> defense = <Command> [new Abjure(defend),new Abstain(defend)];
+        commands.add(rand.pickFrom(attacks));
+        commands.add(rand.pickFrom(defense));
         commands.add(new Abscond(abscond));
+    }
+
+    void setUpEnemyCommands() {
         //TODO once i have more than just dads, different attacks
         enemyCommands.add(new DadAttackCommands(lameAttack));
         enemyCommands.add(new DadDefenseCommands(lameDefense));
-
     }
 
     void nextTurn() {

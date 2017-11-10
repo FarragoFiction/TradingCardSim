@@ -8,8 +8,17 @@ class Fraymotif {
     String imgName;
     String _musicFolder = "../music/";
     String musicalThemeName;
+    int initialSeed = 0;
+    Random rand;
 
-    Fraymotif(this.imgName, this.musicalThemeName);
+    Fraymotif(this.imgName, this.musicalThemeName, this.initialSeed) {
+        resetRandom();
+    }
+
+    //fraymotifs carry their own random so their motions are the same each time, but still random.
+    void resetRandom() {
+        rand = new Random(initialSeed);
+    }
 
     String get imageLocation {
         return "${_imgFolder}${imgName}.png";
