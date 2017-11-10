@@ -43,9 +43,10 @@ Combatant getPlayer2() {
 }
 
 Future<Null> init() async{
-    AudioElement bgMusic = querySelector("#audio");
+    AudioElement bgMusic = querySelector("#bgAudio");
+    AudioElement fxMusic = querySelector("#fxAudio");
     print("bgMusic is $bgMusic");
-    battleField = new BattleField(getPlayer1(), getPlayer2(), bgMusic);
+    battleField = new BattleField(getPlayer1(), getPlayer2(), bgMusic, fxMusic);
     Element holder = await battleField.firstDraw();
     bgMusic.play();
     holder.className = "cardCanvas";
