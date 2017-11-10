@@ -50,6 +50,14 @@ Future<Null> init() async{
     Element holder = await battleField.firstDraw();
     bgMusic.play();
     holder.className = "cardCanvas";
+
+    ButtonElement button = new ButtonElement();
+    button.setInnerHtml("Change Music Test");
+    div.append(button);
+    button.onClick.listen((e) {
+        bgMusic.src = "../music/Hymn_of_Lost_Hope_Segment.ogg";
+        bgMusic.play();
+    });
     div.append(holder);
     battleField.idleAnimation(1);
 }
