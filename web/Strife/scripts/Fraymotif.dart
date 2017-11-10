@@ -40,15 +40,14 @@ class Fraymotif {
     }
 
     void randomEffects() {
-        List<FraymotifEffect> possibilities = <FraymotifEffect>[new Shrink(), new Spin(), new Warp(), new Jitter(), new Bounce(), new MoveLeft(),new Fall(),new Rise(), new MoveRight()];
+        List<FraymotifEffect> possibilities = <FraymotifEffect>[new BackwardsSpin(), new HalfSpin(), new Shrink(), new Spin(), new Warp(), new Jitter(), new Bounce(), new MoveLeft(),new Fall(),new Rise(), new MoveRight()];
         
         int number = rand.nextInt(5)+2;
         for(int i = 0; i<number; i++) {
             effects.add(rand.pickFrom(possibilities));
 
         }
-        //if(rand.nextBool()) effects.add(new Spin());
-        effects.add(new Spin());
+        //effects.add(new HalfSpin());
     }
 
     void initRandomFuckingObjects(int w, int h) {
@@ -319,6 +318,48 @@ class Spin extends FraymotifEffect {
     void apply(Fraymotif f, Combatant c, int w, int h) {
         if(speed == 0) speed = f.rand.nextInt(50);
         angle += 1.0* speed;
+        double rotation = angle * Math.PI / 180.0;
+        f.rotation  = rotation;
+        syncEnemy(c, f,w,h);
+    }
+}
+
+class BackwardsSpin extends FraymotifEffect {
+    double angle = 0.0;
+    int speed = 0;
+
+    @override
+    void reset() {
+        angle = 0.0;
+        speed = 0;
+    }
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        if(speed == 0) speed = f.rand.nextInt(50);
+        angle += -1*1.0* speed;
+        double rotation = angle * Math.PI / 180.0;
+        f.rotation  = rotation;
+        syncEnemy(c, f,w,h);
+    }
+}
+
+class HalfSpin extends FraymotifEffect {
+    double angle = 0.0;
+    int frame = 0;
+    int maxAngle = 0;
+
+    @override
+    void reset() {
+        angle = 0.0;
+        frame = 0;
+        maxAngle = 0;
+    }
+    @override
+    void apply(Fraymotif f, Combatant c, int w, int h) {
+        if(maxAngle == 0) maxAngle = f.rand.nextInt(90);
+        frame += 1;
+
+        double angle = 1.0*(maxAngle % frame);
         double rotation = angle * Math.PI / 180.0;
         f.rotation  = rotation;
         syncEnemy(c, f,w,h);
