@@ -45,8 +45,10 @@ class BattleField {
     void setUpPlayerCommands() {
         List<Command> attacks = <Command>[new Aggrieve(attack),new Aggress(jumpAttack)];
         List<Command> defense = <Command> [new Abjure(defend),new Abstain(defend)];
+        List<Command> specials = <Command> [new Abuse(special),new Accuse(special)];
         commands.add(rand.pickFrom(attacks));
         commands.add(rand.pickFrom(defense));
+        commands.add(rand.pickFrom(specials));
         commands.add(new Abscond(abscond));
     }
 
@@ -86,6 +88,15 @@ class BattleField {
     }
 
     Future<Null> attack(Command c) {
+        idle = false;
+        player.defending = false;
+        textColor = c.textColor;
+        currentAttack = rand.pickFrom(c.results);
+        playerRollAttackAnimation(0);
+    }
+
+    //TODO this either starts up a fraymotif, or (if the timing is wrong) defends.
+    Future<Null> special(Command c) {
         idle = false;
         player.defending = false;
         textColor = c.textColor;
