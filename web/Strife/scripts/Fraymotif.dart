@@ -47,8 +47,8 @@ class Fraymotif {
             effects.add(rand.pickFrom(possibilities));
 
         }
-
-        
+        //if(rand.nextBool()) effects.add(new Spin());
+        effects.add(new Spin());
     }
 
     void initRandomFuckingObjects(int w, int h) {
@@ -163,15 +163,15 @@ abstract class FraymotifEffect {
 
     void keepInBounds(Fraymotif f,int w,int h) {
         if(f.canvas != null) {
-            if (f.x + f.canvas.width > w) f.x = w;
-            if (f.y + f.canvas.height > h) f.x = h;
-            if(f.x - f.canvas.width < 0) f.x = 0;
-            if(f.y - f.canvas.height < 0) f.x = 0;
+            if (f.x + f.canvas.width > w) f.x = w-f.canvas.width;
+            if (f.y + f.canvas.height > h) f.y = h-f.canvas.height;
+            if(f.x < 0) f.x = 0;
+            if(f.y < 0) f.y = 0;
         }else {
-            if (f.x + 100 > w) f.x = w;
-            if (f.y + 100 > h) f.x = h;
-            if(f.x - 100 < 0) f.x = 0;
-            if(f.y- 100 < 0) f.x = 0;
+            if (f.x + 100 > w) f.x = w-100;
+            if (f.y + 100 > h) f.y = h-100;
+            if(f.x < 0) f.x = 0;
+            if(f.y < 0) f.y = 0;
         }
 
     }
@@ -391,7 +391,7 @@ class MoveLeft extends FraymotifEffect {
     @override
     void apply(Fraymotif f, Combatant c, int w, int h) {
         if(speed ==0) speed = f.rand.nextInt(50);
-        f.x += 1* speed;
+        f.x += -1* speed;
         keepInBounds(f, w, h);
         syncEnemy(c, f,w,h);
     }
