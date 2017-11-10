@@ -1,6 +1,7 @@
 import "../../scripts/DollLib/DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
+import 'Combatant.dart';
 //fraymotifs are owned by combatants.
 class Fraymotif {
     static List<String> imageNames = <String>["blood","mind","rage","void","time","heart","breath","light","space","hope","life","doom"];
@@ -22,9 +23,21 @@ class Fraymotif {
     double _scaleX = 1.0;
     double _scaleY = 1.0;
     double rotation = 0.0;
+    List<FraymotifEffect> effects;
 
     Fraymotif(this.name, this.imgName, this.musicalThemeName, this.initialSeed) {
         resetRandom();
+        randomEffects();
+    }
+
+    void apply(Combatant c) {
+        for(FraymotifEffect f in effects) {
+            f.apply(this, c);
+        }
+    }
+
+    void randomEffects() {
+        effects.add(new MoveLeft());
     }
 
     void setScale(double x, double y) {
@@ -94,6 +107,16 @@ If the enemy is NOT defending, whatever happens to the fraymotif happens to the 
 
 Some fraymotifs will suck the enemy to their location, others will go to the enemies location. Whatever.
  */
-class FraymotifEffect {
+abstract class FraymotifEffect {
 
+    void apply(Fraymotif f, Combatant c);
+
+}
+
+class MoveLeft extends FraymotifEffect {
+  @override
+  void apply(Fraymotif f, Combatant c) {
+    f.x += 10;
+    if(!c.defending) c.x += 10;
+  }
 }
