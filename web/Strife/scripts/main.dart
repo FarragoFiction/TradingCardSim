@@ -56,6 +56,8 @@ String getNextSong() {
 }
 
 
+
+
 //TODO ((in fact, i just decided that only by beating the queen can you enter in your own players, or learn the secret to do it from the start))
 Future<Null> init() async{
     AudioElement bgMusic = querySelector("#bgAudio");
@@ -63,9 +65,15 @@ Future<Null> init() async{
     print("bgMusic is $bgMusic");
 
     bgMusic.onEnded.listen((e) {
-        bgMusic.src = getNextSong();
-        bgMusic.currentTime = 0;
-        bgMusic.play();
+        new Timer(new Duration(milliseconds: 3000), () {
+            //might be playing a fraymotif
+            if(bgMusic.paused) {
+                bgMusic.src = getNextSong();
+                bgMusic.currentTime = 0;
+                bgMusic.play();
+            }
+        });
+
     });
     battleField = new BattleField(getPlayer1(), getPlayer2(), bgMusic, fxMusic);
     Element holder = await battleField.firstDraw();

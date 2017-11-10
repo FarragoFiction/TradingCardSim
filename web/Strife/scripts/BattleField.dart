@@ -101,11 +101,17 @@ class BattleField {
         player.defending = false;
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
-        //TODO fraymotifs will do nothing if you don't satisfy their initial conditions. Think Sepulchritude.
-        fraymotifInEffect = rand.pickFrom(player.fraymotifs);
-        print("fraymotif chosen is ${fraymotifInEffect.name}");
-        changeMusic(fraymotifInEffect.musicLocation);
-        playerFraymotifAnimation(0);
+        //fraymotifs will do nothing if you don't do them at the right time. Think Sepulchritude.
+        if(backGroundMusic.paused) {
+            fraymotifInEffect = rand.pickFrom(player.fraymotifs);
+            print("fraymotif chosen is ${fraymotifInEffect.name}");
+            changeMusic(fraymotifInEffect.musicLocation);
+            playerFraymotifAnimation(0);
+        }else {
+            player.defending = true;
+            defendPlayerAnimation(0, true);
+        }
+
     }
 
     void changeMusic(String newMusicLocation) {
