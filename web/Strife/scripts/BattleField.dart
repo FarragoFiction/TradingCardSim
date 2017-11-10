@@ -230,7 +230,7 @@ class BattleField {
         int numberFrames = 100;
        // print("current text is $currentText");
         //TODO have fraymotif animate itself and the enemy (should the enemy be not defending).
-        fraymotifInEffect.apply(enemy);
+        fraymotifInEffect.apply(enemy,canvas.width, canvas.height);
         draw();
         frame ++;
         if(frame < numberFrames) {

@@ -38,7 +38,7 @@ class Fraymotif {
     }
 
     void randomEffects() {
-        effects.add(new MoveLeft());
+        effects.add(new Warp());
     }
 
     void setScale(double x, double y) {
@@ -144,7 +144,7 @@ class Warp extends FraymotifEffect {
         f.x = newX;
         f.y = newY;
         keepInBounds(f,w,h);
-        
+
         if(!c.defending) {
             c.x = newX;
             c.y = newY;
