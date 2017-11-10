@@ -92,7 +92,7 @@ class BattleField {
         player.defending = true;
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
-        defendPlayerAnimation(0);
+        defendPlayerAnimation(0,true);
     }
 
 
@@ -117,7 +117,7 @@ class BattleField {
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
         enemy.defending = true;
-        enemyDefendAnimation(0);
+        enemyDefendAnimation(0, true);
     }
 
     Future<Null> jumpAttack(Command c) {
@@ -276,10 +276,11 @@ class BattleField {
     }
 
 
-    Future<Null> enemyDefendAnimation(int frame) async {
+    Future<Null> enemyDefendAnimation(int frame,[bool isAttack = false]) async {
         print("defend");
         int numberFrames = 8;
         currentText = currentAttack.defense;
+        if(isAttack) currentText = currentAttack.attack;
         double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
@@ -320,10 +321,11 @@ class BattleField {
     }
 
 
-    Future<Null> defendPlayerAnimation(int frame) async {
+    Future<Null> defendPlayerAnimation(int frame,[bool isAttack = false]) async {
         print("defend");
         int numberFrames = 8;
         currentText = currentAttack.defense;
+        if(isAttack) currentText = currentAttack.attack;
         double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
@@ -341,9 +343,10 @@ class BattleField {
         }
     }
 
-    Future<Null> abscondPlayerAnimation(int frame) async {
+    Future<Null> abscondPlayerAnimation(int frame, [bool isAttack = false]) async {
         int numberFrames = 8;
         currentText = currentAttack.defense;
+        if(isAttack) currentText = currentAttack.attack;
         double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
