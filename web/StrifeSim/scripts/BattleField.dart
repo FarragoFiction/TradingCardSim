@@ -63,7 +63,7 @@ class BattleField {
     void setUpEnemyCommands() {
         enemyCommands.clear();
         if(currentEnemy.doll is DadDoll) {
-            enemyCommands.add(new DadAttackCommands(milesAttack));
+            enemyCommands.add(new DadAttackCommands(lameAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
         }else if(currentEnemy.doll is ConsortDoll) {
             enemyCommands.add(new ConsortAttackCommands(enemyFlipAttack));

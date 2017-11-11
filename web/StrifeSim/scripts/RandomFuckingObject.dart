@@ -6,7 +6,7 @@ import "dart:math" as Math;
 class RandomFuckingObject {
 
     CanvasElement canvas;
-    static int maxItemNumber = 40;//40
+    static int maxItemNumber = 107;//40
     String _imgFolder = "images/Homestuck/Fraymotifs";
 
     int imgNumber;
