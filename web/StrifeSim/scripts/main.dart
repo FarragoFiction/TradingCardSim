@@ -35,6 +35,28 @@ void main() {
     init();
 }
 
+Future<Null> drawFormForCombatant(Combatant c) async {
+        Element ret = new DivElement();
+        ret.setInnerHtml("Doll URL: ");
+        TextAreaElement dollArea = new TextAreaElement();
+        dollArea.value = c.doll.toDataBytesX();
+        ButtonElement dollButton = new ButtonElement();
+        dollButton.setInnerHtml("Load Doll");
+        ret.append(dollArea);
+        ret.append(dollButton);
+
+        dollButton.onClick.listen((Event e) {
+            c.doll = Doll.loadSpecificDoll(dollArea.value);
+            c.dirty = true;
+            c.draw();
+        });
+        await c.draw();
+        div.append(c.canvas);
+        div.append(ret);
+}
+
+
+
 //wait, EGGS!?  In MY strife? It's more likely than you think.
 Combatant getPlayer1() {
 
@@ -84,8 +106,20 @@ Future<Null> init() async{
 
     });
     battleField = new BattleField(getPlayer1(), getEnemies(), bgMusic, fxMusic);
+    drawCustomizationForms();
+
+}
+
+Future<Null> drawCustomizationForms() async {
+    await drawFormForCombatant(battleField.player);
+    for(Combatant c in battleField.enemies) {
+        await drawFormForCombatant(c);
+    }
+}
+
+Future<Null> startStife() async {
     Element holder = await battleField.firstDraw();
-    bgMusic.play();
+    battleField.backGroundMusic.play();
     holder.className = "cardCanvas";
 
     div.append(holder);

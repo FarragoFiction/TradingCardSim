@@ -45,6 +45,8 @@ class Combatant {
         print("Made fraymotif ${fraymotifs.first.name}");
     }
 
+
+
     void cheat() {
         maxHP = 1300;
         power = 1300;
@@ -118,6 +120,7 @@ class Combatant {
         }
         if(dirty) {
             dirty = false;
+            Renderer.clearCanvas(canvas);
             await Renderer.drawDoll(canvas,doll);
         }
 
