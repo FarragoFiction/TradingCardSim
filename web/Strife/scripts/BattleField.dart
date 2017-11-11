@@ -57,8 +57,18 @@ class BattleField {
 
     void setUpEnemyCommands() {
         //TODO once i have more than just dads, different attacks
-        enemyCommands.add(new DadAttackCommands(lameAttack));
-        enemyCommands.add(new DadDefenseCommands(lameDefense));
+        enemies.clear();
+        if(currentEnemy.doll is DadDoll) {
+            enemyCommands.add(new DadAttackCommands(lameAttack));
+            enemyCommands.add(new DadDefenseCommands(lameDefense));
+        }else if(currentEnemy is ConsortDoll) {
+            enemyCommands.add(new ConsortAttackCommands(lameAttack));
+            enemyCommands.add(new DadDefenseCommands(lameDefense));
+        }else {
+            enemyCommands.add(new Aggrieve(lameAttack));
+            enemyCommands.add(new DadDefenseCommands(lameDefense));
+        }
+
     }
 
     void nextTurn() {
@@ -272,6 +282,8 @@ class BattleField {
         player.restoreHP();
         int nextIndex = enemies.indexOf(currentEnemy) + 1;
         currentEnemy = enemies[nextIndex];
+        setUpEnemyCommands();
+        nextTurn();
     }
 
     void repeatStrife() {
