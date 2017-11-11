@@ -56,12 +56,11 @@ class BattleField {
     }
 
     void setUpEnemyCommands() {
-        //TODO once i have more than just dads, different attacks
-        enemies.clear();
+        enemyCommands.clear();
         if(currentEnemy.doll is DadDoll) {
             enemyCommands.add(new DadAttackCommands(lameAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
-        }else if(currentEnemy is ConsortDoll) {
+        }else if(currentEnemy.doll is ConsortDoll) {
             enemyCommands.add(new ConsortAttackCommands(lameAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
         }else {
@@ -230,8 +229,8 @@ class BattleField {
         canvas.context2D.font = "${fontSize}px Strife";
         canvas.context2D.fillText(currentText,500,fontSize);
         canvas.context2D.font = "22px Strife";
-        canvas.context2D.fillText("${player.currentHP} HP, ${player.currentMana} MP ",800,fontSize);
-        canvas.context2D.fillText("${currentEnemy.currentHP}, HP, ${currentEnemy.currentMana} MP",100,fontSize);
+        canvas.context2D.fillText("${player.currentHP} HP, ${player.currentMana} MP ",800,2*fontSize);
+        canvas.context2D.fillText("${currentEnemy.currentHP}, HP, ${currentEnemy.currentMana} MP",100,2*fontSize);
 
     }
 
@@ -279,9 +278,11 @@ class BattleField {
     }
 
     void newStrife() {
+        print("doing things ${enemies}");
         player.restoreHP();
         int nextIndex = enemies.indexOf(currentEnemy) + 1;
         currentEnemy = enemies[nextIndex];
+        enemyTurn = true; //next turn will make it be my turn.
         setUpEnemyCommands();
         nextTurn();
     }
@@ -296,6 +297,7 @@ class BattleField {
         int numberFrames = 50;
        // print("current text is $currentText");
         fraymotifInEffect.apply(currentEnemy,canvas.width, canvas.height);
+        currentEnemy.removeHealth((player.power/10).round()); //damage over time
         draw();
         frame ++;
         if(frame < numberFrames) {

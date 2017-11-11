@@ -13,7 +13,9 @@ Element div = querySelector("#contents");
 bool egg = false;
 bool troll = false;
 int musicIndex = 0;
-List<String> backGroundMusicSnippets = <String>["Showdads_Strifing_Part_1.ogg","Showdads_Strifing_Part_2.ogg","Showdads_Strifing_Part_3.ogg","Showdads_Strifing_Part_4.ogg","Showdads_Strifing_Part_5.ogg"];
+List<String> backGroundMusicSnippets = <String>["bg.ogg"];
+
+//List<String> backGroundMusicSnippets = <String>["Showdads_Strifing_Part_1.ogg","Showdads_Strifing_Part_2.ogg","Showdads_Strifing_Part_3.ogg","Showdads_Strifing_Part_4.ogg","Showdads_Strifing_Part_5.ogg"];
 void main() {
     loadNavbar();
 
