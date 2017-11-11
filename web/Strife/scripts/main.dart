@@ -32,16 +32,16 @@ void main() {
 //wait, EGGS!?  In MY strife? It's more likely than you think.
 Combatant getPlayer1() {
     if(egg) {
-        return new Combatant(new EggDoll());
+        return new Combatant(new EggDoll(),100,33);
     }else if(troll) {
-        return new Combatant(new HomestuckTrollDoll());
+        return new Combatant(new HomestuckTrollDoll(),100,33);
     }{
-        return new Combatant(new HomestuckDoll());
+        return new Combatant(new HomestuckDoll(),100,33);
     }
 }
 
-Combatant getPlayer2() {
-    return new Combatant(new DadDoll());
+List<Combatant> getEnemies() {
+    return <Combatant>[new Combatant(new DadDoll(),100,33),new Combatant(new ConsortDoll(),100,33),new Combatant(new DenizenDoll(),100,33),new Combatant(new QueenDoll(),100,33)];
 }
 
 String getNextSong() {
@@ -75,7 +75,7 @@ Future<Null> init() async{
         });
 
     });
-    battleField = new BattleField(getPlayer1(), getPlayer2(), bgMusic, fxMusic);
+    battleField = new BattleField(getPlayer1(), getEnemies(), bgMusic, fxMusic);
     Element holder = await battleField.firstDraw();
     bgMusic.play();
     holder.className = "cardCanvas";

@@ -24,21 +24,23 @@ class BattleField {
     AudioElement backGroundMusic;
     AudioElement fxAudio;
     Combatant player;
-    Combatant enemy;
+    Combatant currentEnemy;
     int width = 1000;
     int height = 400;
+    List<Combatant> enemies = new List<Combatant>();
     List<Command> commands = new List<Command>();
     List<Command> enemyCommands = new List<Command>();
 
-    BattleField(this.player, this.enemy, this.backGroundMusic, this.fxAudio) {
+    BattleField(this.player, this.enemies, this.backGroundMusic, this.fxAudio) {
+        this.currentEnemy = this.enemies[0];
         rand = new Random();
         rand.nextInt(255);
         height = Math.max(height, player.doll.height);
-        height = Math.max(height, enemy.doll.height);
+        height = Math.max(height, currentEnemy.doll.height);
         player.y = height - player.doll.height;
-        enemy.y= height - enemy.doll.height;
+        currentEnemy.y= height - currentEnemy.doll.height;
         player.x = 500;
-        enemy.x = 50;
+        currentEnemy.x = 50;
         setUpPlayerCommands();
         setUpEnemyCommands();
     }
@@ -60,6 +62,14 @@ class BattleField {
     }
 
     void nextTurn() {
+        if(currentEnemy.dead) {
+            winAnimation(0);
+            return;
+        }else if(player.dead) {
+            loseAnimation(0);
+            return;
+        }
+
         if(!enemyTurn) {
             enemyTakeTurn();
         }else {
@@ -79,13 +89,13 @@ class BattleField {
 
     void resetSprites() {
         player.y = height - player.doll.height;
-        enemy.y= height - enemy.doll.height;
+        currentEnemy.y= height - currentEnemy.doll.height;
         player.x = 500;
-        enemy.x = 50;
+        currentEnemy.x = 50;
         player.setScale(1.0, 1.0);
-        enemy.setScale(1.0, 1.0);
+        currentEnemy.setScale(1.0, 1.0);
         player.rotation = 0.0;
-        enemy.rotation = 0.0;
+        currentEnemy.rotation = 0.0;
     }
 
     Future<Null> attack(Command c) {
@@ -143,7 +153,7 @@ class BattleField {
     Future<Null> lameAttack(Command c) {
         idle = false;
         textColor = c.textColor;
-        enemy.defending = false;
+        currentEnemy.defending = false;
         currentAttack = rand.pickFrom(c.results);
         enemyAttackAnimation(0);
     }
@@ -152,7 +162,7 @@ class BattleField {
         idle = false;
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
-        enemy.defending = true;
+        currentEnemy.defending = true;
         enemyDefendAnimation(0, true);
     }
 
@@ -188,7 +198,7 @@ class BattleField {
 
         player.turnWays = true;
         CanvasElement player1Canvas = await player.draw();
-        CanvasElement player2Canvas = await enemy.draw();
+        CanvasElement player2Canvas = await currentEnemy.draw();
 
         if(fraymotifInEffect != null) {
             CanvasElement fraymotifCanvas = await fraymotifInEffect.draw(canvas.width, canvas.height);
@@ -200,14 +210,17 @@ class BattleField {
         }
 
 
-        canvas.context2D.drawImage(player2Canvas,enemy.x, enemy.y);
-        canvas.context2D.drawImage(player2Canvas,enemy.x, enemy.y);
+        canvas.context2D.drawImage(player2Canvas,currentEnemy.x, currentEnemy.y);
+        canvas.context2D.drawImage(player2Canvas,currentEnemy.x, currentEnemy.y);
         canvas.context2D.drawImage(player1Canvas, player.x, player.y);
         int fontSize = 48;
         canvas.context2D.fillStyle = textColor.toStyleString();
         canvas.context2D.textAlign="center";
         canvas.context2D.font = "${fontSize}px Strife";
         canvas.context2D.fillText(currentText,500,fontSize);
+        canvas.context2D.font = "22px Strife";
+        canvas.context2D.fillText("${player.currentHP} HP, ${player.currentMana} MP ",800,fontSize);
+        canvas.context2D.fillText("${currentEnemy.currentHP}, HP, ${currentEnemy.currentMana} MP",100,fontSize);
 
     }
 
@@ -223,18 +236,53 @@ class BattleField {
         resetSprites();
 
         player.rotation = -1*rotation;
-        enemy.rotation = rotation;
+        currentEnemy.rotation = rotation;
 
         draw();
         frame ++;
         if(idle) new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(frame));
     }
 
+
+
+    Future<Null> winAnimation(int frame) async {
+        // print("idle");
+        if(enemyTurn) {
+            enemyTurn = false; //if i'm idling, it's the players turn.
+        }
+        currentText = "You win!!!";
+
+        draw();
+        new Timer(new Duration(milliseconds: 3000), () => newStrife());
+    }
+
+    Future<Null> loseAnimation(int frame) async {
+        // print("idle");
+        if(enemyTurn) {
+            enemyTurn = false; //if i'm idling, it's the players turn.
+        }
+        currentText = "You lost??? Try again.";
+
+        draw();
+        new Timer(new Duration(milliseconds: 3000), () => repeatStrife());
+    }
+
+    void newStrife() {
+        player.restore();
+        int nextIndex = enemies.indexOf(currentEnemy) + 1;
+        currentEnemy = enemies[nextIndex];
+    }
+
+    void repeatStrife() {
+        player.restore();
+        currentEnemy.restore();
+    }
+
     Future<Null> playerFraymotifAnimation(int frame) async {
         currentText = fraymotifInEffect.name;
         int numberFrames = 50;
        // print("current text is $currentText");
-        fraymotifInEffect.apply(enemy,canvas.width, canvas.height);
+        fraymotifInEffect.apply(currentEnemy,canvas.width, canvas.height);
         draw();
         frame ++;
         if(frame < numberFrames) {
@@ -258,7 +306,7 @@ class BattleField {
         if(frame < numberFrames*1.5) {
             new Timer(new Duration(milliseconds: frameRate), () => playerRollAttackAnimation(frame));
         }else {
-            if(enemy.defending) {
+            if(currentEnemy.defending) {
                 new Timer(new Duration(milliseconds: frameRate), () => enemyDefendAnimation(0));
             }else {
                 new Timer(new Duration(milliseconds: frameRate), () => damageEnemy(0));
@@ -273,8 +321,8 @@ class BattleField {
         int numberFrames = 5;
         double angle = 5.0 - 2* (frame % 3);
         double rotation = angle * Math.PI / 180.0;
-        enemy.rotation = rotation;
-        enemy.x += 80;
+        currentEnemy.rotation = rotation;
+        currentEnemy.x += 80;
 
         draw();
         frame ++;
@@ -310,7 +358,7 @@ class BattleField {
         if(frame < numberFrames*1.5) {
             new Timer(new Duration(milliseconds: frameRate), () => playerJumpAttackAnimation(frame));
         }else {
-            if(!enemy.defending) {
+            if(!currentEnemy.defending) {
                 new Timer(new Duration(milliseconds: frameRate), () => damageEnemy(0));
             }else {
                 new Timer(new Duration(milliseconds: frameRate), () => enemyDefendAnimation(0));
@@ -324,14 +372,15 @@ class BattleField {
         double angle = frame * 10/numberFrames;
         double rotation = angle * Math.PI / 180.0;
         fxAudio.play();
-        enemy.rotation = -1*rotation;
-        enemy.y += -1;
+        currentEnemy.rotation = -1*rotation;
+        currentEnemy.y += -1;
         draw();
         frame ++;
         if(frame < numberFrames) {
             new Timer(new Duration(milliseconds: frameRate), () => damageEnemy(frame));
         }else {
             idle = true;
+            currentEnemy.removeHealth(player.power);
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
 
         }
@@ -346,15 +395,17 @@ class BattleField {
         double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
 
-        enemy.rotation = rotation;
-        enemy.setScale(1.05, 1.05);
-        enemy.y += -2;
+        currentEnemy.rotation = rotation;
+        currentEnemy.setScale(1.05, 1.05);
+        currentEnemy.y += -2;
         draw();
         frame ++;
         if(frame < numberFrames) {
             new Timer(new Duration(milliseconds: frameRate), () => enemyDefendAnimation(frame, isAttack));
         }else {
             idle = true;
+            if(!isAttack) currentEnemy.removeHealth(player.power); //if i choose to defend, then don't take damage
+
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
 
         }
@@ -379,14 +430,14 @@ class BattleField {
             new Timer(new Duration(milliseconds: frameRate), () => damagePlayer(frame));
         }else {
             idle = true;
+            player.removeHealth(currentEnemy.power);
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
-
         }
     }
 
 
     Future<Null> defendPlayerAnimation(int frame,[bool isAttack = false]) async {
-        print("defend");
+        //print("defend");
         int numberFrames = 8;
         currentText = currentAttack.defense;
         if(isAttack) currentText = currentAttack.attack;
@@ -402,6 +453,7 @@ class BattleField {
             new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(frame,isAttack));
         }else {
             idle = true;
+            if(!isAttack) player.removeHealth(currentEnemy.power); //if i choose to defend, then don't take damage
             new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
 
         }

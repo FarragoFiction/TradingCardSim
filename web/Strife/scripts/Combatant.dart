@@ -10,6 +10,11 @@ import "dart:math" as Math;
 
  */
 class Combatant {
+    int maxHP;
+    int currentHP;
+    int manaThreshold = 100;
+    int currentMana = 0;
+    int power;
     Doll doll;
     //get a new fraymotif every time you win.
     List<Fraymotif> fraymotifs = new List<Fraymotif>();
@@ -30,7 +35,8 @@ class Combatant {
     int height = 0;
 
 
-    Combatant(this.doll) {
+    Combatant(this.doll, this.maxHP, this.power) {
+        this.currentHP = this.maxHP;
         //needs to be a square so i can do full rotation.
         width = Math.max(doll.width, doll.height);
         height = width;
@@ -38,6 +44,24 @@ class Combatant {
         fraymotifs.add(Fraymotif.randomFraymotif());
         print("Made fraymotif ${fraymotifs.first.name}");
 
+    }
+
+    bool get dead {
+        currentHP <= 0;
+    }
+
+    void restore() {
+        currentHP = maxHP;
+        currentMana = 0;
+    }
+
+    void removeHealth(int power) {
+        if(defending) {
+            currentHP += (-0.1 * power).ceil();
+            currentMana += (0.9 * power).floor();
+        }else {
+            currentHP += -1 * power;
+        }
     }
 
     void restoreCanvas() {
