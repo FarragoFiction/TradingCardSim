@@ -340,7 +340,7 @@ class BattleField {
         }else {
            fraymotifInEffect = null; //done
            backGroundMusic.playbackRate = 4.0; //hurry through ending
-           player.currentMana = 0;
+           player.currentMana += -1 * player.manaThreshold;
            new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
         }
     }
@@ -370,18 +370,16 @@ class BattleField {
     //guy on right attacks guy on left.
     Future<Null> enemyFlipOutAttackAnimation(int frame) async {
         currentText = currentAttack.attack;
-        int numberFrames = 5;
-        double angle = 5.0 - 2* (frame % 3);
-        double rotation = angle * Math.PI / 180.0;
-        if(frame %2 == 0) {
-            player.flip();
+        int numberFrames = 10;
+        if(frame %3 == 0) {
+            currentEnemy.flip();
         }
-        currentEnemy.x += 80;
+        currentEnemy.x += 40;
 
         draw();
         frame ++;
         if(frame < numberFrames*1.5) {
-            new Timer(new Duration(milliseconds: frameRate), () => enemyAttackAnimation(frame));
+            new Timer(new Duration(milliseconds: frameRate), () => enemyFlipOutAttackAnimation(frame));
         }else {
             if(!player.defending) {
                 new Timer(new Duration(milliseconds: frameRate), () => damagePlayer(0));
