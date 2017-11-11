@@ -276,7 +276,7 @@ class BattleField {
 
     Future<Null> loseAnimation(int frame) async {
         int numberFrames = 40;
-
+        currentText = "You lost??? Try again.";
         if(frame %10 == 0) {
             currentEnemy.flip();
         }
@@ -304,7 +304,9 @@ class BattleField {
 
     void repeatStrife() {
         player.resetStats();
+        enemyTurn = true; //next turn will make it be my turn.
         currentEnemy.resetStats();
+        nextTurn();
     }
 
     Future<Null> playerFraymotifAnimation(int frame) async {
