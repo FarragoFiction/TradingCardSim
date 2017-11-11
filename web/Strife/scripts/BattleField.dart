@@ -331,6 +331,7 @@ class BattleField {
             new Timer(new Duration(milliseconds: frameRate), () => playerFraymotifAnimation(frame));
         }else {
            fraymotifInEffect = null; //done
+           backGroundMusic.playbackRate = 4.0; //hurry through ending
            player.currentMana = 0;
            new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
         }

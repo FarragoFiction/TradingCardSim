@@ -73,6 +73,7 @@ Future<Null> init() async{
                 bgMusic.src = getNextSong();
                 bgMusic.currentTime = 0;
                 bgMusic.play();
+                bgMusic.playbackRate = 1.0;
             }
         });
 

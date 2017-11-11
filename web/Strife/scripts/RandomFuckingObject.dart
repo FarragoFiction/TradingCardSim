@@ -19,8 +19,12 @@ class RandomFuckingObject {
     double _scaleX = 1.0;
     double _scaleY = 1.0;
     double rotation = 0.0;
+    //so i can preload my shit.
+    ImageElement imageElement;
 
-    RandomFuckingObject(this.imgNumber, this.offsetX, this.offsetY);
+    RandomFuckingObject(this.imgNumber, this.offsetX, this.offsetY) {
+        getImage(); //at least try to preload.
+    }
 
     int get x => _x + offsetX;
     int get y => _y + offsetY;
@@ -42,12 +46,18 @@ class RandomFuckingObject {
         _scaleY = y;
     }
 
+    //TODO
+    Future<Null> getImage() async {
+        imageElement = await Loader.getResource((imageLocation));
+    }
+
     Future<CanvasElement> draw(int w, int h) async {
         if(canvas == null) {
-            ImageElement image = await Loader.getResource((imageLocation));
-            int width = Math.max(image.width, image.height);
+            //ImageElement image = await Loader.getResource((imageLocation));
+            if(imageElement == null) await getImage();
+            int width = Math.max(imageElement.width, imageElement.height);
             canvas = new CanvasElement(width: width, height: width); //need extra room for space
-            canvas.context2D.drawImage(image, 0, 0);
+            canvas.context2D.drawImage(imageElement, 0, 0);
         }
         return await drawForReal(canvas,w,h);
     }
