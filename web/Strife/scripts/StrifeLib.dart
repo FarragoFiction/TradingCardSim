@@ -12,6 +12,7 @@ export "Commands/Accuse.dart";
 export "Commands/Abscond.dart";
 export "Commands/DadAttackCommands.dart";
 export "Commands/ConsortAttackCommands.dart";
+export "Commands/QueenAttackCommands.dart";
 export "Commands/DadDefenseCommands.dart";
 export "Fraymotif.dart";
 export "RandomFuckingObject.dart";

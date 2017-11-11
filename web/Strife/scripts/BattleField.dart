@@ -63,6 +63,9 @@ class BattleField {
         }else if(currentEnemy.doll is ConsortDoll) {
             enemyCommands.add(new ConsortAttackCommands(lameAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
+        }else if(currentEnemy.doll is QueenDoll) {
+            enemyCommands.add(new QueenAttackCommands(lameAttack));
+            enemyCommands.add(new DadDefenseCommands(lameDefense));
         }else {
             enemyCommands.add(new Aggrieve(lameAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
