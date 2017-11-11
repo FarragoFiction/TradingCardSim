@@ -9,7 +9,7 @@ import 'dart:html';
 
 BattleField battleField;
 int frame = 0;
-Element div = querySelector("#contents");
+Element div = querySelector("#strife");
 bool egg = false;
 bool troll = false;
 bool cheating = false;
@@ -70,7 +70,7 @@ Combatant getPlayer1() {
 }
 
 List<Combatant> getEnemies() {
-    return <Combatant>[new Combatant(new DadDoll(),100,33),new Combatant(new ConsortDoll(),130,44),new Combatant(new DenizenDoll(),150,55),new Combatant(new QueenDoll(),200,66)];
+    return <Combatant>[new Combatant(new DadDoll(),100,33),new Combatant(new ConsortDoll(),130,44),new Combatant(new DenizenDoll(),150,55),new Combatant(new QueenDoll(false),200,66)];
 }
 
 String getNextSong() {
@@ -115,6 +115,15 @@ Future<Null> drawCustomizationForms() async {
     for(Combatant c in battleField.enemies) {
         await drawFormForCombatant(c);
     }
+
+    ButtonElement b = new ButtonElement();
+    b.setInnerHtml("Start Strife!!!");
+    b.onClick.listen((e)
+    {
+        div.setInnerHtml("");
+        startStife();
+    });
+    div.append(b);
 }
 
 Future<Null> startStife() async {
