@@ -121,6 +121,8 @@ class Combatant {
         if(dirty) {
             dirty = false;
             Renderer.clearCanvas(canvas);
+            canvas.width = doll.width;
+            canvas.height = doll.height;
             await Renderer.drawDoll(canvas,doll);
         }
 
