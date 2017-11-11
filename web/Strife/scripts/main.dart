@@ -79,31 +79,7 @@ Future<Null> init() async{
     Element holder = await battleField.firstDraw();
     bgMusic.play();
     holder.className = "cardCanvas";
-
-    ButtonElement button = new ButtonElement();
-    button.setInnerHtml("Change Music Test");
-    div.append(button);
-    button.onClick.listen((e) {
-        bgMusic.src = "../music/Hymn_of_Lost_Hope_Segment.ogg";
-        bgMusic.play();
-    });
-
-
-    button = new ButtonElement();
-    button.setInnerHtml("Speed Up Music Test");
-    div.append(button);
-    button.onClick.listen((e) {
-        bgMusic.playbackRate = 4.0;
-    });
-
-    button = new ButtonElement();
-    button.setInnerHtml("Slow Down Music Test");
-    div.append(button);
-    button.onClick.listen((e) {
-        bgMusic.playbackRate = 0.5;
-    });
-
-
+    
     div.append(holder);
     battleField.idleAnimation(1);
 }
