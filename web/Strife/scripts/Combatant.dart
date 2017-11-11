@@ -45,6 +45,12 @@ class Combatant {
 
     }
 
+    void levelUp() {
+        power += (power/5).round();
+        maxHP += (maxHP/5).round();
+        currentHP = maxHP;
+    }
+
     void addRandomFraymotif() {
         fraymotifs.add(Fraymotif.randomFraymotif());
     }
@@ -87,6 +93,11 @@ class Combatant {
     void setScale(double x, double y) {
         _scaleX = x;
         _scaleY = y;
+    }
+
+
+    void flip() {
+        _scaleX = -1 * _scaleX;
     }
 
     Future<CanvasElement> draw() async

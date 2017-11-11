@@ -73,6 +73,7 @@ class BattleField {
     void nextTurn() {
         //print("next turn is player dead? ${player.dead} and is enemy dead? ${currentEnemy.dead}");
         if(currentEnemy.dead) {
+            resetSprites();
             winAnimation(0);
             return;
         }else if(player.dead) {
@@ -256,30 +257,44 @@ class BattleField {
 
 
     Future<Null> winAnimation(int frame) async {
-        // print("idle");
-        if(enemyTurn) {
-            enemyTurn = false; //if i'm idling, it's the players turn.
-        }
         currentText = "You win!!!";
-        player.addRandomFraymotif();
+        int numberFrames = 40;
+
+        if(frame %10 == 0) {
+            player.flip();
+        }
+        player.x += 1;
+        currentEnemy.y = 1000; //go off screen, asshole.
         draw();
-        new Timer(new Duration(milliseconds: 3000), () => newStrife());
+        frame ++;
+        if(frame < numberFrames) {
+            new Timer(new Duration(milliseconds: frameRate), () => winAnimation(frame));
+        }else {
+            new Timer(new Duration(milliseconds: frameRate), () => newStrife());
+        }
     }
 
     Future<Null> loseAnimation(int frame) async {
-        // print("idle");
-        if(enemyTurn) {
-            enemyTurn = false; //if i'm idling, it's the players turn.
-        }
-        currentText = "You lost??? Try again.";
+        int numberFrames = 40;
 
+        if(frame %10 == 0) {
+            currentEnemy.flip();
+        }
+        currentEnemy.x += 1;
         draw();
-        new Timer(new Duration(milliseconds: 3000), () => repeatStrife());
+        frame ++;
+        if(frame < numberFrames) {
+            new Timer(new Duration(milliseconds: frameRate), () => loseAnimation(frame));
+        }else {
+            new Timer(new Duration(milliseconds: frameRate), () => repeatStrife());
+        }
     }
 
     void newStrife() {
         print("doing things ${enemies}");
+        player.levelUp();
         player.restoreHP();
+        player.addRandomFraymotif();
         int nextIndex = enemies.indexOf(currentEnemy) + 1;
         currentEnemy = enemies[nextIndex];
         enemyTurn = true; //next turn will make it be my turn.
@@ -297,13 +312,14 @@ class BattleField {
         int numberFrames = 50;
        // print("current text is $currentText");
         fraymotifInEffect.apply(currentEnemy,canvas.width, canvas.height);
-        currentEnemy.removeHealth((player.power/10).round()); //damage over time
+        currentEnemy.removeHealth((player.power/50).round()); //damage over time
         draw();
         frame ++;
         if(frame < numberFrames) {
             new Timer(new Duration(milliseconds: frameRate), () => playerFraymotifAnimation(frame));
         }else {
            fraymotifInEffect = null; //done
+           player.currentMana = 0;
            new Timer(new Duration(milliseconds: frameRate), () => nextTurn());
         }
     }
