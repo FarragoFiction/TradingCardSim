@@ -26,6 +26,11 @@ class RandomFuckingObject {
         getImage(); //at least try to preload.
     }
 
+    void flip() {
+        _scaleX = -1 * _scaleX;
+    }
+
+
     int get x => _x + offsetX;
     int get y => _y + offsetY;
 

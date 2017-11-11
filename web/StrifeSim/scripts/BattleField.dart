@@ -12,6 +12,7 @@ import '../../scripts/DollLib/src/includes/predicates.dart';
 
 class BattleField {
     DivElement holder;
+    bool miles = false;
     CanvasElement canvas;
     Fraymotif fraymotifInEffect;
     //should be in pairs based on the command. Irnoic Negligence is defended with Abstain.
@@ -32,9 +33,11 @@ class BattleField {
     List<Command> commands = new List<Command>();
     List<Command> enemyCommands = new List<Command>();
     Lambda winCallback;
+    RandomFuckingObject redMiles;
 
     BattleField(this.player, this.enemies, this.backGroundMusic, this.fxAudio, this.winCallback) {
         this.currentEnemy = this.enemies[0];
+        redMiles = new RandomFuckingObject(999, 0, 0);
         rand = new Random();
         rand.nextInt(255);
         height = Math.max(height, player.doll.height);
@@ -60,13 +63,13 @@ class BattleField {
     void setUpEnemyCommands() {
         enemyCommands.clear();
         if(currentEnemy.doll is DadDoll) {
-            enemyCommands.add(new DadAttackCommands(lameAttack));
+            enemyCommands.add(new DadAttackCommands(milesAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
         }else if(currentEnemy.doll is ConsortDoll) {
             enemyCommands.add(new ConsortAttackCommands(enemyFlipAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
         }else if(currentEnemy.doll is QueenDoll) {
-            enemyCommands.add(new QueenAttackCommands(lameAttack));
+            enemyCommands.add(new QueenAttackCommands(milesAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
         }else {
             enemyCommands.add(new Aggrieve(lameAttack));
@@ -130,7 +133,7 @@ class BattleField {
         //fraymotifs will do nothing if you don't do them at the right time. Think Sepulchritude.
         if(player.canFraymotif) {
             fraymotifInEffect = rand.pickFrom(player.fraymotifs);
-            print("fraymotif chosen is ${fraymotifInEffect.name}");
+            //print("fraymotif chosen is ${fraymotifInEffect.name}");
             changeMusic(fraymotifInEffect.musicLocation);
             fraymotifInEffect.x = player.x;
             fraymotifInEffect.y = player.y;
@@ -172,6 +175,15 @@ class BattleField {
         currentEnemy.defending = false;
         currentAttack = rand.pickFrom(c.results);
         enemyAttackAnimation(0);
+    }
+
+    Future<Null> milesAttack(Command c) {
+        idle = false;
+        miles = true;
+        textColor = c.textColor;
+        currentEnemy.defending = false;
+        currentAttack = rand.pickFrom(c.results);
+        enemyMilesAttackAnimation(0);
     }
 
     Future<Null> enemyFlipAttack(Command c) {
@@ -245,6 +257,11 @@ class BattleField {
         canvas.context2D.font = "22px Strife";
         canvas.context2D.fillText("${player.currentHP} HP, ${player.currentMana} MP ",800,2*fontSize);
         canvas.context2D.fillText("${currentEnemy.currentHP}, HP, ${currentEnemy.currentMana} MP",100,2*fontSize);
+        if(miles) {
+            //print("drawing miles");
+            CanvasElement milesCanvas = await redMiles.draw(canvas.width, canvas.height);
+            canvas.context2D.drawImage(milesCanvas, player.x, 0);
+        }
 
     }
 
@@ -417,6 +434,27 @@ class BattleField {
         }
     }
 
+    //guy on right attacks guy on left.
+    Future<Null> enemyMilesAttackAnimation(int frame) async {
+        currentText = currentAttack.attack;
+        int numberFrames = 15;
+        if(frame %3 == 0) {
+            redMiles.flip();
+        }
+        draw();
+        frame ++;
+        if(frame < numberFrames*1.5) {
+            new Timer(new Duration(milliseconds: frameRate), () => enemyMilesAttackAnimation(frame));
+        }else {
+            miles = false;
+            if(!player.defending) {
+                new Timer(new Duration(milliseconds: frameRate), () => damagePlayer(0));
+            }else {
+                new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(0));
+            }
+        }
+    }
+
 
 
     //guy on right attacks guy on left.
@@ -468,7 +506,7 @@ class BattleField {
 
 
     Future<Null> enemyDefendAnimation(int frame,[bool isAttack = false]) async {
-        print("defend");
+       // print("defend");
         int numberFrames = 8;
         currentText = currentAttack.defense;
         if(isAttack) currentText = currentAttack.attack;
