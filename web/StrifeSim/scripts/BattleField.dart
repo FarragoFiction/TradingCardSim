@@ -370,7 +370,7 @@ class BattleField {
 
     Future<Null> playerFraymotifAnimation(int frame) async {
         currentText = fraymotifInEffect.name;
-        int numberFrames = 50;
+        int numberFrames = 100;
        // print("current text is $currentText");
         fraymotifInEffect.apply(currentEnemy,canvas.width, canvas.height);
 
