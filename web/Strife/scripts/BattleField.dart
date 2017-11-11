@@ -318,12 +318,13 @@ class BattleField {
        // print("current text is $currentText");
         fraymotifInEffect.apply(currentEnemy,canvas.width, canvas.height);
 
-        if(currentEnemy.defending) {
-            currentEnemy.removeHealth((player.power/130).round()); //damage over time, but much less
-        }else {
-            currentEnemy.removeHealth((player.power/50).round()); //damage over time
+        if(!currentEnemy.defending) {
+            fxAudio.play();
         }
-        
+
+        currentEnemy.removeHealth((player.power/30).round()); //damage over time
+
+
         draw();
         frame ++;
         if(frame < numberFrames) {

@@ -4,6 +4,7 @@ import "../../../scripts/DollLib/DollRenderer.dart";
 
 class ConsortAttackCommands extends Command {
     ConsortAttackCommands(Lambda methodToCall) : super("aggrieve",methodToCall) {
+        modifier.add("Secret");
         textColor = new Colour.fromStyleString("#ff0000");
         List<String> actions = <String> ["Nak!","Thip!","*tremble*", "Glub!", "Quest!", "Wizard", "Familiar", "Nak Nak!"];
         Random rand = new Random();
