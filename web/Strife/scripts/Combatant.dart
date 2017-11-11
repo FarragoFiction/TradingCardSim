@@ -46,8 +46,8 @@ class Combatant {
     }
 
     void levelUp() {
-        power += (power/5).round();
-        maxHP += (maxHP/5).round();
+        power += (power/6).round();
+        maxHP += (maxHP/6).round();
         currentHP = maxHP;
     }
 
