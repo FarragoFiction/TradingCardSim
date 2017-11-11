@@ -25,7 +25,7 @@ void main() {
         egg = true;
         window.alert("Yo Dawg, I herd you liek easter eggs???");
     }
-    if(getParameterByName("easter",null)  == "troll")  {
+    if(getParameterByName("egg",null)  == "troll")  {
         troll = true;
         window.alert("Huh. That's a weird sort of Lusus.");
     }
@@ -113,7 +113,7 @@ Future<Null> init() async{
         });
 
     });
-    battleField = new BattleField(getPlayer1(), getEnemies(), bgMusic, fxMusic);
+    battleField = new BattleField(getPlayer1(), getEnemies(), bgMusic, fxMusic, onWin);
     drawCustomizationForms();
 
 }
@@ -146,18 +146,20 @@ Future<Null> drawCustomizationForms() async {
 }
 
 void onWin(Combatant c) {
+    battleField.backGroundMusic.pause();
     AnchorElement win = new AnchorElement();
     win.href = "index.html?winner=you";
-    win.setInnerHtml("I wonder what winning earns you?");
+    win.setInnerHtml("<br><br>I wonder what winning earns you?");
 
     AnchorElement cheat = new AnchorElement();
     cheat.href = "index.html?cheaters=neverWin";
-    cheat.setInnerHtml("I wish this game were easier.");
+    cheat.setInnerHtml("<br><br>I wish this game were easier.");
 
 
     AnchorElement egg = new AnchorElement();
-    egg.href = "index.html?easter=egg";
-    egg.setInnerHtml("Yo dog.");
+    egg.href = "index.html?easter=egg&winner=you";
+    if(winner) egg.href = "index.html?easter=egg&egg=troll&winner=you"; //extra secret egg.
+    egg.setInnerHtml("<br><br>Yo dog.");
 
 
     DivElement winningLabel = new DivElement();
@@ -166,11 +168,12 @@ void onWin(Combatant c) {
     if(cheating) {
         winningLabel.setInnerHtml("You finished! But didn't you pay attention? Cheaters never win.");
     }else {
-        winningLabel.setInnerHtml("You win");
+        winningLabel.setInnerHtml("You win!!!");
         winningLabel.append(win);
         winningLabel.append(cheat);
         winningLabel.append(egg);
     }
+    div.setInnerHtml("");
     div.append(winningLabel);
 }
 
