@@ -93,7 +93,7 @@ class Fraymotif {
             canvas.context2D.drawImage(image, 0, 0);
             initRandomFuckingObjects(w, h);
         }
-        return drawForReal(canvas,w,h);
+        return await drawForReal(canvas,w,h);
     }
 
 

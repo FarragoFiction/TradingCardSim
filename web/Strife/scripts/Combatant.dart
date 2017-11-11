@@ -63,7 +63,7 @@ class Combatant {
         }
 
 
-        return drawForReal(canvas);
+        return await drawForReal(canvas);
 
     }
 

@@ -49,7 +49,7 @@ class RandomFuckingObject {
             canvas = new CanvasElement(width: width, height: width); //need extra room for space
             canvas.context2D.drawImage(image, 0, 0);
         }
-        return drawForReal(canvas,w,h);
+        return await drawForReal(canvas,w,h);
     }
 
 

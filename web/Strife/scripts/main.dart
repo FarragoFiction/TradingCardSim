@@ -79,7 +79,7 @@ Future<Null> init() async{
     Element holder = await battleField.firstDraw();
     bgMusic.play();
     holder.className = "cardCanvas";
-    
+
     div.append(holder);
     battleField.idleAnimation(1);
 }
