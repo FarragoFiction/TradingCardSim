@@ -9,6 +9,7 @@ class ConsortAttackCommands extends Command {
         List<String> actions = <String> ["Nak!","Thip!","*tremble*", "Glub!", "Quest!", "Wizard", "Familiar", "Nak Nak!"];
         Random rand = new Random();
         rand.nextInt();
+        results.add(new AttackDefensePair("Flip The Fuck Out!", "Oh god. Stop that!"));
         results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "What."));
         results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "What."));
         results.add(new AttackDefensePair("${rand.pickFrom(modifier)} ${rand.pickFrom(actions)}!", "What."));

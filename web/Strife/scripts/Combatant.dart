@@ -35,14 +35,22 @@ class Combatant {
     int height = 0;
 
 
-    Combatant(this.doll, this.maxHP, this.power) {
+    Combatant(this.doll, this.maxHP, this.power,[bool cheating]) {
         this.currentHP = this.maxHP;
         //needs to be a square so i can do full rotation.
         width = Math.max(doll.width, doll.height);
         height = width;
         addRandomFraymotif();
+        if(cheating) cheat();
         print("Made fraymotif ${fraymotifs.first.name}");
+    }
 
+    void cheat() {
+        maxHP = 1300;
+        power = 1300;
+        currentHP = 1300;
+        currentMana = 1300;
+        manaThreshold = 13;
     }
 
     void levelUp() {

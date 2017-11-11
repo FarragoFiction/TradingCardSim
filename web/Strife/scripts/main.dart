@@ -12,6 +12,7 @@ int frame = 0;
 Element div = querySelector("#contents");
 bool egg = false;
 bool troll = false;
+bool cheating = false;
 int musicIndex = 0;
 List<String> backGroundMusicSnippets = <String>["bg.ogg"];
 
@@ -25,7 +26,10 @@ void main() {
     }else if(getParameterByName("easter",null)  == "troll")  {
         troll = true;
         window.alert("Huh. That's a weird sort of Lusus.");
+    }
 
+    if(getParameterByName("cheaters",null)  == "neverWin"){
+        cheating = true;
     }
 
     init();
@@ -33,12 +37,13 @@ void main() {
 
 //wait, EGGS!?  In MY strife? It's more likely than you think.
 Combatant getPlayer1() {
+
     if(egg) {
-        return new Combatant(new EggDoll(),100,33);
+        return new Combatant(new EggDoll(),100,33,cheating);
     }else if(troll) {
-        return new Combatant(new HomestuckTrollDoll(),100,33);
+        return new Combatant(new HomestuckTrollDoll(),100,33,cheating);
     }{
-        return new Combatant(new HomestuckDoll(),100,33);
+        return new Combatant(new HomestuckDoll(),100,33,cheating);
     }
 }
 

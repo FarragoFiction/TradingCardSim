@@ -61,7 +61,7 @@ class BattleField {
             enemyCommands.add(new DadAttackCommands(lameAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
         }else if(currentEnemy.doll is ConsortDoll) {
-            enemyCommands.add(new ConsortAttackCommands(lameAttack));
+            enemyCommands.add(new ConsortAttackCommands(enemyFlipAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
         }else if(currentEnemy.doll is QueenDoll) {
             enemyCommands.add(new QueenAttackCommands(lameAttack));
@@ -170,6 +170,14 @@ class BattleField {
         currentEnemy.defending = false;
         currentAttack = rand.pickFrom(c.results);
         enemyAttackAnimation(0);
+    }
+
+    Future<Null> enemyFlipAttack(Command c) {
+        idle = false;
+        textColor = c.textColor;
+        currentEnemy.defending = false;
+        currentAttack = rand.pickFrom(c.results);
+        enemyFlipOutAttackAnimation(0);
     }
 
     Future<Null> lameDefense(Command c) {
@@ -358,6 +366,30 @@ class BattleField {
         }
     }
 
+
+    //guy on right attacks guy on left.
+    Future<Null> enemyFlipOutAttackAnimation(int frame) async {
+        currentText = currentAttack.attack;
+        int numberFrames = 5;
+        double angle = 5.0 - 2* (frame % 3);
+        double rotation = angle * Math.PI / 180.0;
+        if(frame %2 == 0) {
+            player.flip();
+        }
+        currentEnemy.x += 80;
+
+        draw();
+        frame ++;
+        if(frame < numberFrames*1.5) {
+            new Timer(new Duration(milliseconds: frameRate), () => enemyAttackAnimation(frame));
+        }else {
+            if(!player.defending) {
+                new Timer(new Duration(milliseconds: frameRate), () => damagePlayer(0));
+            }else {
+                new Timer(new Duration(milliseconds: frameRate), () => defendPlayerAnimation(0));
+            }
+        }
+    }
 
     //guy on right attacks guy on left.
     Future<Null> enemyAttackAnimation(int frame) async {
