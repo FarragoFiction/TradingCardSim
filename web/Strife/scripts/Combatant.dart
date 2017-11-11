@@ -47,12 +47,25 @@ class Combatant {
     }
 
     bool get dead {
-        currentHP <= 0;
+        return currentHP <= 0;
     }
 
-    void restore() {
+    bool get canFraymotif {
+        return currentMana >= manaThreshold;
+    }
+
+    void resetStats() {
         currentHP = maxHP;
         currentMana = 0;
+    }
+
+    void restoreHP() {
+        currentHP = maxHP;
+    }
+
+    void resetMana() {
+        currentMana = 0;
+
     }
 
     void removeHealth(int power) {

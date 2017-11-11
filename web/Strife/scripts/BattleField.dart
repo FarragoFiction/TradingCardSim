@@ -62,6 +62,7 @@ class BattleField {
     }
 
     void nextTurn() {
+        print("next turn is player dead? ${player.dead} and is enemy dead? ${currentEnemy.dead}");
         if(currentEnemy.dead) {
             winAnimation(0);
             return;
@@ -112,7 +113,7 @@ class BattleField {
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
         //fraymotifs will do nothing if you don't do them at the right time. Think Sepulchritude.
-        if(backGroundMusic.paused) {
+        if(player.canFraymotif) {
             fraymotifInEffect = rand.pickFrom(player.fraymotifs);
             print("fraymotif chosen is ${fraymotifInEffect.name}");
             changeMusic(fraymotifInEffect.musicLocation);
@@ -268,14 +269,14 @@ class BattleField {
     }
 
     void newStrife() {
-        player.restore();
+        player.restoreHP();
         int nextIndex = enemies.indexOf(currentEnemy) + 1;
         currentEnemy = enemies[nextIndex];
     }
 
     void repeatStrife() {
-        player.restore();
-        currentEnemy.restore();
+        player.resetStats();
+        currentEnemy.resetStats();
     }
 
     Future<Null> playerFraymotifAnimation(int frame) async {
