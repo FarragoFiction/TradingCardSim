@@ -40,22 +40,33 @@ class Fraymotif {
     }
 
     void randomEffects() {
-        List<FraymotifEffect> possibilities = <FraymotifEffect>[new BackwardsSpin(), new HalfSpin(), new Shrink(), new Spin(), new Warp(), new Jitter(), new Bounce(), new MoveLeft(),new Fall(),new Rise(), new MoveRight()];
-        
-        int number = rand.nextInt(5)+2;
+
+        WeightedList<FraymotifEffect>possibilities =  new WeightedList<FraymotifEffect>();
+        possibilities.add(new BackwardsSpin(),0.5);
+        possibilities.add(new HalfSpin(),0.1);
+        possibilities.add(new Shrink(),0.1);
+        possibilities.add(new Spin(),0.1);
+        possibilities.add(new Warp(),1.0);
+        possibilities.add(new Jitter(),1.0);
+        possibilities.add(new Bounce(),1.0);
+        possibilities.add(new MoveLeft(),1.0);
+        possibilities.add(new Fall(),0.1);
+        possibilities.add(new Rise(),1.0);
+        possibilities.add(new MoveRight(),0.1);
+
+        int number = rand.nextInt(2)+2;
         for(int i = 0; i<number; i++) {
             effects.add(rand.pickFrom(possibilities));
 
         }
-        //effects.add(new HalfSpin());
     }
 
     void initRandomFuckingObjects(int w, int h) {
         List<int> chosenObjects = <int>[rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber)];
-        for(int i = 0; i < 2*w; i += 500) {
-            for(int j = 0; j < 2*h; j += 500) {
-                int iOffset = (w/-2).floor() + i + rand.nextInt(200);
-                int jOffset = (h/-2).floor() + j + rand.nextInt(200);
+        for(int i = 0; i < w-250; i += 250) {
+            for(int j = 0; j < h-250; j += 250) {
+                int iOffset = i + rand.nextInt(200);
+                int jOffset = j + rand.nextInt(200);
                 print("adding item at ${iOffset} ${jOffset}");
                 randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),iOffset,jOffset));
             }
