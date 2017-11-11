@@ -11,6 +11,7 @@ import "../../scripts/DollLib/DollRenderer.dart";
 import '../../scripts/DollLib/src/includes/predicates.dart';
 
 class BattleField {
+    bool attackGoing = false;
     DivElement holder;
     bool miles = false;
     CanvasElement canvas;
@@ -79,17 +80,22 @@ class BattleField {
     }
 
     void nextTurn() {
+        print('next turn');
+        attackGoing = false;
         //print("next turn is player dead? ${player.dead} and is enemy dead? ${currentEnemy.dead}");
         if(currentEnemy.dead) {
+            attackGoing = true;
             resetSprites();
             winAnimation(0);
             return;
         }else if(player.dead) {
+            attackGoing = true;
             loseAnimation(0);
             return;
         }
 
         if(!enemyTurn) {
+            attackGoing = true;
             enemyTakeTurn();
         }else {
             new Timer(new Duration(milliseconds: frameRate), () => idleAnimation(0));
@@ -118,31 +124,37 @@ class BattleField {
     }
 
     Future<Null> attack(Command c) {
-        idle = false;
-        player.defending = false;
-        textColor = c.textColor;
-        currentAttack = rand.pickFrom(c.results);
-        playerRollAttackAnimation(0);
+        if(!attackGoing) {
+            attackGoing = true;
+            idle = false;
+            player.defending = false;
+            textColor = c.textColor;
+            currentAttack = rand.pickFrom(c.results);
+            playerRollAttackAnimation(0);
+        }
     }
 
     Future<Null> special(Command c) {
-        idle = false;
-        player.defending = false;
-        textColor = c.textColor;
-        currentAttack = rand.pickFrom(c.results);
-        //fraymotifs will do nothing if you don't do them at the right time. Think Sepulchritude.
-        if(player.canFraymotif) {
-            fraymotifInEffect = rand.pickFrom(player.fraymotifs);
-            //print("fraymotif chosen is ${fraymotifInEffect.name}");
-            changeMusic(fraymotifInEffect.musicLocation);
-            fraymotifInEffect.x = player.x;
-            fraymotifInEffect.y = player.y;
-            fraymotifInEffect.resetRandom(); //always do the exact same things. makes it look designed.
+        if(!attackGoing) {
+            attackGoing = true;
+            idle = false;
+            player.defending = false;
+            textColor = c.textColor;
+            currentAttack = rand.pickFrom(c.results);
+            //fraymotifs will do nothing if you don't do them at the right time. Think Sepulchritude.
+            if (player.canFraymotif) {
+                fraymotifInEffect = rand.pickFrom(player.fraymotifs);
+                //print("fraymotif chosen is ${fraymotifInEffect.name}");
+                changeMusic(fraymotifInEffect.musicLocation);
+                fraymotifInEffect.x = player.x;
+                fraymotifInEffect.y = player.y;
+                fraymotifInEffect.resetRandom(); //always do the exact same things. makes it look designed.
 
-            playerFraymotifAnimation(0);
-        }else {
-            player.defending = true;
-            defendPlayerAnimation(0, true);
+                playerFraymotifAnimation(0);
+            } else {
+                player.defending = true;
+                defendPlayerAnimation(0, true);
+            }
         }
 
     }
@@ -153,23 +165,30 @@ class BattleField {
     }
 
     Future<Null> defend(Command c) {
-        idle = false;
-        player.defending = true;
-        textColor = c.textColor;
-        currentAttack = rand.pickFrom(c.results);
-        defendPlayerAnimation(0,true);
+        if(!attackGoing) {
+            attackGoing = true;
+            idle = false;
+            player.defending = true;
+            textColor = c.textColor;
+            currentAttack = rand.pickFrom(c.results);
+            defendPlayerAnimation(0, true);
+        }
     }
 
 
     Future<Null> abscond(Command c) {
-        idle = false;
-        player.defending = true;
-        textColor = c.textColor;
-        currentAttack = rand.pickFrom(c.results);
-        abscondPlayerAnimation(0);
+        if(!attackGoing) {
+            attackGoing = true;
+            idle = false;
+            player.defending = true;
+            textColor = c.textColor;
+            currentAttack = rand.pickFrom(c.results);
+            abscondPlayerAnimation(0);
+        }
     }
 
     Future<Null> lameAttack(Command c) {
+        attackGoing = true;
         idle = false;
         textColor = c.textColor;
         currentEnemy.defending = false;
@@ -178,6 +197,7 @@ class BattleField {
     }
 
     Future<Null> milesAttack(Command c) {
+        attackGoing = true;
         idle = false;
         miles = true;
         textColor = c.textColor;
@@ -187,6 +207,7 @@ class BattleField {
     }
 
     Future<Null> enemyFlipAttack(Command c) {
+        attackGoing = true;
         idle = false;
         textColor = c.textColor;
         currentEnemy.defending = false;
@@ -195,6 +216,7 @@ class BattleField {
     }
 
     Future<Null> lameDefense(Command c) {
+        attackGoing = true;
         idle = false;
         textColor = c.textColor;
         currentAttack = rand.pickFrom(c.results);
@@ -203,11 +225,14 @@ class BattleField {
     }
 
     Future<Null> jumpAttack(Command c) {
-        idle = false;
-        player.defending = false;
-        textColor = c.textColor;
-        currentAttack = rand.pickFrom(c.results);
-        playerJumpAttackAnimation(0);
+        if(!attackGoing) {
+            attackGoing = true;
+            idle = false;
+            player.defending = false;
+            textColor = c.textColor;
+            currentAttack = rand.pickFrom(c.results);
+            playerJumpAttackAnimation(0);
+        }
     }
 
 
