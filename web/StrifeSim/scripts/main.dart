@@ -13,6 +13,7 @@ Element div = querySelector("#strife");
 bool egg = false;
 bool troll = false;
 bool cheating = false;
+bool winner = false;
 int musicIndex = 0;
 List<String> backGroundMusicSnippets = <String>["bg.ogg"];
 
@@ -23,13 +24,18 @@ void main() {
     if(getParameterByName("easter",null)  == "egg"){
         egg = true;
         window.alert("Yo Dawg, I herd you liek easter eggs???");
-    }else if(getParameterByName("easter",null)  == "troll")  {
+    }
+    if(getParameterByName("easter",null)  == "troll")  {
         troll = true;
         window.alert("Huh. That's a weird sort of Lusus.");
     }
 
     if(getParameterByName("cheaters",null)  == "neverWin"){
         cheating = true;
+    }
+
+    if(getParameterByName("winner",null)  == "you"){
+        winner = true;
     }
 
     init();
@@ -60,7 +66,9 @@ Future<Null> drawFormForCombatant(Combatant c) async {
 //wait, EGGS!?  In MY strife? It's more likely than you think.
 Combatant getPlayer1() {
 
-    if(egg) {
+    if(egg && troll) {
+        return new Combatant(new TrollEggDoll(),100,33,cheating);
+    }else if(egg) {
         return new Combatant(new EggDoll(),100,33,cheating);
     }else if(troll) {
         return new Combatant(new HomestuckTrollDoll(),100,33,cheating);
@@ -111,11 +119,6 @@ Future<Null> init() async{
 }
 
 Future<Null> drawCustomizationForms() async {
-    await drawFormForCombatant(battleField.player);
-    for(Combatant c in battleField.enemies) {
-        await drawFormForCombatant(c);
-    }
-
     ButtonElement b = new ButtonElement();
     b.setInnerHtml("Start Strife!!!");
     b.onClick.listen((e)
@@ -124,6 +127,51 @@ Future<Null> drawCustomizationForms() async {
         startStife();
     });
     div.append(b);
+
+    await drawFormForCombatant(battleField.player);
+    //gotta earn this shit.
+    if (winner){
+        for (Combatant c in battleField.enemies) {
+            await drawFormForCombatant(c);
+        }
+    }
+    b = new ButtonElement();
+    b.setInnerHtml("Start Strife!!!");
+    b.onClick.listen((e)
+    {
+        div.setInnerHtml("");
+        startStife();
+    });
+    div.append(b);
+}
+
+void onWin(Combatant c) {
+    AnchorElement win = new AnchorElement();
+    win.href = "index.html?winner=you";
+    win.setInnerHtml("I wonder what winning earns you?");
+
+    AnchorElement cheat = new AnchorElement();
+    cheat.href = "index.html?cheaters=neverWin";
+    cheat.setInnerHtml("I wish this game were easier.");
+
+
+    AnchorElement egg = new AnchorElement();
+    egg.href = "index.html?easter=egg";
+    egg.setInnerHtml("Yo dog.");
+
+
+    DivElement winningLabel = new DivElement();
+    winningLabel.classes.add("winner");
+
+    if(cheating) {
+        winningLabel.setInnerHtml("You finished! But didn't you pay attention? Cheaters never win.");
+    }else {
+        winningLabel.setInnerHtml("You win");
+        winningLabel.append(win);
+        winningLabel.append(cheat);
+        winningLabel.append(egg);
+    }
+    div.append(winningLabel);
 }
 
 Future<Null> startStife() async {

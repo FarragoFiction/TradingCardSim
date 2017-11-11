@@ -13,6 +13,12 @@ html, body {
 
 }
 
+.winner{
+  font-family: 'strife', sans-serif;
+  font-size: 72px;
+
+}
+
 @font-face {
     font-family: strife;
     src: url(../Fonts/Strife.ttf);

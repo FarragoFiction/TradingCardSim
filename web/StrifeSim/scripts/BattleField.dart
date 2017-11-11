@@ -8,6 +8,7 @@ import "StrifeLib.dart";
 import 'dart:async';
 import "dart:math" as Math;
 import "../../scripts/DollLib/DollRenderer.dart";
+import '../../scripts/DollLib/src/includes/predicates.dart';
 
 class BattleField {
     DivElement holder;
@@ -30,8 +31,9 @@ class BattleField {
     List<Combatant> enemies = new List<Combatant>();
     List<Command> commands = new List<Command>();
     List<Command> enemyCommands = new List<Command>();
+    Lambda winCallback;
 
-    BattleField(this.player, this.enemies, this.backGroundMusic, this.fxAudio) {
+    BattleField(this.player, this.enemies, this.backGroundMusic, this.fxAudio, this.winCallback) {
         this.currentEnemy = this.enemies[0];
         rand = new Random();
         rand.nextInt(255);
@@ -307,10 +309,14 @@ class BattleField {
         player.restoreHP();
         player.addRandomFraymotif();
         int nextIndex = enemies.indexOf(currentEnemy) + 1;
-        currentEnemy = enemies[nextIndex];
-        enemyTurn = true; //next turn will make it be my turn.
-        setUpEnemyCommands();
-        nextTurn();
+        if(nextIndex >= enemies.length) {
+           winCallback(player);
+        }else {
+            currentEnemy = enemies[nextIndex];
+            enemyTurn = true; //next turn will make it be my turn.
+            setUpEnemyCommands();
+            nextTurn();
+        }
     }
 
     void repeatStrife() {
