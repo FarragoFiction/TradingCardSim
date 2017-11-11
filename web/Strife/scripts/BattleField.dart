@@ -62,7 +62,7 @@ class BattleField {
     }
 
     void nextTurn() {
-        print("next turn is player dead? ${player.dead} and is enemy dead? ${currentEnemy.dead}");
+        //print("next turn is player dead? ${player.dead} and is enemy dead? ${currentEnemy.dead}");
         if(currentEnemy.dead) {
             winAnimation(0);
             return;
@@ -252,7 +252,7 @@ class BattleField {
             enemyTurn = false; //if i'm idling, it's the players turn.
         }
         currentText = "You win!!!";
-
+        player.addRandomFraymotif();
         draw();
         new Timer(new Duration(milliseconds: 3000), () => newStrife());
     }
@@ -395,6 +395,7 @@ class BattleField {
         if(isAttack) currentText = currentAttack.attack;
         double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
+        currentEnemy.currentMana ++; //not a lot, but some.
 
         currentEnemy.rotation = rotation;
         currentEnemy.setScale(1.05, 1.05);
@@ -444,7 +445,7 @@ class BattleField {
         if(isAttack) currentText = currentAttack.attack;
         double angle = frame * 5/numberFrames;
         double rotation = angle * Math.PI / 180.0;
-
+        player.currentMana ++; //not a lot, but some.
         player.rotation = rotation;
         player.setScale(1.05, 1.05);
         player.y += -2;

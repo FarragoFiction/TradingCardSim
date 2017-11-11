@@ -40,10 +40,13 @@ class Combatant {
         //needs to be a square so i can do full rotation.
         width = Math.max(doll.width, doll.height);
         height = width;
-        fraymotifs.add(Fraymotif.randomFraymotif());
-        fraymotifs.add(Fraymotif.randomFraymotif());
+        addRandomFraymotif();
         print("Made fraymotif ${fraymotifs.first.name}");
 
+    }
+
+    void addRandomFraymotif() {
+        fraymotifs.add(Fraymotif.randomFraymotif());
     }
 
     bool get dead {
