@@ -55,8 +55,8 @@ class TradingCard {
         nameLayer = new TextLayer("Name",name,35.0,28.0, fontSize: 18, maxWidth: 300);
         typeLayer = new TextLayer("Type",type,35.0,260.0, fontSize: 18, maxWidth: 300);
         statLayer = new TextLayer("Stats",stats,250.0,418.0, fontSize: 18);
-        descriptionLayer = new TextLayer("Description",description,46.0,280.0, fontSize: 18, maxWidth: 180);
-        shittyPoemLayer = new TextLayer("Flavor Text",shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 16, maxWidth: 180);
+        descriptionLayer = new TextLayer("Description",description,46.0,280.0, fontSize: 18, maxWidth: 180, maxHeight: 70);
+        shittyPoemLayer = new TextLayer("Flavor Text",shittyPoem,46.0,350.0, emphasis: "italic", fontSize: 16, maxWidth: 180, maxHeight: 50);
     }
 
 
@@ -278,8 +278,16 @@ class TradingCard {
         for(TextLayer textLayer in textLayers) {
             ctx.fillStyle = textLayer.fillStyle;
             ctx.font = textLayer.font;
+            int savedSize = textLayer.fontSize;
             //ctx.fillText(textLayer.text, textLayer.topLeftX, textLayer.topLeftY);
-            Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
+            int numLines = Renderer.simulateWrapTextToGetFontSize(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth, textLayer.maxHeight);
+            if((numLines * textLayer.fontSize)>textLayer.maxHeight) {
+                textLayer.fontSize = (textLayer.maxHeight/numLines).floor();
+            }
+            ctx.font = textLayer.font;
+            textLayer.fontSize = savedSize; //restore
+             Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
+
         }
         if(saveLink == null) saveLink = new AnchorElement();
         saveLink.href = canvas.toDataUrl();
