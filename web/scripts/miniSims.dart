@@ -18,10 +18,10 @@ void main() {
 }
 
 Future<bool> drawDolls() async {
-    drawDoll(querySelector("#first"));
-    drawDoll(querySelector("#second"));
-    drawDoll(querySelector("#third"));
-    drawDoll(querySelector("#fourth"));
+    await drawDoll();
+    await drawDoll();
+    await drawDoll();
+    await drawDoll();
 }
 
 
@@ -31,11 +31,12 @@ Doll makeDoll()  {
 
 
 
-Future<bool>  drawDoll(Element innerDiv) async{
+Future<bool>  drawDoll() async{
+    Element innerDiv   = new DivElement();
     Doll doll = makeDoll();
     CanvasElement finishedProduct = new CanvasElement(width: doll.width, height: doll.height);
     innerDiv.className = "cardWithForm";
-    Renderer.drawDoll(finishedProduct, doll);
+    await Renderer.drawDoll(finishedProduct, doll);
     finishedProduct.className = "cardCanvas";
     innerDiv.append(finishedProduct);
     div.append(innerDiv);

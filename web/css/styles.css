@@ -8,6 +8,10 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
+.spiel{
+    padding: 10px;
+}
+
 .label{
   font-family: 'strife', sans-serif;
 
