@@ -40,7 +40,8 @@ Doll makeDoll()  {
   dolls.add(new QueenDoll(),0.5);
   dolls.add(new EggDoll(),0.25);
   dolls.add(new TrollEggDoll(), 0.25);
-  dolls.add(new DadDoll(),0.5);
+  dolls.add(new DadDoll(),0.4);
+  dolls.add(new MomDoll(),0.4);
 
   doll = rand.pickFrom(dolls);
   return doll;

@@ -164,6 +164,8 @@ class TradingCard {
             type = "Egg";
         }else if(doll is DadDoll) {
             type = "Dad";
+        }else if(doll is MomDoll) {
+            type = "Mom";
         }else if(doll is QueenDoll) {
             type = "Queen";
         }else {
