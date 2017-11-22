@@ -33,8 +33,8 @@ Future<bool> drawDeck() async {
 Doll makeDoll()  {
   Doll doll;
   WeightedList<Doll> dolls = new WeightedList<Doll>();
-  dolls.add(new HomestuckDoll());
-  dolls.add(new HomestuckTrollDoll());
+  dolls.add(new HomestuckDoll(),3);
+  dolls.add(new HomestuckTrollDoll(),3);
   dolls.add(new ConsortDoll(),0.5);
   dolls.add(new DenizenDoll(),0.5);
   dolls.add(new QueenDoll(),0.5);

@@ -423,6 +423,7 @@ images/Homestuck/Glasses/Glasses
     4.png
     40.png
     41.png
+    42.png
     5.png
     6.png
     7.png
@@ -441,7 +442,10 @@ images/Homestuck/Consort/Consort
     16.png
     17.png
     18.png
+    19.png
     2.png
+    20.png
+    21.png
     3.png
     4.png
     5.png

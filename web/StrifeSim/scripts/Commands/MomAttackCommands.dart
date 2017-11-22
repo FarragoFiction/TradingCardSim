@@ -5,7 +5,6 @@ import "../../../scripts/DollLib/DollRenderer.dart";
 class MomAttackCommands extends Command {
     MomAttackCommands(Lambda methodToCall) : super("aggrieve",methodToCall) {
         textColor = new Colour.fromStyleString("#555555");
-        @override
         List<String> actions = <String> ["Teach","Example","Mentor", "Lesson", "Parable", "Boring Story", "Awkward Conversation", "Embarassment"];
         Random rand = new Random();
         rand.nextInt();
