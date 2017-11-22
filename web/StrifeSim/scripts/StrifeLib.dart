@@ -11,6 +11,7 @@ export "Commands/Abuse.dart";
 export "Commands/Accuse.dart";
 export "Commands/Abscond.dart";
 export "Commands/DadAttackCommands.dart";
+export "Commands/BroAttackCommands.dart";
 export "Commands/MomAttackCommands.dart";
 export "Commands/ConsortAttackCommands.dart";
 export "Commands/QueenAttackCommands.dart";

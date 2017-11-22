@@ -79,7 +79,7 @@ Combatant getPlayer1() {
 
 List<Combatant> getEnemies() {
     Random rand = new Random();
-    List<Doll> possibleFirsts =  <Doll>[new DadDoll(), new MomDoll()];
+    List<Doll> possibleFirsts =  <Doll>[new DadDoll(), new MomDoll(), new BroDoll()];
     
     return <Combatant>[new Combatant(rand.pickFrom(possibleFirsts),100,33),new Combatant(new ConsortDoll(),130,44),new Combatant(new DenizenDoll(),150,55),new Combatant(new QueenDoll(false),200,66)];
 }

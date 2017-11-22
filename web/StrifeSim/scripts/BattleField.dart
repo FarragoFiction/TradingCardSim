@@ -66,6 +66,9 @@ class BattleField {
         if(currentEnemy.doll is DadDoll) {
             enemyCommands.add(new DadAttackCommands(lameAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));
+        }if(currentEnemy.doll is BroDoll) {
+            enemyCommands.add(new BroAttackCommands(lameAttack));
+            enemyCommands.add(new DadDefenseCommands(lameDefense));
         }if(currentEnemy.doll is MomDoll) {
             enemyCommands.add(new MomAttackCommands(lameAttack));
             enemyCommands.add(new DadDefenseCommands(lameDefense));

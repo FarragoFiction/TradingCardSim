@@ -44,6 +44,7 @@ Doll makeDoll()  {
   dolls.add(new MomDoll(),0.4);
 
   doll = rand.pickFrom(dolls);
+  //doll = new BroDoll();
   return doll;
 }
 
