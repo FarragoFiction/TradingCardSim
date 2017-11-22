@@ -69,10 +69,11 @@ class Fraymotif {
         randomObjectLayers.add(new FraymotifLayer(new CanvasElement(width: w, height:h)));
 
         List<int> chosenObjects = <int>[rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber)];
-        for(int i = 0; i < w-250; i += 250) {
-            for(int j = 0; j < h-250; j += 250) {
-                int iOffset = i + rand.nextInt(200);
-                int jOffset = j + rand.nextInt(200);
+        int distanceBetweenItems = 100;
+        for(int i = 0; i < w-distanceBetweenItems; i += distanceBetweenItems) {
+            for(int j = 0; j < h-distanceBetweenItems; j += distanceBetweenItems) {
+                int iOffset = i + rand.nextInt(distanceBetweenItems);
+                int jOffset = j + rand.nextInt(distanceBetweenItems);
                 print("adding item at ${iOffset} ${jOffset}");
                 randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),iOffset,jOffset, rand.pickFrom(randomObjectLayers).canvas));
             }
