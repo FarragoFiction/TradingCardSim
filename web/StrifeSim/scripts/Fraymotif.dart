@@ -27,6 +27,7 @@ class Fraymotif {
     double _scaleY = 1.0;
     double rotation = 0.0;
     List<FraymotifEffect> effects = new List<FraymotifEffect>();
+    List<FraymotifLayer> randomObjectLayers = new List<FraymotifLayer>();
 
     Fraymotif(this.name, this.imgName, this.musicalThemeName, this.initialSeed) {
         resetRandom();
@@ -62,13 +63,18 @@ class Fraymotif {
     }
 
     void initRandomFuckingObjects(int w, int h) {
+        //instead of drawing #objects each time, just three layers.
+        randomObjectLayers.add(new FraymotifLayer(new CanvasElement(width: w, height:h)));
+        randomObjectLayers.add(new FraymotifLayer(new CanvasElement(width: w, height:h)));
+        randomObjectLayers.add(new FraymotifLayer(new CanvasElement(width: w, height:h)));
+
         List<int> chosenObjects = <int>[rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber),rand.nextInt(RandomFuckingObject.maxItemNumber)];
         for(int i = 0; i < w-250; i += 250) {
             for(int j = 0; j < h-250; j += 250) {
                 int iOffset = i + rand.nextInt(200);
                 int jOffset = j + rand.nextInt(200);
                 print("adding item at ${iOffset} ${jOffset}");
-                randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),iOffset,jOffset));
+                randomFuckingObjects.add(new RandomFuckingObject(rand.pickFrom(chosenObjects),iOffset,jOffset, rand.pickFrom(randomObjectLayers).canvas));
             }
         }
     }
@@ -139,12 +145,19 @@ class Fraymotif {
         rand = new Random(initialSeed);
         setScale(1.0, 1.0);
         rotation = 0.0;
-        for(RandomFuckingObject r in randomFuckingObjects) {
+        for(FraymotifLayer r in randomObjectLayers) {
             r.x = 0;
             r.y = 0;
             r.rotation = 0.0;
             r.setScale(1.0, 1.0);
         }
+        /* don't do individually anymore
+        for(RandomFuckingObject r in randomFuckingObjects) {
+            r.x = 0;
+            r.y = 0;
+            r.rotation = 0.0;
+            r.setScale(1.0, 1.0);
+        }*/
     }
 
     String get imageLocation {
@@ -199,7 +212,7 @@ abstract class FraymotifEffect {
             c.setScale(f._scaleX, f._scaleY);
         }
         //print("syncing enemy");
-        for(RandomFuckingObject r in f.randomFuckingObjects) {
+        for(FraymotifLayer r in f.randomObjectLayers) {
             r.rotation = f.rotation;
             //r.x = f.x + r.offsetX;
             r.y = f.y + f.rand.nextInt(20) + 20;
@@ -208,6 +221,16 @@ abstract class FraymotifEffect {
             }
             //r.setScale(f._scaleX, f._scaleY);
         }
+        /* it's too slow to work on all objects.
+        for(RandomFuckingObject r in f.randomFuckingObjects) {
+            r.rotation = f.rotation;
+            //r.x = f.x + r.offsetX;
+            r.y = f.y + f.rand.nextInt(20) + 20;
+            if(r.y > height) {
+                r.y = 0; //zap back up
+            }
+            //r.setScale(f._scaleX, f._scaleY);
+        }*/
     }
 
 }
@@ -449,3 +472,36 @@ class MoveLeft extends FraymotifEffect {
     }
 }
 
+class FraymotifLayer {
+    CanvasElement canvas;
+    int x = 0;
+    int y = 0;
+    //where are you in this random fucking grid? shouldn't change
+    int offsetX = 0;
+    int offsetY = 0;
+    double _scaleX = 1.0;
+    double _scaleY = 1.0;
+    double rotation = 0.0;
+
+    FraymotifLayer(this.canvas);
+
+    void flip() {
+        _scaleX = -1 * _scaleX;
+    }
+
+    void setScale(double x, double y) {
+        _scaleX = x;
+        _scaleY = y;
+    }
+
+    Future<CanvasElement> drawForReal(CanvasElement c, int w, int h) async{
+        //print('drawing with rotation $rotation');
+        CanvasElement ret = new CanvasElement(width:w, height: h);
+        ret.context2D.translate(ret.width/2, ret.height/2);
+        ret.context2D.rotate(rotation);
+        ret.context2D.scale(_scaleX, _scaleY);
+        ret.context2D.drawImage(canvas, -ret.width/2, -ret.height/2);
+        return ret;
+    }
+
+}

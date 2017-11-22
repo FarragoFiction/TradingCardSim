@@ -38,7 +38,7 @@ class BattleField {
 
     BattleField(this.player, this.enemies, this.backGroundMusic, this.fxAudio, this.winCallback) {
         this.currentEnemy = this.enemies[0];
-        redMiles = new RandomFuckingObject(999, 0, 0);
+        redMiles = new RandomFuckingObject(999, 0, 0, new CanvasElement());
         rand = new Random();
         rand.nextInt(255);
         height = Math.max(height, player.doll.height);
@@ -269,9 +269,13 @@ class BattleField {
 
         if(fraymotifInEffect != null) {
             CanvasElement fraymotifCanvas = await fraymotifInEffect.draw(canvas.width, canvas.height);
-            for(RandomFuckingObject r in fraymotifInEffect.randomFuckingObjects) {
+            /*for(RandomFuckingObject r in fraymotifInEffect.randomFuckingObjects) {
                 CanvasElement objCanvas = await r.draw(canvas.width, canvas.height);
                 canvas.context2D.drawImage(objCanvas,r.x, r.y);
+            }*/
+            for(FraymotifLayer fl in fraymotifInEffect.randomObjectLayers) {
+                CanvasElement objCanvas = await fl.drawForReal(fl.canvas, canvas.width, canvas.height);
+                canvas.context2D.drawImage(objCanvas, fl.x, fl.y);
             }
             canvas.context2D.drawImage(fraymotifCanvas,fraymotifInEffect.x, fraymotifInEffect.y);
         }
@@ -290,7 +294,7 @@ class BattleField {
         canvas.context2D.fillText("${currentEnemy.currentHP}, HP, ${currentEnemy.currentMana} MP",100,2*fontSize);
         if(miles) {
             //print("drawing miles");
-            CanvasElement milesCanvas = await redMiles.draw(canvas.width, canvas.height);
+            CanvasElement milesCanvas = await redMiles.drawBUTSLOW(canvas.width, canvas.height);
             canvas.context2D.drawImage(milesCanvas, player.x, 0);
         }
 

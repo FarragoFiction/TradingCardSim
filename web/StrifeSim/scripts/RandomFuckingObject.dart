@@ -6,6 +6,7 @@ import "dart:math" as Math;
 class RandomFuckingObject {
 
     CanvasElement canvas;
+    CanvasElement parentCanvas; //draw self to to this. TODO means i don't flip individually anymore and shit.
     static int maxItemNumber = 254;//40
     String _imgFolder = "images/Homestuck/Fraymotifs";
 
@@ -22,7 +23,7 @@ class RandomFuckingObject {
     //so i can preload my shit.
     ImageElement imageElement;
 
-    RandomFuckingObject(this.imgNumber, this.offsetX, this.offsetY) {
+    RandomFuckingObject(this.imgNumber, this.offsetX, this.offsetY, this.parentCanvas) {
         getImage(); //at least try to preload.
     }
 
@@ -54,9 +55,23 @@ class RandomFuckingObject {
     //TODO
     Future<Null> getImage() async {
         imageElement = await Loader.getResource((imageLocation));
+        await drawToLayer();
     }
 
-    Future<CanvasElement> draw(int w, int h) async {
+    //think this will speed animation up. pre draw self to layer, then don't do anything else.
+    //basically only call this once.
+    Future<Null> drawToLayer() async {
+        if(imageElement == null) await getImage();
+        int width = Math.max(imageElement.width, imageElement.height);
+        canvas = new CanvasElement(width: width, height: width); //need extra room for space
+        canvas.context2D.drawImage(imageElement, 0, 0);
+        CanvasElement me =  await drawForReal(canvas,parentCanvas.width,parentCanvas.height);
+        parentCanvas.context2D.drawImage(canvas,x, y);
+    }
+
+
+    //it's too slow to draw each item individually, even without reloading.
+    Future<CanvasElement> drawBUTSLOW(int w, int h) async {
         if(canvas == null) {
             //ImageElement image = await Loader.getResource((imageLocation));
             if(imageElement == null) await getImage();

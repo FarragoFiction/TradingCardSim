@@ -5,6 +5,7 @@ import "../../../scripts/DollLib/DollRenderer.dart";
 class BroAttackCommands extends Command {
     BroAttackCommands(Lambda methodToCall) : super("aggrieve",methodToCall) {
         textColor = new Colour.fromStyleString("#ffb82d");
+        @override
         List<String> actions = <String> ["Bully","Toughen Up","Haze", "Ignore", "Riducle", "Mentor", "Radical Example", "Embarassment"];
         Random rand = new Random();
         rand.nextInt();
