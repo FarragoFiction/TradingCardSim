@@ -7,7 +7,7 @@ class RandomFuckingObject {
 
     CanvasElement canvas;
     CanvasElement parentCanvas; //draw self to to this. TODO means i don't flip individually anymore and shit.
-    static int maxItemNumber = 254;//40
+    static int maxItemNumber = 255;//40
     String _imgFolder = "images/Homestuck/Fraymotifs";
 
     int imgNumber;
