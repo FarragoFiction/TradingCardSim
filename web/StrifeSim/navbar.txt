@@ -11,27 +11,27 @@
   <li class="dropdown menuButtonPureCSS">
     <a href="javascript:void(0)" class="dropbtn">DOLLS</a>
     <div class="dropdown-content">
-      <a href="index.html">Kid Maker</a>
-      <a href="troll_index.html">Troll Maker</a>
-      <a href="consort_index.html">Consort Maker</a>
-      <a href="denizen_index.html">Denizen Maker by TG</a>
-      <a href="dad_index.html">Dad Maker by YD</a>
-                  <a href="mom_index.html">Mom Maker by YD</a>
+      <a href="http://www.farragofiction.com/DollSim/index.html">Kid Maker</a>
+      <a href="http://www.farragofiction.com/DollSim/troll_index.html">Troll Maker</a>
+      <a href="http://www.farragofiction.com/DollSim/consort_index.html">Consort Maker</a>
+      <a href="http://www.farragofiction.com/DollSim/denizen_index.html">Denizen Maker by TG</a>
+      <a href="http://www.farragofiction.com/DollSim/dad_index.html">Dad Maker by YD</a>
+      <a href="http://www.farragofiction.com/DollSim/mom_index.html">Mom Maker by YD</a>
 
-            <a href="bro_index.html">Bro Maker by YD</a>
-       <a href="queen_index.html">Queen Maker by MF</a>
+       <a href="http://www.farragofiction.com/DollSim/bro_index.html">Bro Maker by YD</a>
+       <a href="http://www.farragofiction.com/DollSim/queen_index.html">Queen Maker by MF</a>
     </div>
   </li>
 
-    <li class="dropdown menuButtonPureCSS">
-      <a href="javascript:void(0)" class="dropbtn">GAMES</a>
-      <div class="dropdown-content">
-        <a href="http://www.farragofiction.com/MiniSims/CardSim">Make Trading Cards</a>
-        <a href="http://www.farragofiction.com/MiniSims/StrifeSim">Strife Sim!</a>
-        <a href="http://www.farragofiction.com/DollSim/charSheetCreator">Make Character Sheets</a>
+      <li class="dropdown menuButtonPureCSS">
+        <a href="javascript:void(0)" class="dropbtn">GAMES</a>
+        <div class="dropdown-content">
+          <a href="http://www.farragofiction.com/MiniSims/CardSim">Make Trading Cards</a>
+          <a href="http://www.farragofiction.com/MiniSims/StrifeSim">Strife Sim!</a>
+          <a href="http://www.farragofiction.com/DollSim/charSheetCreator">Make Character Sheets</a>
 
-      </div>
-    </li>
+        </div>
+      </li>
 
 
   <li class="dropdown menuButtonPureCSS">
