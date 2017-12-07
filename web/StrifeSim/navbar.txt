@@ -13,6 +13,8 @@
     <div class="dropdown-content">
       <a href="http://www.farragofiction.com/DollSim/index.html">Kid Maker</a>
       <a href="http://www.farragofiction.com/DollSim/troll_index.html">Troll Maker</a>
+      <a href="http://www.farragofiction.com/DollSim/baby_index.html">Baby Maker</a>
+      <a href="http://www.farragofiction.com/DollSim/grub_index.html">Grub Maker</a>
       <a href="http://www.farragofiction.com/DollSim/consort_index.html">Consort Maker</a>
       <a href="http://www.farragofiction.com/DollSim/denizen_index.html">Denizen Maker by TG</a>
       <a href="http://www.farragofiction.com/DollSim/dad_index.html">Dad Maker by YD</a>

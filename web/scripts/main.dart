@@ -35,6 +35,8 @@ Doll makeDoll()  {
   WeightedList<Doll> dolls = new WeightedList<Doll>();
   dolls.add(new HomestuckDoll(),3);
   dolls.add(new HomestuckTrollDoll(),3);
+  dolls.add(new HomestuckBabyDoll(),1);
+  dolls.add(new HomestuckGrubDoll(),1);
   dolls.add(new ConsortDoll(),0.5);
   dolls.add(new DenizenDoll(),0.5);
   dolls.add(new QueenDoll(),0.5);
