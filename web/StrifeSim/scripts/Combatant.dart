@@ -35,7 +35,7 @@ class Combatant {
     int height = 0;
 
 
-    Combatant(this.doll, this.maxHP, this.power,[bool cheating]) {
+    Combatant(this.doll, this.maxHP, this.power,[bool cheating = false]) {
         this.currentHP = this.maxHP;
         //needs to be a square so i can do full rotation.
         width = Math.max(doll.width, doll.height);
