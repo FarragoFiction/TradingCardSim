@@ -1,7 +1,5 @@
-import '../../../scripts/DollLib/src/includes/predicates.dart';
 import "Command.dart";
-import "../../../scripts/DollLib/DollRenderer.dart";
-
+import "package:DollLibCorrect/DollRenderer.dart";
 class Abjure extends Command {
     List<String> actions = <String> ["Refrain","Retract", "Abstain", "Refuse", "Forswear", "Recant", "Renege", "Renounce"];
     Abjure(Lambda methodToCall) : super("abjure",methodToCall) {

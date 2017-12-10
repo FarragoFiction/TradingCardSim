@@ -1,4 +1,4 @@
-import "../../scripts/DollLib/DollRenderer.dart";
+import "package:DollLibCorrect/DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
 import 'Combatant.dart';

@@ -1,7 +1,5 @@
 import 'dart:html';
-import "../../../scripts/DollLib/src/includes/predicates.dart";
-import "../../../scripts/DollLib/DollRenderer.dart";
-
+import "package:DollLibCorrect/DollRenderer.dart";
 class Command {
     ImageElement image;
 

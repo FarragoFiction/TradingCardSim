@@ -1,7 +1,5 @@
-import '../../../scripts/DollLib/src/includes/predicates.dart';
 import "Command.dart";
-import "../../../scripts/DollLib/DollRenderer.dart";
-
+import "package:DollLibCorrect/DollRenderer.dart";
 class BroAttackCommands extends Command {
     BroAttackCommands(Lambda methodToCall) : super("aggrieve",methodToCall) {
         textColor = new Colour.fromStyleString("#ffb82d");

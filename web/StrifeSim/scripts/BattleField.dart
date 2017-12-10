@@ -7,8 +7,7 @@ import 'dart:html';
 import "StrifeLib.dart";
 import 'dart:async';
 import "dart:math" as Math;
-import "../../scripts/DollLib/DollRenderer.dart";
-import '../../scripts/DollLib/src/includes/predicates.dart';
+import "package:DollLibCorrect/DollRenderer.dart";
 
 class BattleField {
     bool attackGoing = false;

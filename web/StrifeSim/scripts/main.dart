@@ -1,5 +1,5 @@
 
-import "../../scripts/DollLib/DollRenderer.dart";
+import "package:DollLibCorrect/DollRenderer.dart";
 import 'dart:async';
 import "../../scripts/navbar.dart";
 import 'BattleField.dart';

@@ -1,7 +1,6 @@
-import 'DollLib/src/Dolls/Doll.dart';
 import "TradingCard.dart";
-import "DollLib/src/includes/colour.dart";
-import "DollLib/DollRenderer.dart";
+import "package:DollLibCorrect/DollRenderer.dart";
+
 import "CoinCard.dart";
 import 'dart:async';
 import 'dart:html';

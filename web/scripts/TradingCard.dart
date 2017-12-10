@@ -1,6 +1,6 @@
 
-import "DollLib/src/includes/colour.dart";
-import "DollLib/DollRenderer.dart";
+import "package:DollLibCorrect/DollRenderer.dart";
+
 import 'dart:async';
 import 'dart:html';
 

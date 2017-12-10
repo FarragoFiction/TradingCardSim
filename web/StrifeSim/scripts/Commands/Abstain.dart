@@ -1,7 +1,5 @@
-import '../../../scripts/DollLib/src/includes/predicates.dart';
 import "Command.dart";
-import "../../../scripts/DollLib/DollRenderer.dart";
-
+import "package:DollLibCorrect/DollRenderer.dart";
 class Abstain extends Command {
     Abstain(Lambda methodToCall) : super("abstain",methodToCall) {
         textColor = new Colour.fromStyleString("#38d5f4");

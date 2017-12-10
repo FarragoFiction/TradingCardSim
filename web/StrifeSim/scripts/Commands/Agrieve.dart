@@ -1,7 +1,5 @@
-import '../../../scripts/DollLib/src/includes/predicates.dart';
 import "Command.dart";
-import "../../../scripts/DollLib/DollRenderer.dart";
-
+import "package:DollLibCorrect/DollRenderer.dart";
 class Aggrieve extends Command {
     Aggrieve(Lambda methodToCall) : super("aggrieve",methodToCall) {
         textColor = new Colour.fromStyleString("#38f43d");

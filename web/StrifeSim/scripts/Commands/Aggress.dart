@@ -1,7 +1,5 @@
-import '../../../scripts/DollLib/src/includes/predicates.dart';
 import "Command.dart";
-import "../../../scripts/DollLib/DollRenderer.dart";
-
+import "package:DollLibCorrect/DollRenderer.dart";
 class Aggress extends Command {
     Aggress(Lambda methodToCall) : super("aggress",methodToCall) {
         List<String> actions = <String> ["Assault","Strike","Blow", "Lunge", "Jump", "Leap","Face Plant","Pirouette"];

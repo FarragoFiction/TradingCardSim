@@ -1,5 +1,5 @@
 
-import "DollLib/DollRenderer.dart";
+import "package:DollLibCorrect/DollRenderer.dart";
 import 'dart:async';
 import "TradingCard.dart";
 import "CoinCard.dart";

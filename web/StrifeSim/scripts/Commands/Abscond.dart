@@ -1,7 +1,5 @@
-import '../../../scripts/DollLib/src/includes/predicates.dart';
 import "Command.dart";
-import "../../../scripts/DollLib/DollRenderer.dart";
-
+import "package:DollLibCorrect/DollRenderer.dart";
 class Abscond extends Command {
     Abscond(Lambda methodToCall) : super("abscond",methodToCall) {
         List<String> actions = <String> ["Flee","Retreat","Renounce", "Hightail", "Vamoose", "Escape"];
