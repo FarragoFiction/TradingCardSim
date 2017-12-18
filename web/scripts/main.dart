@@ -23,7 +23,7 @@ void main() {
 }
 
 Future<bool> drawDeck() async {
-  for(int i = 0; i<8; i++) {
+  for(int i = 0; i<4; i++) {
     await drawCard();
   }
 
@@ -57,9 +57,9 @@ Future<bool>  drawCard() async{
     innerDiv.className = "cardWithForm";
     double randNum = rand.nextDouble();
     TradingCard card;
-    if(randNum > .2) {
+    if(randNum > .1) {
         card = new TradingCard(makeDoll());
-    }else if(randNum > .1) {
+    }else if(randNum > .05) {
         card = new CoinCard(makeDoll());
     }else {
         card = new RingCard(makeDoll());
