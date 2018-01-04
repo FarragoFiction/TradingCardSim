@@ -21,7 +21,7 @@
             <a href="http://www.farragofiction.com/DollSim/index.html?type=9">Mom Maker by YD</a>
             <a href="http://www.farragofiction.com/DollSim/index.html?type=10">Bro Maker by YD</a>
             <a href="http://www.farragofiction.com/DollSim/index.html?type=8">Queen Maker by MF</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=14">Hiveswap Maker by YD</a>
+            <a href="http://www.farragofiction.com/DollSim/index.html?type=14">Hiveswap Maker by MC</a>
             <a href="http://www.farragofiction.com/DollSim/index.html?type=113">Pigeon Maker by Xexus</a>
             <a href="http://www.farragofiction.com/DollSim/index.html?type=151">Monster Pocket Maker by Frew</a>
     </div>
