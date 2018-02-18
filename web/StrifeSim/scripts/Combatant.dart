@@ -123,7 +123,7 @@ class Combatant {
             Renderer.clearCanvas(canvas);
             canvas.width = doll.width;
             canvas.height = doll.height;
-            await Renderer.drawDoll(canvas,doll);
+            await DollRenderer.drawDoll(canvas,doll);
         }
 
 

@@ -23,7 +23,7 @@ class CoinCard extends TradingCard {
   Future<CanvasElement>  drawMonster(Doll doll) async {
       CanvasElement monsterElement = new CanvasElement(width: (256).round(), height: (208).round());
       CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
-      await Renderer.drawDollEmbossed(dollCanvas, doll);
+      await DollRenderer.drawDollEmbossed(dollCanvas, doll);
       Renderer.swapColors(dollCanvas, tint);
 
       dollCanvas = Renderer.cropToVisible(dollCanvas);

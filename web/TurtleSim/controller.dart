@@ -31,7 +31,7 @@ Future<bool>  drawDoll() async{
     Doll doll = makeDoll();
     CanvasElement finishedProduct = new CanvasElement(width: doll.width, height: doll.height);
     innerDiv.className = "cardWithForm";
-    await Renderer.drawDoll(finishedProduct, doll);
+    await DollRenderer.drawDoll(finishedProduct, doll);
     finishedProduct.className = "cardCanvas";
     innerDiv.append(finishedProduct);
     div.append(innerDiv);

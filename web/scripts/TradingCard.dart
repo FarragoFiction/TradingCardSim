@@ -324,7 +324,7 @@ class TradingCard {
     Future<CanvasElement>  drawMonster(Doll doll) async {
         CanvasElement monsterElement = new CanvasElement(width: (256).round(), height: (208).round());
         CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
-        await Renderer.drawDoll(dollCanvas, doll);
+        await DollRenderer.drawDoll(dollCanvas, doll);
 
         dollCanvas = Renderer.cropToVisible(dollCanvas);
 
