@@ -4,14 +4,14 @@ packages:
   DollLibCorrect:
     description:
       ref: HEAD
-      resolved-ref: b31bb0da6243c920344091f0abf1921dc46226a0
+      resolved-ref: "0b4c8e8682596ab728d4382fde64505783751b2b"
       url: "git@github.com:jadedResearcher/DollLibCorrect.git"
     source: git
     version: "0.0.1"
   RenderingLib:
     description:
       ref: HEAD
-      resolved-ref: fe8d8973f0a9435c721f6924eeb614ec36012176
+      resolved-ref: "87fc7aab56fd762e8070b18831d352eb7a867abf"
       url: "git@github.com:jadedResearcher/RenderingLib.git"
     source: git
     version: "0.0.1"

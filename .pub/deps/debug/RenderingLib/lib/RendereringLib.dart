@@ -19,3 +19,5 @@ export "src/includes/palette.dart";
 export "src/formats/Formats.dart";
 export "src/includes/predicates.dart";
 export "src/includes/path_utils.dart";
+export "src/Misc/random.dart";
+export "src/Misc/weighted_lists.dart";

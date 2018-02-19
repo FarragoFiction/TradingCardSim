@@ -300,10 +300,8 @@ class Renderer {
 
     }
 
-    Future<Null> drawRandomPartOfRandomImage(CanvasElement canvas, Random rand, int subSetWidth) async {
-        int minNum = 1;
-        int maxNum = 13;
-        String randomImageName = "images/${rand.nextInt(13)+minNum}.jpg";
+    static Future<Null> drawRandomPartOfImage(CanvasElement canvas, Random rand, int subSetWidth,randomImageName) async {
+
 
         ImageElement image = await Loader.getResource((randomImageName));
         //print("got image $image");
@@ -375,7 +373,7 @@ class Renderer {
         return lines.length;
     }
 
-    WordWrapMetaData wrapLoop(List<String> words, CanvasRenderingContext2D ctx, int maxWidth) {
+    static WordWrapMetaData wrapLoop(List<String> words, CanvasRenderingContext2D ctx, int maxWidth) {
         List<String> lines = new List<String>();
         int sliceFrom = 0;
         for (int i = 0; i < words.length; i++) {
@@ -398,7 +396,7 @@ class Renderer {
 //first, make sure no line will go off screen width
 //second, make sure all lines don't go off screen height
 //canvas.context2D, s, font, 10, 30, fontsize, width-buffer, height-bufferY
-    int wrapTextAndResizeIfNeeded(CanvasRenderingContext2D ctx, String text, String font, num x, num y, num fontSize, int maxWidth, int maxHeight) {
+    static int wrapTextAndResizeIfNeeded(CanvasRenderingContext2D ctx, String text, String font, num x, num y, num fontSize, int maxWidth, int maxHeight) {
         List<String> words = text.split(' ');
         WordWrapMetaData data = wrapLoop(words, ctx, maxWidth);
         //loop to keep within width. no easy calc for this, i THINK

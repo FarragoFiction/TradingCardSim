@@ -2,19 +2,562 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47f3a56b-f541-4208-a6a7-a1157a245826" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/Fonts/Alternian.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/Fonts/CARIMA.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/Fonts/MISTERTWIGGY.TTF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/Fonts/Strife.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/Fonts/dave.ttf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/StrifeSim/scripts/Combatant.dart" afterPath="$PROJECT_DIR$/web/StrifeSim/scripts/Combatant.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/TurtleSim/controller.dart" afterPath="$PROJECT_DIR$/web/TurtleSim/controller.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/scripts/CoinCard.dart" afterPath="$PROJECT_DIR$/web/scripts/CoinCard.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/scripts/RingCard.dart" afterPath="$PROJECT_DIR$/web/scripts/RingCard.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/scripts/TradingCard.dart" afterPath="$PROJECT_DIR$/web/scripts/TradingCard.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/scripts/miniSims.dart" afterPath="$PROJECT_DIR$/web/scripts/miniSims.dart" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/CardSim/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/Fonts/Alternian.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/Fonts/CARIMA.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/Fonts/MISTERTWIGGY.TTF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/Fonts/Strife.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/Fonts/dave.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/css/fuckTurtles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/css/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/farragotransfer.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/bar9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/check0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/CharSheets/check1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/Strife_commands.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/abjure.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/abscond.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/abstain.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/abuse.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/accede.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/accuse.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/aggress.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/aggrieve.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/assail.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Commands/assault.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Baby/0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Baby/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Baby/2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Baby/3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/101.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/102.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/103.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/104.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/105.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/106.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/107.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/108.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/109.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/11.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/110.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/111.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/112.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/113.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/115.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/116.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/117.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/118.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/119.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/121.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/122.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/123.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/124.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/125.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/126.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/127.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/129.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/130.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/131.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/132.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/133.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/134.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/135.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/136.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/137.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/138.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/139.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/14.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/140.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/141.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/142.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/143.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/145.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/146.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/147.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/148.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/149.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/15.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/151.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/152.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/153.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/154.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/155.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/156.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/157.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/158.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/159.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/160.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/161.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/162.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/163.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/164.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/165.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/166.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/167.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/168.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/169.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/17.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/170.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/171.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/172.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/173.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/174.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/175.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/176.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/177.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/178.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/179.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/18.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/180.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/181.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/182.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/183.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/184.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/185.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/186.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/187.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/188.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/189.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/19.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/190.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/191.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/193.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/195.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/196.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/197.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/198.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/199.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/20.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/200.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/201.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/202.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/203.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/204.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/205.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/206.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/207.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/208.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/209.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/21.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/210.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/211.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/212.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/213.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/214.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/215.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/216.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/217.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/218.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/219.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/22.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/220.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/221.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/222.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/223.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/224.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/225.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/23.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/24.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/25.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/26.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/27.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/28.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/29.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/30.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/31.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/33.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/34.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/35.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/37.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/38.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/39.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/40.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/41.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/42.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/43.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/44.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/45.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/46.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/47.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/49.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/50.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/51.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/52.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/53.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/54.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/55.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/56.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/58.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/59.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/61.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/62.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/63.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/64.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/65.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/66.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/67.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/68.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/69.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/70.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/71.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/73.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/74.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/75.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/77.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/78.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/79.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/80.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/81.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/82.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/83.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/84.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/85.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/86.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/87.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/88.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/89.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/90.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/91.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/92.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/93.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/94.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/95.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/97.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/98.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/99.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Body/head.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Base/0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Glasses/0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Glasses/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Glasses/2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Glasses/3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Glasses/4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Glasses/5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Glasses/6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Glasses/7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hair/0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hair/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hair/2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hair/3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hair/4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hair/5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hat/0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hat/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hat/2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hat/3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hat/4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Hat/5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Outfit/0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Outfit/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Outfit/2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Outfit/3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Outfit/4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/Outfit/5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/Bro/credits.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/101.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/102.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/103.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/104.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/105.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/106.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/107.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/108.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/109.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/11.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/110.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/111.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/112.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/113.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/115.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/116.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/117.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/118.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/119.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/121.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/122.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/123.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/124.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/125.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/126.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/127.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/129.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/130.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/131.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/132.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/133.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/134.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/135.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/136.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/137.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/138.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/139.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/14.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/140.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/141.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/142.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/143.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/145.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/146.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/147.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/148.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/149.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/15.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/151.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/152.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/153.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/154.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/155.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/156.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/157.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/158.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/159.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/160.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/161.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/162.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/163.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/164.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/165.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/166.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/167.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/168.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/169.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/17.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/170.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/171.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/172.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/173.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/174.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/175.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/176.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/177.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/178.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/179.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/18.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/180.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/181.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/182.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/183.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/184.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/185.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/186.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/187.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/188.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/189.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/19.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/190.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/191.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/193.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/195.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/196.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/197.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/198.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/199.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/20.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/200.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/201.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/202.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/203.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/204.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/205.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/206.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/207.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/208.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/209.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/21.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/210.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/211.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/212.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/213.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/214.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/215.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/216.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/217.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/218.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/219.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/22.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/220.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/221.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/222.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/223.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/224.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/225.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/226.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/227.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/228.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/229.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/23.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/230.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/231.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/232.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/233.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/234.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/235.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/236.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/237.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/238.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/239.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/24.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/241.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/242.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/243.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/244.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/245.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/246.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/247.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/248.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/249.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/25.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/250.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/251.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/252.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/253.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/254.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/255.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/257.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/258.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/259.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/26.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/260.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/261.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/262.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/263.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/264.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/265.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/266.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/267.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/268.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/269.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/27.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/270.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/271.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/272.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/273.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/274.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/275.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/276.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/277.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/278.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/279.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/28.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/280.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/281.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/282.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/283.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/284.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/285.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/286.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/287.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/288.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/29.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/30.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/31.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/33.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/34.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/35.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/37.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/38.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/39.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/40.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/41.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/42.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/43.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/44.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/45.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/46.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/47.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/49.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/50.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/51.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/52.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/53.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/54.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/55.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/56.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/Homestuck/CanonSymbol/57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/ad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/ad2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/blank.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/blank8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/web/images/element.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/Homestuck/Body/125.png" afterPath="$PROJECT_DIR$/web/images/Homestuck/Body/125.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/Homestuck/Hiveswap/RightHorn/6.png" afterPath="$PROJECT_DIR$/web/images/Homestuck/Hiveswap/RightHorn/6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/Homestuck/Mouth/114.png" afterPath="$PROJECT_DIR$/web/images/Homestuck/Mouth/114.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/Homestuck/Mouth/4.png" afterPath="$PROJECT_DIR$/web/images/Homestuck/Mouth/4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.packages" afterPath="$PROJECT_DIR$/.packages" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/deps/debug/DollLibCorrect/lib/src/Dolls/HiveswapDoll.dart" afterPath="$PROJECT_DIR$/.pub/deps/debug/DollLibCorrect/lib/src/Dolls/HiveswapDoll.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/deps/debug/DollLibCorrect/lib/src/Dolls/HomestuckDoll.dart" afterPath="$PROJECT_DIR$/.pub/deps/debug/DollLibCorrect/lib/src/Dolls/HomestuckDoll.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/deps/debug/DollLibCorrect/lib/src/Dolls/HomestuckTrollDoll.dart" afterPath="$PROJECT_DIR$/.pub/deps/debug/DollLibCorrect/lib/src/Dolls/HomestuckTrollDoll.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/deps/debug/RenderingLib/lib/RendereringLib.dart" afterPath="$PROJECT_DIR$/.pub/deps/debug/RenderingLib/lib/RendereringLib.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/deps/debug/RenderingLib/lib/src/Rendering/Renderer.dart" afterPath="$PROJECT_DIR$/.pub/deps/debug/RenderingLib/lib/src/Rendering/Renderer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,14 +569,12 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CoinCard.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/scripts/CoinCard.dart">
+      <file leaf-file-name="pubspec.yaml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="146">
+              <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,7 +592,7 @@
       <file leaf-file-name="controller.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/TurtleSim/controller.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
+            <state relative-caret-position="450">
               <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
               <folding />
             </state>
@@ -62,7 +603,7 @@
         <entry file="file://$PROJECT_DIR$/web/TurtleSim/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+              <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -72,17 +613,17 @@
         <entry file="file://$PROJECT_DIR$/web/StrifeSim/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+              <caret line="6" column="52" lean-forward="false" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -91,7 +632,7 @@
       <file leaf-file-name="miniSims.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/scripts/miniSims.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="570">
               <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
               <folding>
                 <element signature="e#1#51#0" expanded="true" />
@@ -103,7 +644,7 @@
       <file leaf-file-name="RingCard.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/scripts/RingCard.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="330">
               <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -115,7 +656,7 @@
       <file leaf-file-name="TradingCard.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/scripts/TradingCard.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="4845">
               <caret line="326" column="26" lean-forward="false" selection-start-line="326" selection-start-column="26" selection-end-line="326" selection-end-column="26" />
               <folding>
                 <element signature="e#1#51#0" expanded="true" />
@@ -127,7 +668,7 @@
       <file leaf-file-name="Combatant.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/StrifeSim/scripts/Combatant.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="1815">
               <caret line="125" column="30" lean-forward="false" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
               <folding />
             </state>
@@ -268,9 +809,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -453,6 +993,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -726,21 +1267,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="107" y="22" width="1259" height="673" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37716264" sideWeight="0.41064337" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37716264" sideWeight="0.40587768" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37716264" sideWeight="0.58935666" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37716264" sideWeight="0.5941223" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -750,12 +1289,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1039,18 +1579,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/scripts/CoinCard.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -1067,7 +1599,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/scripts/miniSims.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="570">
           <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
           <folding>
             <element signature="e#1#51#0" expanded="true" />
@@ -1077,7 +1609,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/scripts/RingCard.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
+        <state relative-caret-position="330">
           <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -1087,7 +1619,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/scripts/TradingCard.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
+        <state relative-caret-position="4845">
           <caret line="326" column="26" lean-forward="false" selection-start-line="326" selection-start-column="26" selection-end-line="326" selection-end-column="26" />
           <folding>
             <element signature="e#1#51#0" expanded="true" />
@@ -1097,7 +1629,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/StrifeSim/scripts/Combatant.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
+        <state relative-caret-position="1815">
           <caret line="125" column="30" lean-forward="false" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
           <folding />
         </state>
@@ -1105,7 +1637,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/TurtleSim/controller.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
+        <state relative-caret-position="450">
           <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding />
         </state>
@@ -1114,7 +1646,7 @@
     <entry file="file://$PROJECT_DIR$/web/TurtleSim/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+          <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1122,7 +1654,7 @@
     <entry file="file://$PROJECT_DIR$/web/StrifeSim/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+          <caret line="6" column="52" lean-forward="false" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1130,7 +1662,15 @@
     <entry file="file://$PROJECT_DIR$/web/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
           <folding />
         </state>
       </provider>
