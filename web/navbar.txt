@@ -13,6 +13,8 @@
     <div class="dropdown-content">
       <a href="http://www.farragofiction.com/DollSim/index.html?type=1">Kid Maker</a>
             <a href="DollSim/index.html?type=2">Troll Maker</a>
+            <a href="DollSim/index.html?type=16">Cherub Maker by Neytra</a>
+
             <a href="http://www.farragofiction.com/DollSim/index.html?type=12">Baby Maker</a>
             <a href="http://www.farragofiction.com/DollSim/index.html?type=13">Grub Maker</a>
             <a href="http://www.farragofiction.com/DollSim/index.html?type=3">Consort Maker</a>

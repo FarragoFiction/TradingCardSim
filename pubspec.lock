@@ -11,7 +11,7 @@ packages:
   RenderingLib:
     description:
       ref: HEAD
-      resolved-ref: ffd2b28e77688a4582f60857f418aa58176c417c
+      resolved-ref: "08d49e2260ae8fcf29de03204ba49eb50ae9a454"
       url: "git@github.com:jadedResearcher/RenderingLib.git"
     source: git
     version: "0.0.1"
@@ -86,7 +86,7 @@ packages:
       name: html
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.2+2"
+    version: "0.13.3"
   http:
     description:
       name: http
