@@ -4,7 +4,7 @@ packages:
   DollLibCorrect:
     description:
       ref: HEAD
-      resolved-ref: f63c6a15e484ee71577ba8e1d76eaa074247186a
+      resolved-ref: b3d71149475f11b7399092908ce7a12cf893bc4b
       url: "git@github.com:jadedResearcher/DollLibCorrect.git"
     source: git
     version: "0.0.1"
