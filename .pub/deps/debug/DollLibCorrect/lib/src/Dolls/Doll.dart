@@ -13,8 +13,21 @@ abstract class Doll {
     static String TURNWAYSBUTUP = "turnwaysFlipped"; //flipped horizontal and vertical
     static String UPWAYS = "upways"; //flipped vertical
 
+    bool useAbsolutePath = true;
 
-    String folder;
+
+    String relativefolder;
+    String absolutePathStart = "/DollSource/";
+
+    String get folder {
+        if(useAbsolutePath) {
+            return "$absolutePathStart$relativefolder";
+        }else {
+            return relativefolder;
+        }
+    }
+
+
     String orientation = NORMALWAYS;
     Colour _associatedColor;
     int width = 400;
@@ -46,6 +59,15 @@ abstract class Doll {
             }
         }
         return _associatedColor;
+    }
+
+    Doll() {
+        if(window.location.hostname.contains("localhost")) {
+            //useAbsolutePath = false;
+             absolutePathStart = "http://www.farragofiction.com/DollSource/";
+
+        }
+
     }
 
     //does nothing by default
@@ -244,6 +266,10 @@ abstract class Doll {
             return new HomestuckSatyrDoll.fromReader(reader);
         }
 
+        if(type == new HomestuckCherubDoll().renderingType) {
+            return new HomestuckCherubDoll.fromReader(reader);
+        }
+
         if(type == new HiveswapDoll().renderingType) {
             return new HiveswapDoll.fromReader(reader);
         }
@@ -314,6 +340,10 @@ abstract class Doll {
 
         if(type == new HomestuckSatyrDoll().renderingType) {
             return new HomestuckSatyrDoll();
+        }
+
+        if(type == new HomestuckCherubDoll().renderingType) {
+            return new HomestuckCherubDoll();
         }
 
         if(type == new HiveswapDoll().renderingType) {

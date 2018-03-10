@@ -12,6 +12,9 @@ class Renderer {
     static int imagesWaiting = 0;
     static int imagesLoaded = 0;
 
+    //why doesn't this let me reset it???
+    static bool debug = false;
+
 
     static void grayscale(CanvasElement canvas) {
         CanvasRenderingContext2D ctx = canvas.context2D;
@@ -182,7 +185,7 @@ class Renderer {
 
 
     static void drawWhatever(CanvasElement canvas, String imageString) {
-        print("Trying to draw $imageString");
+        if(debug) print("Trying to draw $imageString");
         Loader.getResource(imageString).then((ImageElement loaded) {
             print("image $loaded loaded");
             canvas.context2D.imageSmoothingEnabled = false;
@@ -192,7 +195,11 @@ class Renderer {
     }
 
     static Future<bool>  drawWhateverFuture(CanvasElement canvas, String imageString) async {
+        //print("drawing $imageString, debug is $debug");
+
+        //if(debug) print("drawing $imageString");
         ImageElement image = await Loader.getResource((imageString));
+        image.crossOrigin = "";
         //print("got image $image");
         canvas.context2D.imageSmoothingEnabled = false;
         canvas.context2D.drawImage(image, 0, 0);
