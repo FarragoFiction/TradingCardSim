@@ -19,6 +19,7 @@ List<String> backGroundMusicSnippets = <String>["bg.ogg"];
 
 //List<String> backGroundMusicSnippets = <String>["Showdads_Strifing_Part_1.ogg","Showdads_Strifing_Part_2.ogg","Showdads_Strifing_Part_3.ogg","Showdads_Strifing_Part_4.ogg","Showdads_Strifing_Part_5.ogg"];
 void main() {
+    storeCard("N4Igzg9grgTgxgUxALhABQDYEMCeBLAOwHMACAZQBcY8AzBMvAWxABoQCtGlVLq6Sc0GCQAiWACasQFBAA8KKECQgB3AghgIOXYWCjjxWjDhIALLGBIUIJMFVoIrphHmFjxAQhLeAkhQDkllhW0ESmJDR4YRQsEXgYGAjiJCp4FOEAwhAGiQBGMFgEyTBQ+XhwANZBRRFY8UkkWBQyjAAOFJbWjblgcBBFsblQFN6q6praGmYQGOKdzq7KagB0UrlYlUQw0EUAcpzcIADq-USJJzAVy63EUvZERBoZ5gSIigAMywCsUr1aCGAACoQACqBAwEEqigA2gBdKSaPQYDqUJpgGHAAA67AO2OQ2IAaj4ALLYljYgBuWAwUAQeOxACZsQBfeFse6PGCojoAGQBYA0MLZ0moDw03LAAHFNE1BahoVicVx6SAiaTWJTqbSVQBGFnCjniihogCiAEcoNShSBmUA");
     loadNavbar();
 
     if(getParameterByName("easter",null)  == "egg"){
@@ -39,6 +40,17 @@ void main() {
     }
 
     init();
+}
+
+void storeCard(String card) {
+    String key = "LIFESIMFOUNDCARDS";
+    if(window.localStorage.containsKey(key)) {
+        String existing = window.localStorage[key];
+        List<String> parts = existing.split(",");
+        if(!parts.contains(card)) window.localStorage[key] = "$existing,$card";
+    }else {
+        window.localStorage[key] = card;
+    }
 }
 
 Future<Null> drawFormForCombatant(Combatant c) async {

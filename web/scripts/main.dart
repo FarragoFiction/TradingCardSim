@@ -13,6 +13,7 @@ Random rand = new Random();
 
 void main() {
     loadNavbar();
+    storeCard("N4Igzg9grgTgxgUxALhAWQIYGsEAIAiEANkbgCowYAmAlgHYDmuAwhjFWCADQh0YC2SVAAUiGAJ4s2HbiAAuCAB5yUIXBADudBDAR9BMXAAcx4sLgy44ACxpEquuubjTcDAXgx0quaxnOWuhgkkgxBcrhyNIIAdLIARhhwWGHQ3gByHqoAytYQDFB0AOIQ2VD8-BB0AKKKJhC0GDFGjLJyMDQMDDrMfnSIqgAMMQCssmCI2mBkEACqdEQQyaoA2gC6srpgUERyYNlyGHurwAA6vB7nyOcAkmgAgkU36fdkNwDy6edc5wBuwVAEFdzgBGc4AXw2PHanW6MAORzAABkEGAwDpVlD5B0ujoEXsiuEMagVmcLoJgSBHtVvn8AUCUKCRhCsTDcfDDntqgBHKDBTEgcFAA");
   ButtonElement button = new ButtonElement();
   button.setInnerHtml("Draw Card");
   button.onClick.listen((Event e) {
@@ -20,6 +21,17 @@ void main() {
   });
   div.append(button);
   drawDeck();
+}
+
+void storeCard(String card) {
+    String key = "LIFESIMFOUNDCARDS";
+    if(window.localStorage.containsKey(key)) {
+        String existing = window.localStorage[key];
+        List<String> parts = existing.split(",");
+        if(!parts.contains(card)) window.localStorage[key] = "$existing,$card";
+    }else {
+        window.localStorage[key] = card;
+    }
 }
 
 Future<bool> drawDeck() async {

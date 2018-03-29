@@ -13,6 +13,7 @@ Random rand = new Random();
 
 void main() {
     loadNavbar();
+    storeCard("N4Igzg9grgTgxgUxALhAGQQQxgOwJY4DmABJgEbQAuxAsgXgMp4C2YIANCDps0qgOIRilIQHkYCQhBwcQlBAA9KKEMQgB3HAgndeMYgBMEcPEbDChAB0xwA1sQQA3bQE9KACwIkol0jgPEzBDOFsTiktIAdMQAmtCkcIiW1B54YNFxUAlJ1E6uqUTEBMKe5mCelJQuxIQ8CJGyZDa2hDDQ-gBydSoAkmAAKqUMFVUAojjQhO4AUgBKkZZEspQweISE2gDC7pg4iCoADJEArLJgiFoDEACqOAA2EHYqANoAurISYFB3lGAMlJhfi9gAAdLh1MHIMH8DqiBg9Bhg9hgxyYO5QBCQsEARjBAF93pwVmsNjB-oCwBgwGBtC9CXJVuttOTfvwJIDaahnqDwbwsSAYXCEUiUWiMfzcSACctGaSWWBRgBHKBoulSoA");
 
   drawDolls();
 }
@@ -24,6 +25,16 @@ Future<bool> drawDolls() async {
     await drawDoll();
 }
 
+void storeCard(String card) {
+    String key = "LIFESIMFOUNDCARDS";
+    if(window.localStorage.containsKey(key)) {
+        String existing = window.localStorage[key];
+        List<String> parts = existing.split(",");
+        if(!parts.contains(card)) window.localStorage[key] = "$existing,$card";
+    }else {
+        window.localStorage[key] = card;
+    }
+}
 
 Doll makeDoll()  {
   return Doll.makeRandomDoll();

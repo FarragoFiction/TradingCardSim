@@ -10,11 +10,23 @@ int fucks = 1;
 ButtonElement machineThatSaysFuck;
 
 void main() {
+    storeCard("N4Igzg9grgTgxgUxALhAMQJYDsAm2DmABACqwAuANgmCADQhYCGAtkqgOqNlwAWJ5VMADo6IMggAeZFCEIQA7lgQwETVjEJgE1TRFaEyA6kMIARCAZ4IAnoQQA3ZZrIQADoQA6IAGZQ4Aay8CAH5CAApiK0JGLDB5JwwwQgByLAhkoQBKUQAjRgD8GGhcADkWNhAAZR4MMjJrHBjEV0YYeqFXLHxRMhgMfHxlAGEeJoqARiEABlEwRCUwYggAVSwKCACZAG0AXVEVMCgKMjBKsi4aVC3gLzUEL2QvNGWhgGkASWJl0wBRACUhgB5ZZ-So-Ly0Lz2RgUKD3FBecZeAC+e3ovX6gxgZwuABlqFoYNs0WI+gNlDiTgBxFRcZTEnpkrGUsA-ACOUBhDORQA");
     drawDolls();
 }
 
 Future<bool> drawDolls() async {
     await drawDoll();
+}
+
+void storeCard(String card) {
+    String key = "LIFESIMFOUNDCARDS";
+    if(window.localStorage.containsKey(key)) {
+        String existing = window.localStorage[key];
+        List<String> parts = existing.split(",");
+        if(!parts.contains(card)) window.localStorage[key] = "$existing,$card";
+    }else {
+        window.localStorage[key] = card;
+    }
 }
 
 
