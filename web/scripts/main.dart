@@ -24,6 +24,7 @@ void main() {
 }
 
 void storeCard(String card) {
+    print("deploying card");
     String key = "LIFESIMFOUNDCARDS";
     if(window.localStorage.containsKey(key)) {
         String existing = window.localStorage[key];
