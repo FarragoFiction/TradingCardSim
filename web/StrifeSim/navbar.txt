@@ -13,17 +13,9 @@
     <div class="dropdown-content">
       <a href="http://www.farragofiction.com/DollSim/index.html?type=1">Kid Maker</a>
             <a href="DollSim/index.html?type=2">Troll Maker</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=12">Baby Maker</a>
             <a href="http://www.farragofiction.com/DollSim/index.html?type=13">Grub Maker</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=3">Consort Maker</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=4">Denizen Maker by TG</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=7">Dad Maker by YD</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=9">Mom Maker by YD</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=10">Bro Maker by YD</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=8">Queen Maker by MF</a>
             <a href="http://www.farragofiction.com/DollSim/index.html?type=14">Hiveswap Maker by MC</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=113">Pigeon Maker by Xexus</a>
-            <a href="http://www.farragofiction.com/DollSim/index.html?type=151">Monster Pocket Maker by Frew</a>
+            <a href="http://www.farragofiction.com/DollSim/dollTypes.html?">All Dolls</a>
     </div>
   </li>
 
