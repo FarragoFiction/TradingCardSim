@@ -2,6 +2,7 @@ import "package:DollLibCorrect/DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
 import "dart:math" as Math;
+import 'package:LoaderLib/Loader.dart';
 
 class RandomFuckingObject {
 

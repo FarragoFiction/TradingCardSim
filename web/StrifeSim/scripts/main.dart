@@ -1,4 +1,5 @@
 
+import 'package:CommonLib/Random.dart';
 import "package:DollLibCorrect/DollRenderer.dart";
 import 'dart:async';
 import "../../scripts/navbar.dart";
@@ -18,10 +19,10 @@ int musicIndex = 0;
 List<String> backGroundMusicSnippets = <String>["bg.ogg"];
 
 //List<String> backGroundMusicSnippets = <String>["Showdads_Strifing_Part_1.ogg","Showdads_Strifing_Part_2.ogg","Showdads_Strifing_Part_3.ogg","Showdads_Strifing_Part_4.ogg","Showdads_Strifing_Part_5.ogg"];
-void main() {
+Future<Null> main() async {
     storeCard("N4Igzg9grgTgxgUxALhABQDYEMCeBLAOwHMACAZQBcY8AzBMvAWxABoQCtGlVLq6Sc0GCQAiWACasQFBAA8KKECQgB3AghgIOXYWCjjxWjDhIALLGBIUIJMFVoIrphHmFjxAQhLeAkhQDkllhW0ESmJDR4YRQsEXgYGAjiJCp4FOEAwhAGiQBGMFgEyTBQ+XhwANZBRRFY8UkkWBQyjAAOFJbWjblgcBBFsblQFN6q6praGmYQGOKdzq7KagB0UrlYlUQw0EUAcpzcIADq-USJJzAVy63EUvZERBoZ5gSIigAMywCsUr1aCGAACoQACqBAwEEqigA2gBdKSaPQYDqUJpgGHAAA67AO2OQ2IAaj4ALLYljYgBuWAwUAQeOxACZsQBfeFse6PGCojoAGQBYA0MLZ0moDw03LAAHFNE1BahoVicVx6SAiaTWJTqbSVQBGFnCjniihogCiAEcoNShSBmUA");
     loadNavbar();
-
+    await Doll.loadFileData();
     if(getParameterByName("easter",null)  == "egg"){
         egg = true;
         window.alert("Yo Dawg, I herd you liek easter eggs???");

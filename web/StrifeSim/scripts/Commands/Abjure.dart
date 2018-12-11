@@ -1,4 +1,7 @@
 import "Command.dart";
+import 'package:CommonLib/Colours.dart';
+import 'package:CommonLib/Random.dart';
+import 'package:CommonLib/Utility.dart';
 import "package:DollLibCorrect/DollRenderer.dart";
 class Abjure extends Command {
     List<String> actions = <String> ["Refrain","Retract", "Abstain", "Refuse", "Forswear", "Recant", "Renege", "Renounce"];

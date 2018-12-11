@@ -1,3 +1,4 @@
+import 'package:CommonLib/Random.dart';
 import "package:DollLibCorrect/DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
@@ -5,6 +6,7 @@ import 'Combatant.dart';
 import "RandomFuckingObject.dart";
 import "dart:math" as Math;
 import "package:CommonLib/Collection.dart";
+import 'package:LoaderLib/Loader.dart';
 //fraymotifs are owned by combatants.
 class Fraymotif {
     static List<String> imageNames = <String>["blood","mind","rage","void","time","heart","breath","light","space","hope","life","doom"];

@@ -1,8 +1,10 @@
+import 'package:CommonLib/Colours.dart';
 import "package:DollLibCorrect/DollRenderer.dart";
 import "Fraymotif.dart";
 import 'dart:async';
 import 'dart:html';
 import "dart:math" as Math;
+import 'package:RenderingLib/src/Rendering/Renderer.dart';
 
 /*
     has doll and stats like attack/health. and potential commands. and responses to commands.

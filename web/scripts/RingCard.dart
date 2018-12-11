@@ -1,9 +1,11 @@
 import "TradingCard.dart";
+import 'package:CommonLib/Colours.dart';
 import "package:DollLibCorrect/DollRenderer.dart";
 
 import "CoinCard.dart";
 import 'dart:async';
 import 'dart:html';
+import 'package:RenderingLib/RendereringLib.dart';
 class RingCard extends CoinCard {
     RingCard(Doll doll) : super(doll) {
         List<String> folds = <String>["NO","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","ELEVEN","TWELVE","???"];

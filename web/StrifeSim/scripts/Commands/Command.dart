@@ -1,5 +1,8 @@
 import 'dart:html';
 import "package:DollLibCorrect/DollRenderer.dart";
+import 'package:CommonLib/Colours.dart';
+import 'package:CommonLib/Random.dart';
+import 'package:CommonLib/Utility.dart';
 class Command {
     ImageElement image;
 

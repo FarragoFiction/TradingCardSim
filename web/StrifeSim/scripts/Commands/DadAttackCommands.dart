@@ -1,5 +1,8 @@
 import "Command.dart";
 import "package:DollLibCorrect/DollRenderer.dart";
+import 'package:CommonLib/Colours.dart';
+import 'package:CommonLib/Random.dart';
+import 'package:CommonLib/Utility.dart';
 class DadAttackCommands extends Command {
     DadAttackCommands(Lambda methodToCall) : super("aggrieve",methodToCall) {
         textColor = new Colour.fromStyleString("#555555");

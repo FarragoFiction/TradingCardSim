@@ -1,15 +1,18 @@
 
+import 'package:CommonLib/src/random/random.dart';
 import "package:DollLibCorrect/DollRenderer.dart";
 import 'dart:async';
 
 import 'dart:html';
+import 'package:DollLibCorrect/src/commonImports.dart';
 
 Element div = querySelector("#contents");
 Random rand = new Random();
 int fucks = 1;
 ButtonElement machineThatSaysFuck;
 
-void main() {
+Future<Null> main() async {
+    await Doll.loadFileData();
     storeCard("N4Igzg9grgTgxgUxALhAMQJYDsAm2DmABACqwAuANgmCADQhYCGAtkqgOqNlwAWJ5VMADo6IMggAeZFCEIQA7lgQwETVjEJgE1TRFaEyA6kMIARCAZ4IAnoQQA3ZZrIQADoQA6IAGZQ4Aay8CAH5CAApiK0JGLDB5JwwwQgByLAhkoQBKUQAjRgD8GGhcADkWNhAAZR4MMjJrHBjEV0YYeqFXLHxRMhgMfHxlAGEeJoqARiEABlEwRCUwYggAVSwKCACZAG0AXVEVMCgKMjBKsi4aVC3gLzUEL2QvNGWhgGkASWJl0wBRACUhgB5ZZ-So-Ly0Lz2RgUKD3FBecZeAC+e3ovX6gxgZwuABlqFoYNs0WI+gNlDiTgBxFRcZTEnpkrGUsA-ACOUBhDORQA");
     drawDolls();
 }

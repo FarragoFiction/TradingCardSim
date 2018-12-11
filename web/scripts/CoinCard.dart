@@ -1,8 +1,10 @@
 import "TradingCard.dart";
+import 'package:CommonLib/Colours.dart';
 import "package:DollLibCorrect/DollRenderer.dart";
 
 import 'dart:async';
 import 'dart:html';
+import 'package:RenderingLib/RendereringLib.dart';
 class CoinCard extends TradingCard {
   CoinCard(Doll doll) : super(doll) {
       type = "Coin";

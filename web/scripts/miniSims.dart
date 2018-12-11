@@ -1,4 +1,5 @@
 
+import 'package:CommonLib/Random.dart';
 import "package:DollLibCorrect/DollRenderer.dart";
 import 'dart:async';
 import "TradingCard.dart";
@@ -11,9 +12,10 @@ import 'dart:html';
 Element div = querySelector("#contents");
 Random rand = new Random();
 
-void main() {
+Future<Null> main() async{
     loadNavbar();
     storeCard("N4Igzg9grgTgxgUxALhAGQQQxgOwJY4DmABJgEbQAuxAsgXgMp4C2YIANCDps0qgOIRilIQHkYCQhBwcQlBAA9KKEMQgB3HAgndeMYgBMEcPEbDChAB0xwA1sQQA3bQE9KACwIkol0jgPEzBDOFsTiktIAdMQAmtCkcIiW1B54YNFxUAlJ1E6uqUTEBMKe5mCelJQuxIQ8CJGyZDa2hDDQ-gBydSoAkmAAKqUMFVUAojjQhO4AUgBKkZZEspQweISE2gDC7pg4iCoADJEArLJgiFoDEACqOAA2EHYqANoAurISYFB3lGAMlJhfi9gAAdLh1MHIMH8DqiBg9Bhg9hgxyYO5QBCQsEARjBAF93pwVmsNjB-oCwBgwGBtC9CXJVuttOTfvwJIDaahnqDwbwsSAYXCEUiUWiMfzcSACctGaSWWBRgBHKBoulSoA");
+    await Doll.loadFileData();
 
   drawDolls();
 }
